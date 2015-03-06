@@ -5,5 +5,5 @@ package app.common;
  */
 public class  Utils {
 
-    public  static final String  toto="TOTO";
+    //public  static final String  toto="TOTO";
 }
