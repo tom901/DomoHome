@@ -5,14 +5,20 @@ import javafx.scene.Parent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.util.List;
+
 /**
  * Created by Thomas on 05/03/15.
  */
+//Classe to paint the base of the house
 public class Home extends Parent {
-    String numberFloor;
-    //Classe to paint the base of the house
+
+    //Attributes
+
+
     public Home(){
-        Rectangle rectangleOfFloor = new Rectangle();
+
+        /*Rectangle rectangleOfFloor = new Rectangle();
         rectangleOfFloor.setWidth(ParamDisplay.WIDTH_FIRST_ROOM);
         rectangleOfFloor.setHeight(400);
         rectangleOfFloor.setArcWidth(15);
@@ -56,9 +62,15 @@ public class Home extends Parent {
         rectangleOfLegend.setTranslateY(408);
         rectangleOfLegend.setTranslateX(600);
         rectangleOfLegend.setStroke(Color.BLACK);
-        this.getChildren().add(rectangleOfLegend);
+        this.getChildren().add(rectangleOfLegend);*/
 
     }
+
+    //Methode to check if the room or floor is empty
+    public boolean isEmpty(){
+         return false;
+    }
+
 
 
 }

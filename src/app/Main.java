@@ -11,6 +11,9 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
+import java.util.Map;
+import java.util.Set;
+
 public class Main extends Application {
 
     public static void main(String[] args) {
@@ -27,7 +30,6 @@ public class Main extends Application {
         Floor floor1 = new Floor();
         root.getChildren().add(floor1);
 */
-
         //MyModification
         Home displayHome = new Home();
        // FirstFloor firstFloor = new FirstFloor();

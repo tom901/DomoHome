@@ -5,4 +5,6 @@ package app.object;
  */
 //Classe volet roulant
 public class RollerShutter extends ObjectHome {
+
+
 }

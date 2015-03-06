@@ -5,5 +5,13 @@ package app.object;
  */
 public class ObjectHome {
 
+    public boolean state;
+
+    public ObjectHome(){
+        state = false;
+    }
+
+
+
 
 }
