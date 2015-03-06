@@ -1,5 +1,6 @@
 package app;
 
+import app.display.Base;
 import app.home.FirstFloor;
 import app.home.Floor;
 import app.home.Home;
@@ -31,10 +32,11 @@ public class Main extends Application {
         root.getChildren().add(floor1);
 */
         //MyModification
-        Home displayHome = new Home();
+//        Home displayHome = new Home();
        // FirstFloor firstFloor = new FirstFloor();
-
-        root.getChildren().add(displayHome);
+//        Floor floor = new Floor();
+        Base basePlan = new Base();
+        root.getChildren().add(basePlan);
         //root.getChildren().add(firstFloor);
         //root.getChildren().add(displayHome.displayRectangleOfRight());
         //root.getChildren().add(displayHome.displayRectangleOfBottom());

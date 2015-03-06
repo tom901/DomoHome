@@ -1,5 +1,6 @@
 package app.home;
 
+import app.common.ParamDisplay;
 import javafx.scene.effect.Reflection;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
@@ -23,16 +24,7 @@ public class Floor extends Home {
         inFront = false;
         rooms = new ArrayList<Room>();
 
-        //Etage 1
-       /* Rectangle floor1 = new Rectangle();
-        floor1.setWidth(700);
-        floor1.setHeight(500);
-        floor1.setArcWidth(30);
-        floor1.setArcHeight(30);
-        floor1.setFill(Color.WHITE);
-        this.setTranslateX(5);
-        this.setTranslateY(5);
-        this.getChildren().add(floor1);*/
+
     }
     //Function to add room in floor
     public void addRoom(){
