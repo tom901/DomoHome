@@ -28,6 +28,7 @@ public class Main extends Application {
         root.getChildren().add(floor1);
 */
 
+        //MyModification
         Home displayHome = new Home();
         FirstFloor firstFloor = new FirstFloor();
 
