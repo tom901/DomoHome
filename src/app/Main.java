@@ -30,10 +30,10 @@ public class Main extends Application {
 
         //MyModification
         Home displayHome = new Home();
-        FirstFloor firstFloor = new FirstFloor();
+       // FirstFloor firstFloor = new FirstFloor();
 
         root.getChildren().add(displayHome);
-        root.getChildren().add(firstFloor);
+        //root.getChildren().add(firstFloor);
         //root.getChildren().add(displayHome.displayRectangleOfRight());
         //root.getChildren().add(displayHome.displayRectangleOfBottom());
 
