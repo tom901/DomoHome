@@ -1,5 +1,6 @@
 package app.home;
 
+import app.common.ParamDisplay;
 import javafx.scene.Parent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -12,13 +13,13 @@ public class Home extends Parent {
     //Classe to paint the base of the house
     public Home(){
         Rectangle rectangleOfFloor = new Rectangle();
-        rectangleOfFloor.setWidth(590);
+        rectangleOfFloor.setWidth(ParamDisplay.WIDTH_FIRST_ROOM);
         rectangleOfFloor.setHeight(400);
         rectangleOfFloor.setArcWidth(15);
         rectangleOfFloor.setArcHeight(15);
         rectangleOfFloor.setFill(Color.WHITE);
-        rectangleOfFloor.setTranslateY(5);
-        rectangleOfFloor.setTranslateX(5);
+        rectangleOfFloor.setTranslateY(ParamDisplay.Y_FIRST_ROOM);
+        rectangleOfFloor.setTranslateX(ParamDisplay.X_FIRST_ROOM);
         rectangleOfFloor.setStroke(Color.BLACK);
         this.getChildren().add(rectangleOfFloor);
 

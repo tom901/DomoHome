@@ -5,6 +5,10 @@ package app.common;
  */
 public class ParamDisplay {
 
+    public  static final Integer X_FIRST_ROOM = 5;
+    public  static final Integer Y_FIRST_ROOM = 5;
+    public  static final Integer WIDTH_FIRST_ROOM = 590;
+
     public ParamDisplay(){
 
     }
