@@ -12,48 +12,48 @@ public class Base extends Parent {
 
     public Base(){
         Rectangle rectangleOfFloor = new Rectangle();
-        rectangleOfFloor.setWidth(ParamDisplay.WIDTH_FIRST_ROOM);
-        rectangleOfFloor.setHeight(400);
+        rectangleOfFloor.setWidth(ParamDisplay.WIDTH_FIRST_BLOCK);
+        rectangleOfFloor.setHeight(ParamDisplay.HEIGHT_FIRST_BLOCK);
         rectangleOfFloor.setArcWidth(15);
         rectangleOfFloor.setArcHeight(15);
         rectangleOfFloor.setFill(Color.WHITE);
-        rectangleOfFloor.setTranslateY(ParamDisplay.Y_FIRST_ROOM);
-        rectangleOfFloor.setTranslateX(ParamDisplay.X_FIRST_ROOM);
+        rectangleOfFloor.setTranslateY(ParamDisplay.Y_FIRST_BLOCK);
+        rectangleOfFloor.setTranslateX(ParamDisplay.X_FIRST_BLOCK);
         rectangleOfFloor.setStroke(Color.BLACK);
         this.getChildren().add(rectangleOfFloor);
 
 
         Rectangle rectangleOfRight = new Rectangle();
-        rectangleOfRight.setWidth(190);
-        rectangleOfRight.setHeight(400);
+        rectangleOfRight.setWidth(ParamDisplay.WIDTH_SECOND_BLOCK);
+        rectangleOfRight.setHeight(ParamDisplay.HEIGHT_SECOND_BLOCK);
         rectangleOfRight.setArcWidth(15);
         rectangleOfRight.setArcHeight(15);
         rectangleOfRight.setFill(Color.WHITE);
-        rectangleOfRight.setTranslateY(5);
-        rectangleOfRight.setTranslateX(600);
+        rectangleOfRight.setTranslateX(ParamDisplay.X_SECOND_BLOCK);
+        rectangleOfRight.setTranslateY(ParamDisplay.Y_SECOND_BLOCK);
         rectangleOfRight.setStroke(Color.BLACK);
         this.getChildren().add(rectangleOfRight);
 
 
         Rectangle rectangleOfBottom = new Rectangle();
-        rectangleOfBottom.setWidth(590);
-        rectangleOfBottom.setHeight(180);
+        rectangleOfBottom.setWidth(ParamDisplay.WIDTH_THIRD_BLOCK);
+        rectangleOfBottom.setHeight(ParamDisplay.HEIGHT_THIRD_BLOCK);
         rectangleOfBottom.setArcWidth(15);
         rectangleOfBottom.setArcHeight(15);
         rectangleOfBottom.setFill(Color.WHITE);
-        rectangleOfBottom.setTranslateY(408);
-        rectangleOfBottom.setTranslateX(5);
+        rectangleOfBottom.setTranslateX(ParamDisplay.X_THIRD_BLOCK);
+        rectangleOfBottom.setTranslateY(ParamDisplay.Y_THIRD_BLOCK);
         rectangleOfBottom.setStroke(Color.BLACK);
         this.getChildren().add(rectangleOfBottom);
 
         Rectangle rectangleOfLegend = new Rectangle();
-        rectangleOfLegend.setWidth(190);
-        rectangleOfLegend.setHeight(180);
+        rectangleOfLegend.setWidth(ParamDisplay.WIDTH_FOURTH_BLOCK);
+        rectangleOfLegend.setHeight(ParamDisplay.HEIGHT_FOURTH_BLOCK);
         rectangleOfLegend.setArcWidth(15);
         rectangleOfLegend.setArcHeight(15);
         rectangleOfLegend.setFill(Color.WHITE);
-        rectangleOfLegend.setTranslateY(408);
-        rectangleOfLegend.setTranslateX(600);
+        rectangleOfLegend.setTranslateX(ParamDisplay.X_FOURTH_BLOCK);
+        rectangleOfLegend.setTranslateY(ParamDisplay.Y_FOURTH_BLOCK);
         rectangleOfLegend.setStroke(Color.BLACK);
         this.getChildren().add(rectangleOfLegend);
     }

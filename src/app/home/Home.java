@@ -19,13 +19,13 @@ public class Home extends Parent {
     public Home(){
 
         /*Rectangle rectangleOfFloor = new Rectangle();
-        rectangleOfFloor.setWidth(ParamDisplay.WIDTH_FIRST_ROOM);
+        rectangleOfFloor.setWidth(ParamDisplay.WIDTH_FIRST_BLOCK);
         rectangleOfFloor.setHeight(400);
         rectangleOfFloor.setArcWidth(15);
         rectangleOfFloor.setArcHeight(15);
         rectangleOfFloor.setFill(Color.WHITE);
-        rectangleOfFloor.setTranslateY(ParamDisplay.Y_FIRST_ROOM);
-        rectangleOfFloor.setTranslateX(ParamDisplay.X_FIRST_ROOM);
+        rectangleOfFloor.setTranslateY(ParamDisplay.Y_FIRST_BLOCK);
+        rectangleOfFloor.setTranslateX(ParamDisplay.X_FIRST_BLOCK);
         rectangleOfFloor.setStroke(Color.BLACK);
         this.getChildren().add(rectangleOfFloor);
 
