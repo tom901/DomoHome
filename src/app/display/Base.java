@@ -12,48 +12,41 @@ public class Base extends Parent {
 
     public Base(){
         Rectangle rectangleOfFloor = new Rectangle();
-        rectangleOfFloor.setWidth(ParamDisplay.WIDTH_FIRST_BLOCK);
-        rectangleOfFloor.setHeight(ParamDisplay.HEIGHT_FIRST_BLOCK);
-        rectangleOfFloor.setArcWidth(15);
-        rectangleOfFloor.setArcHeight(15);
-        rectangleOfFloor.setFill(Color.WHITE);
-        rectangleOfFloor.setTranslateY(ParamDisplay.Y_FIRST_BLOCK);
-        rectangleOfFloor.setTranslateX(ParamDisplay.X_FIRST_BLOCK);
+        rectangleOfFloor.setX(ParamDisplay.MAIN_FLOOR_DISPLAYED_X);
+        rectangleOfFloor.setY(ParamDisplay.MAIN_FLOOR_DISPLAYED_Y);
+        rectangleOfFloor.setWidth(ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH);
+        rectangleOfFloor.setHeight(ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT);
+        rectangleOfFloor.setFill(Color.TRANSPARENT);
         rectangleOfFloor.setStroke(Color.BLACK);
+        rectangleOfFloor.setStrokeWidth(1);
         this.getChildren().add(rectangleOfFloor);
 
 
         Rectangle rectangleOfRight = new Rectangle();
-        rectangleOfRight.setWidth(ParamDisplay.WIDTH_SECOND_BLOCK);
-        rectangleOfRight.setHeight(ParamDisplay.HEIGHT_SECOND_BLOCK);
-        rectangleOfRight.setArcWidth(15);
-        rectangleOfRight.setArcHeight(15);
+        rectangleOfRight.setX(ParamDisplay.SECONDARY_FLOORS_BLOCK_X);
+        rectangleOfRight.setY(ParamDisplay.SECONDARY_FLOORS_BLOCK_Y);
+        rectangleOfRight.setWidth(ParamDisplay.SECONDARY_FLOORS_BLOCK_WIDTH);
+        rectangleOfRight.setHeight(ParamDisplay.SECONDARY_FLOORS_BLOCK_HEIGHT);
         rectangleOfRight.setFill(Color.WHITE);
-        rectangleOfRight.setTranslateX(ParamDisplay.X_SECOND_BLOCK);
-        rectangleOfRight.setTranslateY(ParamDisplay.Y_SECOND_BLOCK);
         rectangleOfRight.setStroke(Color.BLACK);
         this.getChildren().add(rectangleOfRight);
 
 
         Rectangle rectangleOfBottom = new Rectangle();
-        rectangleOfBottom.setWidth(ParamDisplay.WIDTH_THIRD_BLOCK);
-        rectangleOfBottom.setHeight(ParamDisplay.HEIGHT_THIRD_BLOCK);
-        rectangleOfBottom.setArcWidth(15);
-        rectangleOfBottom.setArcHeight(15);
+        rectangleOfBottom.setX(ParamDisplay.INDICATORS_BLOCK_X);
+        rectangleOfBottom.setY(ParamDisplay.INDICATORS_BLOCK_Y);
+        rectangleOfBottom.setWidth(ParamDisplay.INDICATORS_BLOCK_WIDTH);
+        rectangleOfBottom.setHeight(ParamDisplay.INDICATORS_BLOCK_HEIGHT);
         rectangleOfBottom.setFill(Color.WHITE);
-        rectangleOfBottom.setTranslateX(ParamDisplay.X_THIRD_BLOCK);
-        rectangleOfBottom.setTranslateY(ParamDisplay.Y_THIRD_BLOCK);
         rectangleOfBottom.setStroke(Color.BLACK);
         this.getChildren().add(rectangleOfBottom);
 
         Rectangle rectangleOfLegend = new Rectangle();
-        rectangleOfLegend.setWidth(ParamDisplay.WIDTH_FOURTH_BLOCK);
-        rectangleOfLegend.setHeight(ParamDisplay.HEIGHT_FOURTH_BLOCK);
-        rectangleOfLegend.setArcWidth(15);
-        rectangleOfLegend.setArcHeight(15);
+        rectangleOfLegend.setX(ParamDisplay.LEGEND_BLOCK_X);
+        rectangleOfLegend.setY(ParamDisplay.LEGEND_BLOCK_Y);
+        rectangleOfLegend.setWidth(ParamDisplay.LEGEND_BLOCK_WIDTH);
+        rectangleOfLegend.setHeight(ParamDisplay.LEGEND_BLOCK_HEIGHT);
         rectangleOfLegend.setFill(Color.WHITE);
-        rectangleOfLegend.setTranslateX(ParamDisplay.X_FOURTH_BLOCK);
-        rectangleOfLegend.setTranslateY(ParamDisplay.Y_FOURTH_BLOCK);
         rectangleOfLegend.setStroke(Color.BLACK);
         this.getChildren().add(rectangleOfLegend);
     }

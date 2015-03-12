@@ -1,4 +1,4 @@
-package app.home;
+package app.data.home;
 
 /**
  * Created by Thomas on 05/03/15.

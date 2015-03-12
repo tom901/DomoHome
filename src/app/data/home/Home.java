@@ -1,11 +1,6 @@
-package app.home;
+package app.data.home;
 
-import app.common.ParamDisplay;
 import javafx.scene.Parent;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-
-import java.util.List;
 
 /**
  * Created by Thomas on 05/03/15.

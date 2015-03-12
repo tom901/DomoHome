@@ -1,19 +1,13 @@
-package app.home;
+package app.data.home;
 
-import app.object.ObjectHome;
-import javafx.scene.effect.Reflection;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.CycleMethod;
-import javafx.scene.paint.LinearGradient;
-import javafx.scene.paint.Stop;
-import javafx.scene.shape.Rectangle;
+import app.data.object.ObjectHome;
 
 import java.util.ArrayList;
 
 /**
  * Created by Thomas on 05/03/15.
  */
-public class Room extends Floor {
+public class Room {
 
     //Attributes
     public Integer Id; // If Id is 0 there are no room in the house

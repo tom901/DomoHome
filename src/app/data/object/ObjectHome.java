@@ -1,4 +1,4 @@
-package app.object;
+package app.data.object;
 
 /**
  * Created by Thomas on 04/03/15.
