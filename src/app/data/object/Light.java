@@ -33,6 +33,13 @@ public class Light extends ObjectHome {
 
         return group;
     }
+    public void changeStateLight(boolean stateLight){
+        if(super.state){
+            super.state = false;
+        }else{
+            super.state = true;
+        }
+    }
 
     public Position getPositionLight() {
         return positionLight;
