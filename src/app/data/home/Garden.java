@@ -5,5 +5,5 @@ package app.data.home;
  */
 public class Garden extends Room {
 
-
+    public Garden() {};
 }
