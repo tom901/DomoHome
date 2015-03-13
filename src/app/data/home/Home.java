@@ -1,12 +1,13 @@
 package app.data.home;
 
 import javafx.scene.Parent;
+import javafx.scene.shape.Rectangle;
 
 /**
  * Created by Thomas on 05/03/15.
  */
 //Classe to paint the base of the house
-public class Home extends Parent {
+public class Home extends Rectangle {
 
     //Attributes
 

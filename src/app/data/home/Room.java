@@ -1,5 +1,6 @@
 package app.data.home;
 
+import app.data.Position;
 import app.data.object.ObjectHome;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -27,12 +28,12 @@ public class Room extends Rectangle {
         temperature = 0.0;
     }
 
-    public Room(double width, double height, int x, int y){
+    public Room(double width, double height, Position p, int multiplier){
 
         group = new Group();
-        Rectangle room = new Rectangle(width,height,Color.WHITE);
-        room.setX(x);
-        room.setY(y);
+        Rectangle room = new Rectangle(width/multiplier,height/multiplier,Color.WHITE);
+        room.setX(p.getX()/multiplier);
+        room.setY(p.getY()/multiplier);
         room.setStroke(Color.BLACK);
         room.setStrokeWidth(1);
         group.getChildren().add(room);
