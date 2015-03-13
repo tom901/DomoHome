@@ -10,16 +10,19 @@ import javafx.scene.shape.Circle;
  * Created by Thomas on 04/03/15.
  */
 public class Light extends ObjectHome {
-    Position positionLight;
+    private Position positionLight;
+    private Circle light;
 
     public Light(){
     }
 
-    public Group getLight(Position position, boolean stateLight){
+    public Light(Position position, boolean stateLight) {
+        //this.positionLight = positionLight;
+
         this.positionLight = position;
-        Group group = new Group();
-        Circle light = new Circle(15);
-        if(super.state){
+//        Group group = new Group();
+        light = new Circle(15);
+        if(stateLight){
             light.setFill(Color.YELLOW);
             super.state = false;
         }else{
@@ -27,11 +30,12 @@ public class Light extends ObjectHome {
             super.state = true;
         }
         light.setStroke(Color.BLACK);
-        light.setTranslateX(position.getX());
-        light.setTranslateY(position.getY());
-        group.getChildren().add(light);
+        light.setCenterX(position.getX());
+        light.setCenterY(position.getY());
+    }
 
-        return group;
+    public Circle getLight(){
+        return light;
     }
     public void changeStateLight(boolean stateLight){
         if(super.state){

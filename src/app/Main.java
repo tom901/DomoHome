@@ -36,9 +36,9 @@ public class Main extends Application {
 
         Base basePlan = new Base(root);
 
-        Light lightFirstPlace = new Light();
 
-        root.getChildren().add(basePlan);
+
+        //root.getChildren().add(basePlan);
         /*root.getChildren().add(basePlan);
         root.getChildren().add(Room.getRoom(ParamDisplay.FIRST_ROOM_WIDTH,ParamDisplay.FIRST_ROOM_HEIGHT, ParamDisplay.FIRST_ROOM_X, ParamDisplay.FIRST_ROOM_Y));
         root.getChildren().add(Room.getRoom(ParamDisplay.SECOND_ROOM_WIDTH,ParamDisplay.SECOND_ROOM_HEIGHT, ParamDisplay.SECOND_ROOM_X, ParamDisplay.SECOND_ROOM_Y));

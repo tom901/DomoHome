@@ -1,7 +1,9 @@
 package app.display;
 
 import app.common.ParamDisplay;
+import app.data.Position;
 import app.data.home.Room;
+import app.data.object.Light;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -54,6 +56,7 @@ public class Base extends Parent {
 
         root.getChildren().add(this);
 
+
         Room room01_01 = new Room(ParamDisplay.FIRST_ROOM_WIDTH, ParamDisplay.FIRST_ROOM_HEIGHT, ParamDisplay.FIRST_ROOM_X, ParamDisplay.FIRST_ROOM_Y);
         room01_01.getRoom().setOnMouseClicked(new MouseClicked());
         root.getChildren().add(room01_01.getRoom());
@@ -73,6 +76,12 @@ public class Base extends Parent {
         Room room01_05 = new Room(ParamDisplay.FIFTH_ROOM_WIDTH,ParamDisplay.FIFTH_ROOM_HEIGHT, ParamDisplay.FIFTH_ROOM_X, ParamDisplay.FIFTH_ROOM_Y);
         room01_05.getRoom().setOnMouseClicked(new MouseClicked());
         root.getChildren().add(room01_05.getRoom());
+
+        Light lightFirstPlace = new Light(new Position(ParamDisplay.FIRST_LIGHT_X,ParamDisplay.FIRST_LIGHT_Y),true);
+        root.getChildren().add(lightFirstPlace.getLight());
+
+        Light lightSecondPlace = new Light(new Position(ParamDisplay.SECOND_LIGHT_X,ParamDisplay.SECOND_LIGHT_Y),false);
+        root.getChildren().add(lightSecondPlace.getLight());
 
         root.getChildren().add(Room.getGarden(ParamDisplay.GARDEN_ROOM_WIDTH, ParamDisplay.GARDEN_ROOM_HEIGHT, ParamDisplay.GARDEN_ROOM_X, ParamDisplay.GARDEN_ROOM_Y));
 
