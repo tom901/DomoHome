@@ -69,4 +69,10 @@ public class ParamDisplay {
     public static final int GARDEN_ROOM_X = MAIN_FLOOR_DISPLAYED_X;
     public static final int GARDEN_ROOM_Y = FIRST_ROOM_HEIGHT+MAIN_FLOOR_DISPLAYED_Y;
 
+    public static final int FIRST_LIGHT_X = FIRST_ROOM_WIDTH/2;
+    public static final int FIRST_LIGHT_Y =FIRST_ROOM_HEIGHT/2;
+
+    public static final int SECOND_LIGHT_X = SECOND_ROOM_WIDTH/2;
+    public static final int SECOND_LIGHT_Y =SECOND_ROOM_HEIGHT/2;
+
 }
