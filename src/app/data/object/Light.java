@@ -10,13 +10,13 @@ import javafx.scene.shape.Circle;
  * Created by Thomas on 04/03/15.
  */
 public class Light extends ObjectHome {
-
+    Position positionLight;
 
     public Light(){
     }
 
     public Group getLight(Position position, boolean stateLight){
-
+        this.positionLight = position;
         Group group = new Group();
         Circle light = new Circle(15);
         if(super.state){
@@ -34,4 +34,11 @@ public class Light extends ObjectHome {
         return group;
     }
 
+    public Position getPositionLight() {
+        return positionLight;
+    }
+
+    public void setPositionLight(Position positionLight) {
+        this.positionLight = positionLight;
+    }
 }
