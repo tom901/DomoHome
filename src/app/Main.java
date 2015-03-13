@@ -1,15 +1,26 @@
 package app;
 
 import app.display.Base;
+import app.services.SimulatorService;
+import app.simulator.Simulator;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import javafx.stage.WindowEvent;
+import javafx.event.EventHandler;
+
 public class Main extends Application {
 
+    private static SimulatorService simulator;
+
     public static void main(String[] args) {
+        simulator = new Simulator();
+
+        simulator.init();
+
         launch(args);
     }
 
@@ -21,6 +32,20 @@ public class Main extends Application {
 
         Base basePlan = new Base();
         root.getChildren().add(basePlan);
+
+        primaryStage.setOnShown(
+            new EventHandler<WindowEvent>() {
+                @Override
+                public void handle(WindowEvent we) {
+                    simulator.start();
+                }
+        });
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                simulator.stop();
+            }
+        });
 
         primaryStage.setScene(scene);
         primaryStage.show();
