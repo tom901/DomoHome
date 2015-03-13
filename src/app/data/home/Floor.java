@@ -1,5 +1,7 @@
 package app.data.home;
 
+import javafx.scene.Group;
+
 import java.util.ArrayList;
 
 /**
@@ -19,8 +21,8 @@ public class Floor extends Home {
 
     }
     //Function to add room in floor
-    public void addRoom(){
-
+    public Group addRoom(){
+        return null;
     }
 
     //Function to know what floor is in front of the view
