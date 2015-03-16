@@ -26,6 +26,7 @@ public class Main extends Application {
     private static CharacterService character;
 
     public static void main(String[] args) {
+
         character = new Character();
         simulator = new Simulator();
 
@@ -38,6 +39,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         primaryStage.setTitle("DomoHome");
         Group root = new Group();
         Scene scene = new Scene(root, 800, 600, Color.web("#ECE9D8"));
