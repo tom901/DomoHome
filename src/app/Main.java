@@ -1,5 +1,9 @@
 package app;
 
+import app.common.ParamDisplay;
+import app.data.Dimension;
+import app.data.home.Room;
+import app.data.object.Light;
 import app.display.Base;
 import app.display.HomeViewer;
 import app.services.SimulatorService;
@@ -33,8 +37,9 @@ public class Main extends Application {
 
         Base basePlan = new Base(root);
 
-        HomeViewer homeViewer = new HomeViewer(root);
+        HomeViewer homeViewer = new HomeViewer();
 
+        root.getChildren().add(homeViewer.init());
 
         primaryStage.setOnShown(new EventHandler<WindowEvent>() {
             @Override

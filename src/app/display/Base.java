@@ -28,7 +28,7 @@ public class Base extends Parent {
         rectangleOfRight.setHeight(ParamDisplay.SECONDARY_FLOORS_BLOCK_HEIGHT);
         rectangleOfRight.setFill(Color.WHITE);
         rectangleOfRight.setStroke(Color.BLACK);
-        this.getChildren().add(rectangleOfRight);
+        root.getChildren().add(rectangleOfRight);
 
         Rectangle rectangleOfBottom = new Rectangle();
         rectangleOfBottom.setX(ParamDisplay.INDICATORS_BLOCK_X);
@@ -37,7 +37,7 @@ public class Base extends Parent {
         rectangleOfBottom.setHeight(ParamDisplay.INDICATORS_BLOCK_HEIGHT);
         rectangleOfBottom.setFill(Color.WHITE);
         rectangleOfBottom.setStroke(Color.BLACK);
-        this.getChildren().add(rectangleOfBottom);
+        root.getChildren().add(rectangleOfBottom);
 
         Rectangle rectangleOfLegend = new Rectangle();
         rectangleOfLegend.setX(ParamDisplay.LEGEND_BLOCK_X);
@@ -46,9 +46,7 @@ public class Base extends Parent {
         rectangleOfLegend.setHeight(ParamDisplay.LEGEND_BLOCK_HEIGHT);
         rectangleOfLegend.setFill(Color.WHITE);
         rectangleOfLegend.setStroke(Color.BLACK);
-        this.getChildren().add(rectangleOfLegend);
-
-        root.getChildren().add(this);
+        root.getChildren().add(rectangleOfLegend);
 
     }
 

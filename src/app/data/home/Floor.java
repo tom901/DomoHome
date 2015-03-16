@@ -39,6 +39,7 @@ public class Floor extends Home {
     }
 
     public Group getFloor() {
+        System.out.println("Size floor group : " + group.getChildren().getClass());
         return group;
     }
 

@@ -17,8 +17,7 @@ public class Room {
     public Integer Id; // If Id is 0 there are no room in the house
     public ArrayList<ObjectHome> objectHomes;
     double temperature;
-    Rectangle rectangle;
-
+    private Rectangle rectangle;
     private Group group;
 
     //Atrtributes private
@@ -35,14 +34,14 @@ public class Room {
         rectangle = new Rectangle(p.getWidth()/divider,p.getHeight()/divider,Color.WHITE);
         rectangle.setX(floor.getDimension().getX() + p.getX() / divider);
         rectangle.setY(floor.getDimension().getY() + p.getY() / divider);
+        rectangle.setFill(Color.WHITE);
         rectangle.setStroke(Color.BLACK);
         rectangle.setStrokeWidth(1);
         group.getChildren().add(rectangle);
-
     }
     public Group getRoom(){
 
-        return group;
+        return this.group;
     }
 
     public static Group getGarden(double width, double height, int x, int y){
