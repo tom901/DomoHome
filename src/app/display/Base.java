@@ -3,12 +3,8 @@ package app.display;
 import app.common.ParamDisplay;
 import app.data.Dimension;
 import app.data.home.Floor;
-import app.data.home.Room;
-import app.data.object.Light;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Parent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -19,11 +15,11 @@ public class Base extends Parent {
     static int divider = 1;
 
     public Base(Group root){
-        Floor floor_rdc = new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X,ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
-                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH,ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
-                ,divider);
-
-        this.getChildren().add(floor_rdc.getFloor());
+//        Floor floor_rdc = new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X,ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
+//                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH,ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
+//                ,divider);
+//
+//        this.getChildren().add(floor_rdc.getFloor());
 
         Rectangle rectangleOfRight = new Rectangle();
         rectangleOfRight.setX(ParamDisplay.SECONDARY_FLOORS_BLOCK_X);
@@ -54,16 +50,6 @@ public class Base extends Parent {
 
         root.getChildren().add(this);
 
-
-
-
     }
 
-}
-
-class  MouseClicked implements EventHandler<MouseEvent> {
-    @Override
-    public void handle(MouseEvent event) {
-        System.out.println("Mouse clicked.");
-    }
 }
