@@ -12,7 +12,7 @@ import javafx.scene.Parent;
  * Created by Nicolas on 16/03/2015.
  */
 public class HomeViewer extends Parent {
-    public int divider = 1;
+    public int divider = 4;
 
     public Group init() {
         Group root = new Group();
@@ -20,15 +20,16 @@ public class HomeViewer extends Parent {
         Floor floor_rdc = new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X,ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
                 ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH,ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
                 ,divider);
-
         root.getChildren().add(floor_rdc.getFloor());
 
         Room room01_01 = new Room(new Dimension(ParamDisplay.FIRST_ROOM_X, ParamDisplay.FIRST_ROOM_Y,ParamDisplay.FIRST_ROOM_WIDTH, ParamDisplay.FIRST_ROOM_HEIGHT),
                 divider, floor_rdc, true);
+        System.out.println("" + room01_01.getPosition().getX());
         root.getChildren().add(room01_01.getRoom());
 
         Room room01_02 = new Room(new Dimension(ParamDisplay.SECOND_ROOM_X, ParamDisplay.SECOND_ROOM_Y,ParamDisplay.SECOND_ROOM_WIDTH,ParamDisplay.SECOND_ROOM_HEIGHT),
                 divider, floor_rdc, false);
+        System.out.println("" + room01_02.getPosition().getX());
         root.getChildren().add(room01_02.getRoom());
 
         Room room01_03 = new Room(new Dimension(ParamDisplay.THIRD_ROOM_X, ParamDisplay.THIRD_ROOM_Y,ParamDisplay.THIRD_ROOM_WIDTH,ParamDisplay.THIRD_ROOM_HEIGHT),

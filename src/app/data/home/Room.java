@@ -20,6 +20,12 @@ public class Room {
     private Rectangle rectangle;
     private Group group;
 
+    public Dimension getPosition() {
+        return position;
+    }
+
+    private Dimension position;
+
     //Atrtributes private
 
     public Room() {
@@ -29,11 +35,16 @@ public class Room {
     }
 
     public Room(Dimension p,int divider, Floor floor, boolean firstRoom){
-
+        position = new Dimension(p.getX()/divider,p.getY()/divider,p.getWidth()/divider,p.getHeight()/divider);
         group = new Group();
         rectangle = new Rectangle(p.getWidth()/divider,p.getHeight()/divider,Color.WHITE);
-        rectangle.setX(floor.getDimension().getX() + p.getX() / divider);
-        rectangle.setY(floor.getDimension().getY() + p.getY() / divider);
+        if (firstRoom) {
+            rectangle.setX(p.getX());
+            rectangle.setY(p.getY());
+        } else {
+            rectangle.setX((floor.getDimension().getX() - floor.getDimension().getX()/divider) + p.getX() / divider);
+            rectangle.setY((floor.getDimension().getY() - floor.getDimension().getY()/divider) + p.getY() / divider);
+        }
         rectangle.setFill(Color.WHITE);
         rectangle.setStroke(Color.BLACK);
         rectangle.setStrokeWidth(1);

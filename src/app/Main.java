@@ -6,8 +6,10 @@ import app.data.home.Room;
 import app.data.object.Light;
 import app.display.Base;
 import app.display.HomeViewer;
+import app.services.CharacterService;
 import app.services.SimulatorService;
 import app.simulator.Simulator;
+import app.data.Character;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -20,9 +22,13 @@ import javafx.event.EventHandler;
 public class Main extends Application {
 
     private static SimulatorService simulator;
+    private static CharacterService character;
 
     public static void main(String[] args) {
+        character = new Character();
         simulator = new Simulator();
+
+        ((Simulator)simulator).bindCharacterService(character);
 
         simulator.init();
 
