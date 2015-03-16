@@ -12,6 +12,8 @@ import app.services.RequireReadService;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 
+import java.util.ArrayList;
+
 /**
  * Created by Nicolas on 16/03/2015.
  */
@@ -34,10 +36,17 @@ public class HomeViewer extends Parent implements RequireReadService {
         Group root = new Group();
 
         data.init();
+        for (ArrayList<Room> rooms : data.getMainFloor(1))
+            for(Room room : rooms) {
+                root.getChildren().add(room.getRoom());
+            }
 
-        for(Room room : data.getRooms()) {
-            root.getChildren().add(room.getRoom());
-        }
+        for (ArrayList<Room> rooms : data.getSecondaryFloors(1))
+            for(Room room : rooms) {
+                root.getChildren().add(room.getRoom());
+            }
+
+
 
         root.getChildren().add(Room.getGarden(ParamDisplay.GARDEN_ROOM_WIDTH, ParamDisplay.GARDEN_ROOM_HEIGHT, ParamDisplay.GARDEN_ROOM_X, ParamDisplay.GARDEN_ROOM_Y));
 
