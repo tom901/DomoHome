@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * Created by Thomas on 05/03/15.
  */
 //Classe to handler the floor of the house
-public class Floor extends Home {
+public class Floor {
 
 
     //Attributes

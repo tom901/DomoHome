@@ -14,12 +14,16 @@ import javafx.scene.shape.Rectangle;
 public class Base extends Parent {
     static int divider = 1;
 
-    public Base(Group root){
-//        Floor floor_rdc = new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X,ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
-//                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH,ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
-//                ,divider);
-//
-//        this.getChildren().add(floor_rdc.getFloor());
+    public Base(Group root) {
+
+        Rectangle rectangleOfLeft = new Rectangle();
+        rectangleOfLeft.setX(ParamDisplay.MAIN_FLOOR_DISPLAYED_X);
+        rectangleOfLeft.setY(ParamDisplay.MAIN_FLOOR_DISPLAYED_Y);
+        rectangleOfLeft.setWidth(ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH);
+        rectangleOfLeft.setHeight(ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT);
+        rectangleOfLeft.setFill(Color.WHITE);
+        rectangleOfLeft.setStroke(Color.BLACK);
+        root.getChildren().add(rectangleOfLeft);
 
         Rectangle rectangleOfRight = new Rectangle();
         rectangleOfRight.setX(ParamDisplay.SECONDARY_FLOORS_BLOCK_X);
@@ -29,6 +33,7 @@ public class Base extends Parent {
         rectangleOfRight.setFill(Color.WHITE);
         rectangleOfRight.setStroke(Color.BLACK);
         root.getChildren().add(rectangleOfRight);
+
 
         Rectangle rectangleOfBottom = new Rectangle();
         rectangleOfBottom.setX(ParamDisplay.INDICATORS_BLOCK_X);
@@ -47,6 +52,7 @@ public class Base extends Parent {
         rectangleOfLegend.setFill(Color.WHITE);
         rectangleOfLegend.setStroke(Color.BLACK);
         root.getChildren().add(rectangleOfLegend);
+
 
     }
 

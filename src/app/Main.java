@@ -8,6 +8,7 @@ import app.display.Base;
 import app.display.HomeViewer;
 import app.services.SimulatorService;
 import app.simulator.Simulator;
+import com.guigarage.responsive.ResponsiveHandler;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -31,6 +32,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         primaryStage.setTitle("DomoHome");
         Group root = new Group();
         Scene scene = new Scene(root, 800, 600, Color.web("#ECE9D8"));
@@ -38,7 +40,7 @@ public class Main extends Application {
         Base basePlan = new Base(root);
 
         HomeViewer homeViewer = new HomeViewer();
-
+        root.getChildren().add(basePlan);
         root.getChildren().add(homeViewer.init());
 
         primaryStage.setOnShown(new EventHandler<WindowEvent>() {
@@ -53,6 +55,7 @@ public class Main extends Application {
                 simulator.stop();
             }
         });
+
 
         primaryStage.setScene(scene);
         primaryStage.show();
