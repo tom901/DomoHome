@@ -1,7 +1,6 @@
 package app.data.home;
 
 import app.data.Dimension;
-import app.data.Size;
 import app.data.object.ObjectHome;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;

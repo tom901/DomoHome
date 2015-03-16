@@ -2,7 +2,6 @@ package app.display;
 
 import app.common.ParamDisplay;
 import app.data.Dimension;
-import app.data.Size;
 import app.data.home.Floor;
 import app.data.home.Room;
 import app.data.object.Light;

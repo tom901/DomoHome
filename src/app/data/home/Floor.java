@@ -1,7 +1,6 @@
 package app.data.home;
 
 import app.data.Dimension;
-import app.data.Size;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
