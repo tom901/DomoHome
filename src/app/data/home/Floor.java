@@ -1,6 +1,7 @@
 package app.data.home;
 
 import app.data.Position;
+import app.data.Size;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -13,7 +14,9 @@ import java.util.ArrayList;
 //Classe to handler the floor of the house
 public class Floor extends Home {
 
+
     //Attributes
+    private Position p;
     public ArrayList<Room> rooms;
     public boolean inFront;
     public Group group;
@@ -23,12 +26,14 @@ public class Floor extends Home {
         rooms = new ArrayList<Room>();
     }
 
-    public Floor(Position p, double width, double height, int multiplier) {
+    public Floor(Position p, Size size, int divider) {
 
         group = new Group();
-        Rectangle floor = new Rectangle(width/multiplier,height/multiplier, Color.WHITE);
+        this.p = p;
+        Rectangle floor = new Rectangle(size.getWidth()/divider,size.getHeight()/divider, Color.WHITE);
         floor.setX(p.getX());
         floor.setY(p.getY());
+        floor.setFill(Color.WHITE);
         floor.setStroke(Color.BLACK);
         floor.setStrokeWidth(1);
         group.getChildren().add(floor);
@@ -53,6 +58,13 @@ public class Floor extends Home {
 
     }
 
+    public Position getPosition() {
+        return p;
+    }
+
+    public void setPosition(Position p) {
+        this.p = p;
+    }
 
 
 

@@ -24,7 +24,7 @@ public class Simulator implements SimulatorService {
                 @Override
                 public void run() {
                     // do this
-                    System.out.println("Blabla " + i);
+//                    System.out.println("Blabla " + i);
                     i++;
                 }
             },
