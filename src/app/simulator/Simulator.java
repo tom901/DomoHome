@@ -31,13 +31,12 @@ public class Simulator implements SimulatorService, RequireCharacterService {
                 @Override
                 public void run() {
                     // do this
-//                    System.out.println("Blabla " + i);
                     i++;
                     moveCharacter();
-//                    System.out.println("Character X : " + character.getPosition().getX() + " - Character Y : " + character.getPosition().getX());
+                    System.out.println("Character X : " + character.getPosition().getX() + " - Character Y : " + character.getPosition().getX());
                 }
             },
-        0,1000);
+        0,100);
     }
 
     public void stop() {
