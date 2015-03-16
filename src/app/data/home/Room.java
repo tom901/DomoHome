@@ -20,12 +20,6 @@ public class Room {
     private Rectangle rectangle;
     private Group group;
 
-    public Dimension getPosition() {
-        return position;
-    }
-
-    private Dimension position;
-
     //Atrtributes private
 
     public Room() {
@@ -34,8 +28,8 @@ public class Room {
         temperature = 0.0;
     }
 
-    public Room(Dimension p,int divider, Floor floor, boolean firstRoom){
-        position = new Dimension(p.getX()/divider,p.getY()/divider,p.getWidth()/divider,p.getHeight()/divider);
+    public Group getRoom(Dimension p,int divider, Floor floor, boolean firstRoom){
+        //position = new Dimension(p.getX()/divider,p.getY()/divider,p.getWidth()/divider,p.getHeight()/divider);
         group = new Group();
         rectangle = new Rectangle(p.getWidth()/divider,p.getHeight()/divider,Color.WHITE);
         if (firstRoom) {
@@ -49,10 +43,7 @@ public class Room {
         rectangle.setStroke(Color.BLACK);
         rectangle.setStrokeWidth(1);
         group.getChildren().add(rectangle);
-    }
-    public Group getRoom(){
-
-        return this.group;
+        return group;
     }
 
     public static Group getGarden(double width, double height, int x, int y){

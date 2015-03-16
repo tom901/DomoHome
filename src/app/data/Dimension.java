@@ -13,13 +13,15 @@ public class Dimension {
     private double radius;
 
     public  Dimension(double x, double y, double width, double height){
-        this(x,y);
+        this.x = x;
+        this.y = y ;
         this.width = width;
         this.height = height;
     }
 
     public  Dimension(double x, double y, double radius){
-        this(x,y);
+        this.x = x;
+        this.y = y ;
         this.radius = radius;
     }
 

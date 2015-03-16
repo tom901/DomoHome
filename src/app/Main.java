@@ -9,6 +9,7 @@ import app.display.HomeViewer;
 import app.services.CharacterService;
 import app.services.SimulatorService;
 import app.simulator.Simulator;
+import com.guigarage.responsive.ResponsiveHandler;
 import app.data.Character;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -44,7 +45,7 @@ public class Main extends Application {
         Base basePlan = new Base(root);
 
         HomeViewer homeViewer = new HomeViewer();
-
+        root.getChildren().add(basePlan);
         root.getChildren().add(homeViewer.init());
 
         primaryStage.setOnShown(new EventHandler<WindowEvent>() {

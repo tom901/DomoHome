@@ -7,7 +7,7 @@ import javafx.scene.shape.Rectangle;
  * Created by Thomas on 05/03/15.
  */
 //Classe to paint the base of the house
-public class Home extends Rectangle {
+public class Home {
 
     //Attributes
 
