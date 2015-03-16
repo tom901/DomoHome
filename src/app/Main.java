@@ -9,7 +9,7 @@ import app.display.HomeViewer;
 import app.services.CharacterService;
 import app.services.SimulatorService;
 import app.simulator.Simulator;
-import com.guigarage.responsive.ResponsiveHandler;
+//import com.guigarage.responsive.ResponsiveHandler;
 import app.data.Character;
 import javafx.application.Application;
 import javafx.scene.Group;
