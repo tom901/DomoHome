@@ -1,7 +1,6 @@
 package app.data.home;
 
-import app.common.ParamDisplay;
-import app.data.Position;
+import app.data.Dimension;
 import app.data.Size;
 import app.data.object.ObjectHome;
 import javafx.scene.Group;
@@ -31,12 +30,12 @@ public class Room {
         temperature = 0.0;
     }
 
-    public Room(Position p, Size size, int divider, Floor floor, boolean firstRoom){
+    public Room(Dimension p,int divider, Floor floor, boolean firstRoom){
 
         group = new Group();
-        rectangle = new Rectangle(size.getWidth()/divider,size.getHeight()/divider,Color.WHITE);
-        rectangle.setX(floor.getPosition().getX() + p.getX() / divider);
-        rectangle.setY(floor.getPosition().getY() + p.getY() / divider);
+        rectangle = new Rectangle(p.getWidth()/divider,p.getHeight()/divider,Color.WHITE);
+        rectangle.setX(floor.getDimension().getX() + p.getX() / divider);
+        rectangle.setY(floor.getDimension().getY() + p.getY() / divider);
         rectangle.setStroke(Color.BLACK);
         rectangle.setStrokeWidth(1);
         group.getChildren().add(rectangle);

@@ -1,6 +1,6 @@
 package app.data.home;
 
-import app.data.Position;
+import app.data.Dimension;
 import app.data.Size;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -16,7 +16,7 @@ public class Floor extends Home {
 
 
     //Attributes
-    private Position p;
+    private Dimension p;
     public ArrayList<Room> rooms;
     public boolean inFront;
     public Group group;
@@ -26,11 +26,11 @@ public class Floor extends Home {
         rooms = new ArrayList<Room>();
     }
 
-    public Floor(Position p, Size size, int divider) {
+    public Floor(Dimension p, int divider) {
 
         group = new Group();
         this.p = p;
-        Rectangle floor = new Rectangle(size.getWidth()/divider,size.getHeight()/divider, Color.WHITE);
+        Rectangle floor = new Rectangle(p.getWidth()/divider,p.getHeight()/divider, Color.WHITE);
         floor.setX(p.getX());
         floor.setY(p.getY());
         floor.setFill(Color.WHITE);
@@ -58,11 +58,11 @@ public class Floor extends Home {
 
     }
 
-    public Position getPosition() {
+    public Dimension getDimension() {
         return p;
     }
 
-    public void setPosition(Position p) {
+    public void setDimension(Dimension p) {
         this.p = p;
     }
 
