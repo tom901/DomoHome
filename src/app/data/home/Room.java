@@ -49,6 +49,7 @@ public class Room {
         group.getChildren().add(rectangle);
     }
 
+
     public Group getRoom() { return group; }
 
     public Room getGarden(double width, double height, int x, int y){

@@ -24,6 +24,18 @@ public class Floor {
         inFront = false;
         rooms = new ArrayList<Room>();
     }
+    public Floor(Dimension p) {
+
+        group = new Group();
+        this.p = p;
+        Rectangle floor = new Rectangle(p.getWidth(),p.getHeight(), Color.WHITE);
+        floor.setX(p.getX());
+        floor.setY(p.getY());
+        floor.setFill(Color.WHITE);
+        floor.setStroke(Color.BLACK);
+        floor.setStrokeWidth(1);
+        group.getChildren().add(floor);
+    }
 
     public Floor(Dimension p, int divider) {
 
