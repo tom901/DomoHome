@@ -16,12 +16,11 @@ public class Simulator implements SimulatorService, RequireCharacterService {
     private Timer simuTimer;
     private CharacterService character;
     private int i = 0;
-    private Random randomMove;
 
     public void init() {
         simuTimer = new Timer();
         character.setPosition(new Dimension(0,0));
-        randomMove = new Random();
+
     }
 
     public void start() {
@@ -53,9 +52,9 @@ public class Simulator implements SimulatorService, RequireCharacterService {
         character = service;
     }
 
-    public void moveCharacter() {
+    public void setCharacterMove(int direction) {
 
-        switch (randomMove.nextInt(4)) {
+        switch (direction) {
             case 0: // Move left
                 character.setPosition(new Dimension(character.getPosition().getX()-1,character.getPosition().getY()));
                 break;
