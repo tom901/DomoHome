@@ -1,6 +1,7 @@
 package app.display;
 
 import app.common.ParamDisplay;
+import app.common.ParamFirstFloor;
 import app.data.Data;
 import app.data.Dimension;
 import app.data.home.Floor;
@@ -36,19 +37,20 @@ public class HomeViewer extends Parent implements RequireReadService {
         Group root = new Group();
 
         data.init();
-        for (ArrayList<Room> rooms : data.getMainFloor(1))
+        for (ArrayList<Room> rooms : data.getMainFloor(3)) {
+            for (Room room : rooms) {
+                root.getChildren().add(room.getRoom());
+            }
+           /* if(rooms.size()<3){
+                root.getChildren().add(Room.getGarden(ParamFirstFloor.GARDEN_ROOM_WIDTH, ParamFirstFloor.GARDEN_ROOM_HEIGHT, ParamFirstFloor.GARDEN_ROOM_X, ParamFirstFloor.GARDEN_ROOM_Y));
+            }*/
+        }
+      /*  for (ArrayList<Room> rooms : data.getSecondaryFloors(1)){
             for(Room room : rooms) {
                 root.getChildren().add(room.getRoom());
             }
+        }*/
 
-        for (ArrayList<Room> rooms : data.getSecondaryFloors(1))
-            for(Room room : rooms) {
-                root.getChildren().add(room.getRoom());
-            }
-
-
-
-        root.getChildren().add(Room.getGarden(ParamDisplay.GARDEN_ROOM_WIDTH, ParamDisplay.GARDEN_ROOM_HEIGHT, ParamDisplay.GARDEN_ROOM_X, ParamDisplay.GARDEN_ROOM_Y));
 
         return root;
     }

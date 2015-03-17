@@ -1,6 +1,9 @@
 package app.data;
 
 import app.common.ParamDisplay;
+import app.common.ParamFirstFloor;
+import app.common.ParamSecondFloor;
+import app.common.ParamThirdFloor;
 import app.data.home.Floor;
 import app.data.home.Room;
 import app.data.object.Light;
@@ -14,7 +17,7 @@ import java.util.ArrayList;
  */
 public class Data implements DataService {
     ArrayList<Floor> floors;
-//    ArrayList<Room> rooms;
+    //    ArrayList<Room> rooms;
     ArrayList<ObjectHome> objects;
 
     public void init() {
@@ -32,76 +35,78 @@ public class Data implements DataService {
 
     private void initFloors() {
         int divider = 1;
-        floors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X,ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
-                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH,ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
-                ,divider));
+        floors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
+                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
+                , divider));
 
-        floors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X+600,ParamDisplay.MAIN_FLOOR_DISPLAYED_Y+100,
-                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH,ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
-                ,divider));
+        floors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
+                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
+                , divider));
 
-        floors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X+600,ParamDisplay.MAIN_FLOOR_DISPLAYED_Y+400,
-                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH,ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
-                ,divider));
+        floors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X + 600, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y + 400,
+                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
+                , divider));
 
     }
 
     private ArrayList<Room> initRoomsFirstFloor(int divider) {
         ArrayList<Room> rooms = new ArrayList<Room>();
-        Room room01_01 = new Room();
-        room01_01.setGroup(new Dimension(ParamDisplay.FIRST_ROOM_X, ParamDisplay.FIRST_ROOM_Y, ParamDisplay.FIRST_ROOM_WIDTH, ParamDisplay.FIRST_ROOM_HEIGHT),
-                divider, floors.get(0), true);
-        rooms.add(room01_01);
+            Room room01_01 = new Room();
+            room01_01.setGroup(new Dimension(ParamFirstFloor.FIRST_ROOM_X, ParamFirstFloor.FIRST_ROOM_Y, ParamFirstFloor.FIRST_ROOM_WIDTH, ParamFirstFloor.FIRST_ROOM_HEIGHT),
+                    divider, floors.get(0), true);
+            rooms.add(room01_01);
 
-        Room room01_02 = new Room();
-        room01_02.setGroup(new Dimension(ParamDisplay.SECOND_ROOM_X, ParamDisplay.SECOND_ROOM_Y, ParamDisplay.SECOND_ROOM_WIDTH, ParamDisplay.SECOND_ROOM_HEIGHT),
-                divider, floors.get(0), false);
-        rooms.add(room01_02);
+            Room room01_02 = new Room();
+            room01_02.setGroup(new Dimension(ParamFirstFloor.SECOND_ROOM_X, ParamFirstFloor.SECOND_ROOM_Y, ParamFirstFloor.SECOND_ROOM_WIDTH, ParamFirstFloor.SECOND_ROOM_HEIGHT),
+                    divider, floors.get(0), false);
+            rooms.add(room01_02);
 
-        Room room01_03 = new Room();
-        room01_03.setGroup(new Dimension(ParamDisplay.THIRD_ROOM_X, ParamDisplay.THIRD_ROOM_Y, ParamDisplay.THIRD_ROOM_WIDTH, ParamDisplay.THIRD_ROOM_HEIGHT),
-                divider, floors.get(0), false);
-        rooms.add(room01_03);
+            Room room01_03 = new Room();
+            room01_03.setGroup(new Dimension(ParamFirstFloor.THIRD_ROOM_X, ParamFirstFloor.THIRD_ROOM_Y, ParamFirstFloor.THIRD_ROOM_WIDTH, ParamFirstFloor.THIRD_ROOM_HEIGHT),
+                    divider, floors.get(0), false);
+            rooms.add(room01_03);
 
-        Room room01_04 = new Room();
-        room01_04.setGroup(new Dimension(ParamDisplay.FOURTH_ROOM_X, ParamDisplay.FOURTH_ROOM_Y, ParamDisplay.FOURTH_ROOM_WIDTH, ParamDisplay.FOURTH_ROOM_HEIGHT),
-                divider, floors.get(0), false);
-        rooms.add(room01_04);
+            Room room01_04 = new Room();
+            room01_04.setGroup(new Dimension(ParamFirstFloor.FOURTH_ROOM_X, ParamFirstFloor.FOURTH_ROOM_Y, ParamFirstFloor.FOURTH_ROOM_WIDTH, ParamFirstFloor.FOURTH_ROOM_HEIGHT),
+                    divider, floors.get(0), false);
+            rooms.add(room01_04);
 
-        Room room01_05 = new Room();
-        room01_05.setGroup(new Dimension(ParamDisplay.FIFTH_ROOM_X, ParamDisplay.FIFTH_ROOM_Y, ParamDisplay.FIFTH_ROOM_WIDTH, ParamDisplay.FIFTH_ROOM_HEIGHT),
-                divider, floors.get(0), false);
-        rooms.add(room01_05);
+            Room room01_05 = new Room();
+            room01_05.setGroup(new Dimension(ParamFirstFloor.FIFTH_ROOM_X, ParamFirstFloor.FIFTH_ROOM_Y, ParamFirstFloor.FIFTH_ROOM_WIDTH, ParamFirstFloor.FIFTH_ROOM_HEIGHT),
+                    divider, floors.get(0), false);
+            rooms.add(room01_05);
+
+            Room garden = new Room();
+            rooms.add(garden.getGarden(ParamFirstFloor.GARDEN_ROOM_WIDTH, ParamFirstFloor.GARDEN_ROOM_HEIGHT, ParamFirstFloor.GARDEN_ROOM_X, ParamFirstFloor.GARDEN_ROOM_Y));
 
         return rooms;
+
     }
 
     private ArrayList<Room> initRoomsSecondFloor(int divider) {
         ArrayList<Room> rooms = new ArrayList<Room>();
         Room room01_01 = new Room();
-        room01_01.setGroup(new Dimension(ParamDisplay.FIRST_ROOM_X, ParamDisplay.FIRST_ROOM_Y, ParamDisplay.FIRST_ROOM_WIDTH, ParamDisplay.FIRST_ROOM_HEIGHT),
+
+        room01_01.setGroup(new Dimension(ParamSecondFloor.FIRST_ROOM_X, ParamFirstFloor.FIRST_ROOM_Y, ParamSecondFloor.FIRST_ROOM_WIDTH, ParamSecondFloor.FIRST_ROOM_HEIGHT),
                 divider, floors.get(1), true);
         rooms.add(room01_01);
 
         Room room01_02 = new Room();
-        room01_02.setGroup(new Dimension(ParamDisplay.SECOND_ROOM_X, ParamDisplay.SECOND_ROOM_Y, ParamDisplay.SECOND_ROOM_WIDTH, ParamDisplay.SECOND_ROOM_HEIGHT),
+        room01_02.setGroup(new Dimension(ParamSecondFloor.SECOND_ROOM_X, ParamSecondFloor.SECOND_ROOM_Y, ParamSecondFloor.SECOND_ROOM_WIDTH, ParamSecondFloor.SECOND_ROOM_HEIGHT),
                 divider, floors.get(1), false);
         rooms.add(room01_02);
 
         Room room01_03 = new Room();
-        room01_03.setGroup(new Dimension(ParamDisplay.THIRD_ROOM_X, ParamDisplay.THIRD_ROOM_Y, ParamDisplay.THIRD_ROOM_WIDTH, ParamDisplay.THIRD_ROOM_HEIGHT),
+        room01_03.setGroup(new Dimension(ParamSecondFloor.THIRD_ROOM_X, ParamSecondFloor.THIRD_ROOM_Y, ParamSecondFloor.THIRD_ROOM_WIDTH, ParamSecondFloor.THIRD_ROOM_HEIGHT),
                 divider, floors.get(1), false);
         rooms.add(room01_03);
 
         Room room01_04 = new Room();
-        room01_04.setGroup(new Dimension(ParamDisplay.FOURTH_ROOM_X, ParamDisplay.FOURTH_ROOM_Y, ParamDisplay.FOURTH_ROOM_WIDTH, ParamDisplay.FOURTH_ROOM_HEIGHT),
+        room01_04.setGroup(new Dimension(ParamSecondFloor.FOURTH_ROOM_X, ParamSecondFloor.FOURTH_ROOM_Y, ParamSecondFloor.FOURTH_ROOM_WIDTH, ParamSecondFloor.FOURTH_ROOM_HEIGHT),
                 divider, floors.get(1), false);
         rooms.add(room01_04);
 
-        Room room01_05 = new Room();
-        room01_05.setGroup(new Dimension(ParamDisplay.FIFTH_ROOM_X, ParamDisplay.FIFTH_ROOM_Y, ParamDisplay.FIFTH_ROOM_WIDTH, ParamDisplay.FIFTH_ROOM_HEIGHT),
-                divider, floors.get(1), false);
-        rooms.add(room01_05);
+
 
         return rooms;
     }
@@ -109,37 +114,17 @@ public class Data implements DataService {
     private ArrayList<Room> initRoomsThirdFloor(int divider) {
         ArrayList<Room> rooms = new ArrayList<Room>();
         Room room01_01 = new Room();
-        room01_01.setGroup(new Dimension(ParamDisplay.FIRST_ROOM_X, ParamDisplay.FIRST_ROOM_Y, ParamDisplay.FIRST_ROOM_WIDTH, ParamDisplay.FIRST_ROOM_HEIGHT),
+        room01_01.setGroup(new Dimension(ParamThirdFloor.FIRST_ROOM_X, ParamThirdFloor.FIRST_ROOM_Y, ParamThirdFloor.FIRST_ROOM_WIDTH, ParamThirdFloor.FIRST_ROOM_HEIGHT),
                 divider, floors.get(2), true);
         rooms.add(room01_01);
-
-        Room room01_02 = new Room();
-        room01_02.setGroup(new Dimension(ParamDisplay.SECOND_ROOM_X, ParamDisplay.SECOND_ROOM_Y, ParamDisplay.SECOND_ROOM_WIDTH, ParamDisplay.SECOND_ROOM_HEIGHT),
-                divider, floors.get(2), false);
-        rooms.add(room01_02);
-
-        Room room01_03 = new Room();
-        room01_03.setGroup(new Dimension(ParamDisplay.THIRD_ROOM_X, ParamDisplay.THIRD_ROOM_Y, ParamDisplay.THIRD_ROOM_WIDTH, ParamDisplay.THIRD_ROOM_HEIGHT),
-                divider, floors.get(2), false);
-        rooms.add(room01_03);
-
-        Room room01_04 = new Room();
-        room01_04.setGroup(new Dimension(ParamDisplay.FOURTH_ROOM_X, ParamDisplay.FOURTH_ROOM_Y, ParamDisplay.FOURTH_ROOM_WIDTH, ParamDisplay.FOURTH_ROOM_HEIGHT),
-                divider, floors.get(2), false);
-        rooms.add(room01_04);
-
-        Room room01_05 = new Room();
-        room01_05.setGroup(new Dimension(ParamDisplay.FIFTH_ROOM_X, ParamDisplay.FIFTH_ROOM_Y, ParamDisplay.FIFTH_ROOM_WIDTH, ParamDisplay.FIFTH_ROOM_HEIGHT),
-                divider, floors.get(2), false);
-        rooms.add(room01_05);
 
         return rooms;
     }
 
     private void initObjects() {
-        Light lightFirstPlace = new Light(new Dimension(ParamDisplay.FIRST_LIGHT_X,ParamDisplay.FIRST_LIGHT_Y,15),true);
+        Light lightFirstPlace = new Light(new Dimension(ParamFirstFloor.FIRST_LIGHT_X, ParamFirstFloor.FIRST_LIGHT_Y, 15), true);
 
-        Light lightSecondPlace = new Light(new Dimension(ParamDisplay.SECOND_LIGHT_X,ParamDisplay.SECOND_LIGHT_Y,15),false);
+        Light lightSecondPlace = new Light(new Dimension(ParamFirstFloor.SECOND_LIGHT_X, ParamFirstFloor.SECOND_LIGHT_Y, 15), false);
 
     }
 
