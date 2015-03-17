@@ -9,10 +9,13 @@ public class Character implements CharacterService {
 
     private Dimension position;
     private double speed;
-//
-//    public Character(Dimension position) {
-//        this.position = position;
-//    }
+
+    public Character() {
+    }
+
+    public Character(Dimension position) {
+        this.setPosition(position);
+    }
 
     public Dimension getPosition() {
         return position;
