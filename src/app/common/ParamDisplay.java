@@ -33,8 +33,11 @@ public class ParamDisplay {
     public static final int LEGEND_BLOCK_WIDTH = 190;
     public static final int LEGEND_BLOCK_HEIGHT = 180;
 
-
-
+    //Constante for the mini map of floors
+    public static final int X_MINI_MAP = SECONDARY_FLOORS_BLOCK_X + 15;
+    public static final int Y_FIRST_LITTLE_MAP = SECONDARY_FLOORS_BLOCK_Y + 5;
+    public static final int Y_SECOND_LITTLE_MAP = Y_FIRST_LITTLE_MAP + 130;
+    public static final int Y_THIRD_LITTLE_MAP = Y_SECOND_LITTLE_MAP + 150;
 
 
 }
