@@ -13,5 +13,11 @@ public class ObjectHome {
         state = false;
     }
 
+    public boolean isState() {
+        return state;
+    }
 
+    public void setState(boolean state) {
+        this.state = state;
+    }
 }

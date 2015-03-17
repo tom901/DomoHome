@@ -51,15 +51,14 @@ public class Room {
 
     public Group getRoom() { return group; }
 
-    public static Group getGarden(double width, double height, int x, int y){
-        Group group = new Group();
+    public Room getGarden(double width, double height, int x, int y){
         Rectangle room = new Rectangle(width,height,Color.GREEN);
         room.setX(x);
         room.setY(y);
         room.setStroke(Color.BLACK);
         room.setStrokeWidth(1);
         group.getChildren().add(room);
-        return group;
+        return this;
     }
     //Function to get Id room
     public void getIdRoom(){
