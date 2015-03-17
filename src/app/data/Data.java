@@ -19,6 +19,9 @@ public class Data implements DataService {
     //    ArrayList<Room> rooms;
     ArrayList<ObjectHome> objects;
 
+    /**
+     * Method to init the main content of the simulator
+     */
     public void init() {
         floors = new ArrayList<Floor>();
         miniFloors = new ArrayList<Floor>();
@@ -34,6 +37,10 @@ public class Data implements DataService {
         return null;
     }
 
+    /**
+     * Method to init the floors to be displayed in the main floor rectangle.
+     * We will hide 2 out of the 3 floors created here.
+     */
     private void initFloors() {
         int divider = 1;
         floors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
@@ -49,6 +56,10 @@ public class Data implements DataService {
                 , divider));
 
     }
+
+    /**
+     * Method to init the floors to be displayed in the secondary floors rectangle.
+     */
     private void initMiniFloors() {
         int divider = 1;
         miniFloors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
@@ -64,7 +75,12 @@ public class Data implements DataService {
                 , divider));
 
     }
-    //Function to initialize all rooms for floors 1,2,3 (the big floors)
+
+    /**
+     * Method to initialize all rooms for floors No. 1 (for the main floor rectangle)
+     * @param divider
+     * @return ArrayList<Room>
+     */
     private ArrayList<Room> initRoomsFirstFloor(int divider) {
         ArrayList<Room> rooms = new ArrayList<Room>();
             Room room01_01 = new Room();
@@ -96,9 +112,13 @@ public class Data implements DataService {
             rooms.add(garden.getGarden(ParamFirstFloor.GARDEN_ROOM_WIDTH, ParamFirstFloor.GARDEN_ROOM_HEIGHT, ParamFirstFloor.GARDEN_ROOM_X, ParamFirstFloor.GARDEN_ROOM_Y));
 
         return rooms;
-
     }
 
+    /**
+     * Method to initialize all rooms for floors No. 2 (for the main floor rectangle)
+     * @param divider
+     * @return ArrayList<Room>
+     */
     private ArrayList<Room> initRoomsSecondFloor(int divider) {
         ArrayList<Room> rooms = new ArrayList<Room>();
         Room room01_01 = new Room();
@@ -122,11 +142,14 @@ public class Data implements DataService {
                 divider, floors.get(1), false);
         rooms.add(room01_04);
 
-
-
         return rooms;
     }
 
+    /**
+     * Method to initialize all rooms for floors No. 3 (for the main floor rectangle)
+     * @param divider
+     * @return ArrayList<Room>
+     */
     private ArrayList<Room> initRoomsThirdFloor(int divider) {
         ArrayList<Room> rooms = new ArrayList<Room>();
         Room room01_01 = new Room();
@@ -137,7 +160,11 @@ public class Data implements DataService {
         return rooms;
     }
 
-    //Function to initialize all rooms for the mini floors
+    /**
+     * Method to initialize all rooms for the mini floor no. 1
+     * @param divider
+     * @return ArrayList<Room>
+     */
     private ArrayList<Room> initRoomsFirstMiniFloor(int divider) {
         ArrayList<Room> rooms = new ArrayList<Room>();
         Room room01_01 = new Room();
@@ -169,9 +196,13 @@ public class Data implements DataService {
         rooms.add(garden.getGarden(ParamFirstFloor.GARDEN_LITTLE_ROOM_WIDTH, ParamFirstFloor.GARDEN_LITTLE_HEIGHT, ParamFirstFloor.GARDEN_LITTLE_ROOM_X, ParamFirstFloor.GARDEN_LITTLE_ROOM_Y));
 
         return rooms;
-
     }
 
+    /**
+     * Method to initialize all rooms for the mini floor no. 2
+     * @param divider
+     * @return ArrayList<Room>
+     */
     private ArrayList<Room> initRoomsSecondMiniFloor(int divider) {
         ArrayList<Room> rooms = new ArrayList<Room>();
         Room room01_01 = new Room();
@@ -195,11 +226,14 @@ public class Data implements DataService {
                 divider, floors.get(1), false);
         rooms.add(room01_04);
 
-
-
         return rooms;
     }
 
+    /**
+     * Method to initialize all rooms for the mini floor no. 3
+     *
+     * @return ArrayList<Room>
+     */
     private ArrayList<Room> initRoomsThirdMiniFloor() {
         int divider = 1;
         ArrayList<Room> rooms = new ArrayList<Room>();
@@ -210,6 +244,10 @@ public class Data implements DataService {
 
         return rooms;
     }
+
+    /**
+     * Method to initialize all the objects.
+     */
     private void initObjects() {
         Light lightFirstPlace = new Light(new Dimension(ParamHome.FIRST_LIGHT_X, ParamHome.FIRST_LIGHT_Y, 15), true);
 
@@ -217,6 +255,11 @@ public class Data implements DataService {
 
     }
 
+    /**
+     * Method to return the content of the main floor rectangle
+     * @param floorNo
+     * @return ArrayList<ArrayList<Room>>
+     */
     public ArrayList<ArrayList<Room>> getMainFloor(int floorNo) {
         ArrayList<Room> rooms = new ArrayList<Room>();
         switch (floorNo) {
@@ -230,34 +273,39 @@ public class Data implements DataService {
                 rooms = initRoomsThirdFloor(1);
                 break;
         }
-        ArrayList<ArrayList<Room>> lel = new ArrayList<ArrayList<Room>>();
-        lel.add(rooms);
-        return lel;
+        ArrayList<ArrayList<Room>> roomsArray = new ArrayList<ArrayList<Room>>();
+        roomsArray.add(rooms);
+        return roomsArray;
     }
 
+    /**
+     * Method to return the content of the secondary floors rectangle
+     * @param floorNoInFull
+     * @return ArrayList<ArrayList<Room>>
+     */
     public ArrayList<ArrayList<Room>> getSecondaryFloors(int floorNoInFull) {
-        ArrayList<ArrayList<Room>> lel = new ArrayList<ArrayList<Room>>();
+        ArrayList<ArrayList<Room>> roomsArray = new ArrayList<ArrayList<Room>>();
         ArrayList<Room> rooms;
         switch (floorNoInFull) {
             case 1:
                 rooms = initRoomsFirstMiniFloor(1);
-                lel.add(rooms);
+                roomsArray.add(rooms);
                /* rooms = initRoomsThirdFloor(4);
-                lel.add(rooms);*/
+                roomsArray.add(rooms);*/
                 break;
             case 2:
                 rooms = initRoomsSecondMiniFloor(1);
-                lel.add(rooms);
+                roomsArray.add(rooms);
                 /*rooms = initRoomsThirdFloor(4);
-                lel.add(rooms);*/
+                roomsArray.add(rooms);*/
                 break;
             case 3:
                 rooms = initRoomsThirdMiniFloor();
-                lel.add(rooms);
+                roomsArray.add(rooms);
                 /*rooms = initRoomsFirstFloor(4);
-                lel.add(rooms);*/
+                roomsArray.add(rooms);*/
                 break;
         }
-        return lel;
+        return roomsArray;
     }
 }

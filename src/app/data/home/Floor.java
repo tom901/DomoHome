@@ -14,18 +14,18 @@ import java.util.ArrayList;
 public class Floor {
 
 
-    //Attributes
+    // Attributes
     private Dimension p;
     public ArrayList<Room> rooms;
     public boolean inFront;
     public Group group;
 
+    // Constructors
     public Floor(){
         inFront = false;
         rooms = new ArrayList<Room>();
     }
     public Floor(Dimension p) {
-
         group = new Group();
         this.p = p;
         Rectangle floor = new Rectangle(p.getWidth(),p.getHeight(), Color.WHITE);
@@ -50,12 +50,21 @@ public class Floor {
         group.getChildren().add(floor);
     }
 
+    //Methods
+
+    /**
+     * Method to return the group (therefore the rectangle) of the floor.
+     * @return Group
+     */
     public Group getFloor() {
         System.out.println("Size floor group : " + group.getChildren().getClass());
         return group;
     }
 
-    //Function to add floor in floor
+    /**
+     * Function to add floor in floor
+     * @return Group
+     */
     public Group addRoom(){
         return null;
     }
@@ -70,10 +79,18 @@ public class Floor {
 
     }
 
+    /**
+     * Method to return the dimension onf a floor.
+     * @return Dimension
+     */
     public Dimension getDimension() {
         return p;
     }
 
+    /**
+     * Method to set the dimension(position + size) of a floor
+     * @param p
+     */
     public void setDimension(Dimension p) {
         this.p = p;
     }

@@ -10,12 +10,15 @@ import javafx.scene.shape.Rectangle;
 
 /**
  * Created by Thomas on 06/03/15.
+ *
+ * This class has for main purpose to display the main rectangles of the simulator
  */
 public class Base extends Parent {
     static int divider = 1;
 
     public Base(Group root) {
 
+        // Rectangle to display the main floor
         Rectangle rectangleOfLeft = new Rectangle();
         rectangleOfLeft.setX(ParamDisplay.MAIN_FLOOR_DISPLAYED_X);
         rectangleOfLeft.setY(ParamDisplay.MAIN_FLOOR_DISPLAYED_Y);
@@ -25,6 +28,7 @@ public class Base extends Parent {
         rectangleOfLeft.setStroke(Color.BLACK);
         root.getChildren().add(rectangleOfLeft);
 
+        // Rectangle to display the secondary floors
         Rectangle rectangleOfRight = new Rectangle();
         rectangleOfRight.setX(ParamDisplay.SECONDARY_FLOORS_BLOCK_X);
         rectangleOfRight.setY(ParamDisplay.SECONDARY_FLOORS_BLOCK_Y);
@@ -34,7 +38,7 @@ public class Base extends Parent {
         rectangleOfRight.setStroke(Color.BLACK);
         root.getChildren().add(rectangleOfRight);
 
-
+        // Rectangle to display the indicators
         Rectangle rectangleOfBottom = new Rectangle();
         rectangleOfBottom.setX(ParamDisplay.INDICATORS_BLOCK_X);
         rectangleOfBottom.setY(ParamDisplay.INDICATORS_BLOCK_Y);
@@ -44,6 +48,7 @@ public class Base extends Parent {
         rectangleOfBottom.setStroke(Color.BLACK);
         root.getChildren().add(rectangleOfBottom);
 
+        // Rectangle to display the legend
         Rectangle rectangleOfLegend = new Rectangle();
         rectangleOfLegend.setX(ParamDisplay.LEGEND_BLOCK_X);
         rectangleOfLegend.setY(ParamDisplay.LEGEND_BLOCK_Y);

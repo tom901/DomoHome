@@ -17,12 +17,18 @@ public class Simulator implements SimulatorService, RequireCharacterService {
     private CharacterService character;
     private int i = 0;
 
+    /**
+     * Method to init the attributes of the engine / simulator.
+     */
     public void init() {
         simuTimer = new Timer();
         character.setPosition(new Dimension(0,0));
 
     }
 
+    /**
+     * Method to start the process of the engine.
+     */
     public void start() {
 
         simuTimer.schedule(
@@ -38,6 +44,9 @@ public class Simulator implements SimulatorService, RequireCharacterService {
         0,100);
     }
 
+    /**
+     * Method to stop the process of the engine / simulator
+     */
     public void stop() {
         simuTimer.cancel();
     }
@@ -47,13 +56,20 @@ public class Simulator implements SimulatorService, RequireCharacterService {
 
     }
 
+    /**
+     * Method to bind the character service to the class.
+     * @param service
+     */
     @Override
     public void bindCharacterService(CharacterService service) {
         character = service;
     }
 
+    /**
+     * Method to make a character move towards a direction.
+     * @param direction
+     */
     public void setCharacterMove(int direction) {
-
         switch (direction) {
             case 0: // Move left
                 character.setPosition(new Dimension(character.getPosition().getX()-1,character.getPosition().getY()));

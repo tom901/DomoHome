@@ -21,8 +21,7 @@ public class Room {
     private Group group;
     private Dimension position;
 
-    //Atrtributes private
-
+    //Constructor
     public Room() {
         objectHomes = new ArrayList<ObjectHome>();
         Id = 0 ;
@@ -31,6 +30,15 @@ public class Room {
         rectangle = new Rectangle();
     }
 
+    // Methods
+
+    /**
+     * Method to initialize the group and rectangle for the room
+     * @param p
+     * @param divider
+     * @param floor
+     * @param firstRoom
+     */
     public void setGroup(Dimension p,int divider, Floor floor, boolean firstRoom){
         position = new Dimension(p.getX()/divider,p.getY()/divider,p.getWidth()/divider,p.getHeight()/divider);
 
@@ -49,7 +57,10 @@ public class Room {
         group.getChildren().add(rectangle);
     }
 
-
+    /**
+     * Method to return the group (therefore rectangle) for the room.
+     * @return Group
+     */
     public Group getRoom() { return group; }
 
     public Room getGarden(double width, double height, int x, int y){

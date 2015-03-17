@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 /**
  * Created by Nicolas on 16/03/2015.
+ *
+ * This class has for main purpose to display the floors and the rooms
  */
 public class HomeViewer extends Parent implements RequireReadService {
     private ReadService data;

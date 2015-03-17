@@ -2,6 +2,8 @@ package app.data;
 
 /**
  * Created by Thomas on 13/03/15.
+ *
+ * Class setting position, size and radius for objects, rooms and characters
  */
 public class Dimension {
 
