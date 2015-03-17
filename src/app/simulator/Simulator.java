@@ -31,7 +31,7 @@ public class Simulator implements SimulatorService, RequireCharacterService {
                 public void run() {
                     // do this
                     i++;
-                    moveCharacter();
+//                    moveCharacter();
                     System.out.println("Character X : " + character.getPosition().getX() + " - Character Y : " + character.getPosition().getX());
                 }
             },
