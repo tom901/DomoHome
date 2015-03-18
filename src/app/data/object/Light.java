@@ -20,12 +20,14 @@ public class Light extends ObjectHome {
         //this.dimensionLight = dimensionLight;
 
         this.dimensionLight = dimension;
-//        Group group = new Group();
+//      Group group = new Group();
         light = new Circle(dimension.getRadius());
         if (stateLight) {
+            light.setStroke(Color.YELLOW);
             light.setFill(Color.YELLOW);
             super.state = false;
         } else {
+            light.setStroke(Color.YELLOW);
             light.setFill(Color.WHITE);
             super.state = true;
         }

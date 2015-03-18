@@ -220,7 +220,7 @@ public class Data implements DataService {
         rooms.add(room01_01);
 
         Room room01_02 = new Room();
-        room01_02.setGroup(new Dimension(ParamSecondFloor.SECOND_LITTLE_ROOM_X, ParamSecondFloor.SECOND_LITTLE_ROOM_Y, ParamSecondFloor.SECOND_LITTLE_ROOM_WIDTH, ParamSecondFloor.SECOND_LITTLE_HEIGHT),
+        room01_02.setGroup(new Dimension(ParamSecondFloor.SECOND_LITTLE_ROOM_X, ParamSecondFloor.SECOND_LITTLE_ROOM_Y, ParamSecondFloor.SECOND_LITTLE_ROOM_WIDTH, ParamSecondFloor.SECOND_LITTLE_ROOM_HEIGHT),
                 floors.get(1), false);
         rooms.add(room01_02);
 
@@ -255,16 +255,93 @@ public class Data implements DataService {
     }
 
     /**
-     * Method to initialize all the objects.
+     * Method to initialize all the objects of the big house.
      */
     public ArrayList<ObjectHome> getObjectHomes(int floorNo) {
         ArrayList<ObjectHome> objectHomes = new ArrayList<ObjectHome>();
 
-        Light lightFirstPlace = new Light(new Dimension(ParamHome.FIRST_LIGHT_X, ParamHome.FIRST_LIGHT_Y, 15), true);
+        switch (floorNo) {
+            case 1: {
+                Light lightFirstPlace = new Light(new Dimension(ParamFirstFloor.FIRST_LIGHT_X, ParamFirstFloor.FIRST_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH), true);
+                Light lightSecondPlace = new Light(new Dimension(ParamFirstFloor.SECOND_LIGHT_X, ParamFirstFloor.SECOND_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH), false);
+                Light lightThirdPlace = new Light(new Dimension(ParamFirstFloor.THIRD_LIGHT_X, ParamFirstFloor.THIRD_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH), true);
+                Light lightFourthPlace = new Light(new Dimension(ParamFirstFloor.FOURTH_LIGHT_X, ParamFirstFloor.FOURTH_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH), true);
+                Light lightFifthPlace = new Light(new Dimension(ParamFirstFloor.FIFTH_LIGHT_X, ParamFirstFloor.FIFTH_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH), false);
+                Light lightSixthPlace = new Light(new Dimension(ParamFirstFloor.SIXTH_LIGHT_X, ParamFirstFloor.SIXTH_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH), false);
+                objectHomes.clear();
+                objectHomes.add(lightFirstPlace);
+                objectHomes.add(lightSecondPlace);
+                objectHomes.add(lightThirdPlace);
+                objectHomes.add(lightFourthPlace);
+                objectHomes.add(lightFifthPlace);
+                objectHomes.add(lightSixthPlace);
+                break;
+            }
+            case 2: {
+                Light lightFirstPlace = new Light(new Dimension(ParamSecondFloor.FIRST_LIGHT_X, ParamSecondFloor.FIRST_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH), true);
+                Light lightSecondPlace = new Light(new Dimension(ParamSecondFloor.SECOND_LIGHT_X, ParamSecondFloor.SECOND_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH), false);
+                Light lightThirdPlace = new Light(new Dimension(ParamSecondFloor.THIRD_LIGHT_X, ParamSecondFloor.THIRD_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH), true);
+                Light lightFourthPlace = new Light(new Dimension(ParamSecondFloor.FOURTH_LIGHT_X, ParamSecondFloor.FOURTH_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH), true);
+                objectHomes.clear();
+                objectHomes.add(lightFirstPlace);
+                objectHomes.add(lightSecondPlace);
+                objectHomes.add(lightThirdPlace);
+                objectHomes.add(lightFourthPlace);
+                break;
+            }
+            case 3: {
+                Light lightFirstPlace = new Light(new Dimension(ParamThirdFloor.FIRST_LIGHT_X, ParamThirdFloor.FIRST_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH), true);
+                Light lightSecondPlace = new Light(new Dimension(ParamThirdFloor.SECOND_LIGHT_X, ParamThirdFloor.SECOND_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH), false);
+                objectHomes.clear();
+                objectHomes.add(lightFirstPlace);
+                objectHomes.add(lightSecondPlace);
+                break;
+            }
+        }
+        return objectHomes;
+    }
 
-        Light lightSecondPlace = new Light(new Dimension(ParamHome.SECOND_LIGHT_X, ParamHome.SECOND_LIGHT_Y, 15), false);
-        objectHomes.add(lightFirstPlace);
-        objectHomes.add(lightSecondPlace);
+    /**
+     * Method to initialize all the objects of the big house.
+     */
+    public ArrayList<ObjectHome> getMiniObjectHomes(/*int floorNo*/) {
+        ArrayList<ObjectHome> objectHomes = new ArrayList<ObjectHome>();
+
+//        switch (floorNo) {
+//            case 1: {
+                Light lightFirstPlaceFloorOne = new Light(new Dimension(ParamFirstFloor.FIRST_LITTLE_LIGHT_X, ParamFirstFloor.FIRST_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), true);
+                Light lightSecondPlaceFloorOne = new Light(new Dimension(ParamFirstFloor.SECOND_LITTLE_LIGHT_X, ParamFirstFloor.SECOND_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), false);
+                Light lightThirdPlaceFloorOne = new Light(new Dimension(ParamFirstFloor.THIRD_LITTLE_LIGHT_X, ParamFirstFloor.THIRD_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), true);
+                Light lightFourthPlaceFloorOne = new Light(new Dimension(ParamFirstFloor.FOURTH_LITTLE_LIGHT_X, ParamFirstFloor.FOURTH_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), true);
+                Light lightFifthPlaceFloorOne = new Light(new Dimension(ParamFirstFloor.FIFTH_LITTLE_LIGHT_X, ParamFirstFloor.FIFTH_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), false);
+                Light lightSixthPlaceFloorOne = new Light(new Dimension(ParamFirstFloor.SIXTH_LITTLE_LIGHT_X, ParamFirstFloor.SIXTH_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), false);
+
+                objectHomes.add(lightFirstPlaceFloorOne);
+                objectHomes.add(lightSecondPlaceFloorOne);
+                objectHomes.add(lightThirdPlaceFloorOne);
+                objectHomes.add(lightFourthPlaceFloorOne);
+                objectHomes.add(lightFifthPlaceFloorOne);
+                objectHomes.add(lightSixthPlaceFloorOne);
+//            }
+//            case 2: {
+                Light lightFirstPlaceSecondFloor = new Light(new Dimension(ParamSecondFloor.FIRST_LITTLE_LIGHT_X, ParamSecondFloor.FIRST_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), true);
+                Light lightSecondPlaceSecondFloor = new Light(new Dimension(ParamSecondFloor.SECOND_LITTLE_LIGHT_X, ParamSecondFloor.SECOND_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), false);
+                Light lightThirdPlaceSecondFloor = new Light(new Dimension(ParamSecondFloor.THIRD_LITTLE_LIGHT_X, ParamSecondFloor.THIRD_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), true);
+                Light lightFourthPlaceSecondFloor = new Light(new Dimension(ParamSecondFloor.FOURTH_LITTLE_LIGHT_X, ParamSecondFloor.FOURTH_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), true);
+
+                objectHomes.add(lightFirstPlaceSecondFloor);
+                objectHomes.add(lightSecondPlaceSecondFloor);
+                objectHomes.add(lightThirdPlaceSecondFloor);
+                objectHomes.add(lightFourthPlaceSecondFloor);
+//            }
+//            case 3: {
+                Light lightFirstPlaceThirdFloor = new Light(new Dimension(ParamThirdFloor.FIRST_LITTLE_LIGHT_X, ParamThirdFloor.FIRST_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), true);
+                Light lightSecondPlaceThirdFloor = new Light(new Dimension(ParamThirdFloor.SECOND_LITTLE_LIGHT_X, ParamThirdFloor.SECOND_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), false);
+
+                objectHomes.add(lightFirstPlaceThirdFloor);
+                objectHomes.add(lightSecondPlaceThirdFloor);
+//            }
+//        }
 
         return objectHomes;
     }

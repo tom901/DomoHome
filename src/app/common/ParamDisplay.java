@@ -39,5 +39,8 @@ public class ParamDisplay {
     public static final int Y_SECOND_LITTLE_MAP = Y_FIRST_LITTLE_MAP + 130;
     public static final int Y_THIRD_LITTLE_MAP = Y_SECOND_LITTLE_MAP + 150;
 
+    public static final int BIG_FLOOR_RADIUS_LIGTH = 15;
+    public static final int MINI_FLOOR_LITTLE_RADIUS_LIGTH = 5;
+
 
 }

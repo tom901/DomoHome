@@ -47,12 +47,19 @@ public class HomeViewer extends Parent implements RequireReadService {
         data.init();
 
 
-        for (ArrayList<Room> rooms : data.getMainFloor(1)) {
+        for (ArrayList<Room> rooms : data.getMainFloor(2)) {
             for (Room room : rooms) {
                 root.getChildren().add(room.getRoom());
             }
-
+            for(ObjectHome objectHomeTmp : data.getObjectHomes(2)){
+                root.getChildren().add(objectHomeTmp.group);
+            }
+            //Boucle pour afficher les objets du premier étage, place automatiquement, il faut trouver comment prendre cette liste sulement si on veut affcher le premier étage sur la map
+           /* for(ObjectHome objectHomeTmp : data.getObjectHomes(1)){
+                root.getChildren().add(objectHomeTmp.group);
+            }*/
         }
+        //loop to make placement of mini floors
         for(int i = 1 ; i <= 3; i++){
             for (ArrayList<Room> rooms : data.getSecondaryFloors(i)){
                 for(Room room : rooms) {
@@ -60,24 +67,10 @@ public class HomeViewer extends Parent implements RequireReadService {
                 }
             }
         }
-        for(ObjectHome objectHomeTmp : data.getObjectHomes(1)){
+        //Il faudra vérifier que si on change l'état d'une lampe sur la grande map, il faudra aussi modifier la liste avec les minimaps pour mettre a jour l'object concerné
+        for(ObjectHome objectHomeTmp : data.getMiniObjectHomes()){
             root.getChildren().add(objectHomeTmp.group);
         }
-       /* for (ArrayList<Room> rooms : data.getSecondaryFloors(1)){
-            for(Room room : rooms) {
-                root.getChildren().add(room.getRoom());
-            }
-        }
-        for (ArrayList<Room> rooms : data.getSecondaryFloors(2)){
-            for(Room room : rooms) {
-                root.getChildren().add(room.getRoom());
-            }
-        }
-        for (ArrayList<Room> rooms : data.getSecondaryFloors(3)){
-            for(Room room : rooms) {
-                root.getChildren().add(room.getRoom());
-            }
-        }*/
 
 
         return root;

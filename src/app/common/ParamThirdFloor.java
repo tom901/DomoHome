@@ -16,4 +16,18 @@ public class ParamThirdFloor {
     public static final int FIRST_LITTLE_ROOM_X = ParamDisplay.SECONDARY_FLOORS_BLOCK_X;
     public static final int FIRST_LITTLE_ROOM_Y = ParamDisplay.SECONDARY_FLOORS_BLOCK_Y;
 
+
+
+    public static final int FIRST_LIGHT_X = (FIRST_ROOM_WIDTH / 3) + FIRST_ROOM_X;
+    public static final int FIRST_LIGHT_Y = (FIRST_ROOM_HEIGHT / 2) + FIRST_ROOM_Y;
+
+    public static final int SECOND_LIGHT_X =((FIRST_ROOM_WIDTH / 3)*2) + FIRST_ROOM_X;
+    public static final int SECOND_LIGHT_Y = (FIRST_ROOM_HEIGHT / 2) + FIRST_ROOM_Y;
+
+
+    public static final int FIRST_LITTLE_LIGHT_X = (FIRST_LITTLE_ROOM_WIDTH / 3) + ParamDisplay.X_MINI_MAP;
+    public static final int FIRST_LITTLE_LIGHT_Y = (FIRST_LITTLE_ROOM_HEIGHT / 2) + ParamDisplay.Y_THIRD_LITTLE_MAP;
+
+    public static final int SECOND_LITTLE_LIGHT_X =((FIRST_LITTLE_ROOM_WIDTH / 3)*2) + ParamDisplay.X_MINI_MAP;
+    public static final int SECOND_LITTLE_LIGHT_Y = (FIRST_LITTLE_ROOM_HEIGHT / 2) + ParamDisplay.Y_THIRD_LITTLE_MAP;
 }
