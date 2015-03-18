@@ -7,12 +7,17 @@ import app.data.Dimension;
 import app.data.home.Floor;
 import app.data.home.Room;
 import app.data.object.Light;
+import app.data.object.ObjectHome;
 import app.services.DataService;
 import app.services.ReadService;
 import app.services.RequireReadService;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Parent;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 /**
@@ -25,6 +30,7 @@ public class HomeViewer extends Parent implements RequireReadService {
     public int divider = 1;
     private double xShrink,yShrink,shrink,xModifier,yModifier,heroesScale;
 
+    public ArrayList<Room> displayBigFloor;
 
     public HomeViewer() {}
 
@@ -39,13 +45,25 @@ public class HomeViewer extends Parent implements RequireReadService {
         Group root = new Group();
 
         data.init();
+
+
         for (ArrayList<Room> rooms : data.getMainFloor(1)) {
             for (Room room : rooms) {
                 root.getChildren().add(room.getRoom());
             }
 
         }
-        for (ArrayList<Room> rooms : data.getSecondaryFloors(1)){
+        for(int i = 1 ; i <= 3; i++){
+            for (ArrayList<Room> rooms : data.getSecondaryFloors(i)){
+                for(Room room : rooms) {
+                    root.getChildren().add(room.getRoom());
+                }
+            }
+        }
+        for(ObjectHome objectHomeTmp : data.getObjectHomes(1)){
+            root.getChildren().add(objectHomeTmp.group);
+        }
+       /* for (ArrayList<Room> rooms : data.getSecondaryFloors(1)){
             for(Room room : rooms) {
                 root.getChildren().add(room.getRoom());
             }
@@ -59,8 +77,7 @@ public class HomeViewer extends Parent implements RequireReadService {
             for(Room room : rooms) {
                 root.getChildren().add(room.getRoom());
             }
-        }
-
+        }*/
 
 
         return root;
@@ -69,6 +86,16 @@ public class HomeViewer extends Parent implements RequireReadService {
     public void getPanel() {
         shrink = Math.min(xShrink, yShrink);
 
+    }
+    public  Group changeBigMap(int numberFloor){
+        Group root = new Group();
+
+        for (ArrayList<Room> rooms : data.getMainFloor(numberFloor)) {
+            for (Room room : rooms) {
+                root.getChildren().add(room.getRoom());
+            }
+        }
+        return root;
     }
 
     @Override

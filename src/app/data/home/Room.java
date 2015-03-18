@@ -2,10 +2,14 @@ package app.data.home;
 
 import app.data.Dimension;
 import app.data.object.ObjectHome;
+import app.display.HomeViewer;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 /**
@@ -35,25 +39,26 @@ public class Room {
     /**
      * Method to initialize the group and rectangle for the room
      * @param p
-     * @param divider
      * @param floor
      * @param firstRoom
      */
-    public void setGroup(Dimension p,int divider, Floor floor, boolean firstRoom){
-        position = new Dimension(p.getX()/divider,p.getY()/divider,p.getWidth()/divider,p.getHeight()/divider);
+    public void setGroup(Dimension p, Floor floor, boolean firstRoom){
+        position = new Dimension(p.getX(),p.getY(),p.getWidth(),p.getHeight());
 
-        rectangle.setWidth(p.getWidth()/divider);
-        rectangle.setHeight(p.getHeight()/divider);
+        rectangle.setWidth(p.getWidth());
+        rectangle.setHeight(p.getHeight());
         rectangle.setFill(Color.WHITE);
         if (firstRoom) {
             rectangle.setX(p.getX());
             rectangle.setY(p.getY());
         } else {
-            rectangle.setX((floor.getDimension().getX() - floor.getDimension().getX()/divider) + p.getX() / divider);
-            rectangle.setY((floor.getDimension().getY() - floor.getDimension().getY()/divider) + p.getY() / divider);
+            rectangle.setX((floor.getDimension().getX() - floor.getDimension().getX()) + p.getX() );
+            rectangle.setY((floor.getDimension().getY() - floor.getDimension().getY()) + p.getY() );
         }
         rectangle.setStroke(Color.BLACK);
         rectangle.setStrokeWidth(1);
+
+
         group.getChildren().add(rectangle);
     }
 
@@ -86,5 +91,4 @@ public class Room {
     public void swithStateObjects(){
 
     }
-
 }

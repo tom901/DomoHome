@@ -1,10 +1,13 @@
 package app.display;
 
 import app.common.ParamDisplay;
+import app.common.ParamFirstFloor;
 import app.data.Dimension;
 import app.data.home.Floor;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -57,6 +60,24 @@ public class Base extends Parent {
         rectangleOfLegend.setFill(Color.WHITE);
         rectangleOfLegend.setStroke(Color.BLACK);
         root.getChildren().add(rectangleOfLegend);
+
+        // Rectangle to display the first mini map
+        /*final Rectangle rectangleFirstMiniMap = new Rectangle();
+        rectangleFirstMiniMap.setX(ParamDisplay.X_MINI_MAP);
+        rectangleFirstMiniMap.setY(ParamDisplay.Y_FIRST_LITTLE_MAP);
+        rectangleFirstMiniMap.setWidth(ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH + ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH);
+        rectangleFirstMiniMap.setHeight(ParamFirstFloor.FIRST_LITTLE_ROOM_HEIGHT + ParamFirstFloor.THIRD_LITTLE_ROOM_HEIGHT + ParamFirstFloor.FOURTH_LITTLE_ROOM_HEIGHT);
+        rectangleFirstMiniMap.setFill(Color.WHITE);
+        rectangleFirstMiniMap.setStroke(Color.BLACK);
+        rectangleFirstMiniMap.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                rectangleFirstMiniMap.setFill(Color.RED);
+            }
+        });
+        root.getChildren().add(rectangleFirstMiniMap);*/
+
+
 
 
     }

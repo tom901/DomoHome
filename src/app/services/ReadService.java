@@ -1,6 +1,7 @@
 package app.services;
 
 import app.data.home.Room;
+import app.data.object.ObjectHome;
 
 import java.util.ArrayList;
 
@@ -12,4 +13,5 @@ public interface ReadService {
     public ArrayList<Room> getRooms();
     public ArrayList<ArrayList<Room>> getMainFloor(int floorNo);
     public ArrayList<ArrayList<Room>> getSecondaryFloors(int floorNoInFull);
+    public ArrayList<ObjectHome> getObjectHomes(int floorNo);
 }

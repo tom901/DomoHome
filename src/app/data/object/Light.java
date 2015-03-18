@@ -13,7 +13,7 @@ public class Light extends ObjectHome {
     private Dimension dimensionLight;
     private Circle light;
 
-    public Light(){
+    public Light() {
     }
 
     public Light(Dimension dimension, boolean stateLight) {
@@ -22,25 +22,27 @@ public class Light extends ObjectHome {
         this.dimensionLight = dimension;
 //        Group group = new Group();
         light = new Circle(dimension.getRadius());
-        if(stateLight){
+        if (stateLight) {
             light.setFill(Color.YELLOW);
             super.state = false;
-        }else{
+        } else {
             light.setFill(Color.WHITE);
             super.state = true;
         }
         light.setStroke(Color.BLACK);
         light.setCenterX(dimension.getX());
         light.setCenterY(dimension.getY());
+        super.group.getChildren().add(light);
     }
 
-    public Circle getLight(){
+    public Circle getLight() {
         return light;
     }
-    public void changeStateLight(boolean stateLight){
-        if(super.state){
+
+    public void changeStateLight(boolean stateLight) {
+        if (super.state) {
             super.state = false;
-        }else{
+        } else {
             super.state = true;
         }
     }
