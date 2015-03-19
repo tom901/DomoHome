@@ -19,6 +19,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.awt.event.MouseEvent;
@@ -36,7 +37,10 @@ public class HomeViewer extends Parent implements RequireReadService {
 
     public ArrayList<Room> displayBigFloor;
 
-    public HomeViewer() {}
+    public HomeViewer() {
+        data = new Data();
+        data.init();
+    }
 
     public Group init() {
         xShrink =1;
@@ -44,12 +48,7 @@ public class HomeViewer extends Parent implements RequireReadService {
         xModifier=0;
         yModifier=0;
 
-        data = new Data();
-
         Group root = new Group();
-
-        data.init();
-
 
         for (ArrayList<Room> rooms : data.getMainFloor(1)) {
             for (Room room : rooms) {
@@ -78,6 +77,22 @@ public class HomeViewer extends Parent implements RequireReadService {
             root.getChildren().add(objectHomeTmp.group);
         }
 
+        Rectangle rectCharacter = new Rectangle(15,30);
+        rectCharacter.setFill(Color.BLACK);
+        rectCharacter.setTranslateX(data.getCharacterPosition().getX());
+        rectCharacter.setTranslateY(data.getCharacterPosition().getY());
+        rectCharacter.setArcWidth(70);
+        rectCharacter.setArcHeight(70);
+
+        Circle head = new Circle();
+        head.setCenterX(data.getCharacterPosition().getX() + (rectCharacter.getWidth()/2));
+        head.setCenterY(data.getCharacterPosition().getY() + (rectCharacter.getHeight()/2));
+        head.setRadius(5);
+        head.setStroke(Color.WHITE);
+        head.setFill(Color.TRANSPARENT);
+
+        root.getChildren().add(rectCharacter);
+        root.getChildren().add(head);
 
         return root;
     }

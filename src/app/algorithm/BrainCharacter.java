@@ -16,10 +16,8 @@ public class BrainCharacter implements BrainService, RequireSimulatorService {
     private SimulatorService simulator;
     private Random randomMove;
 
-    @Override
-    public void init() {
-        simulator = new Simulator();
-
+    public BrainCharacter() {
+        //simulator = new Simulator();
         randomMove = new Random();
     }
 
