@@ -12,8 +12,12 @@ import app.services.DataService;
 import app.services.ReadService;
 import app.services.RequireReadService;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Parent;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.TitledPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -47,11 +51,11 @@ public class HomeViewer extends Parent implements RequireReadService {
         data.init();
 
 
-        for (ArrayList<Room> rooms : data.getMainFloor(2)) {
+        for (ArrayList<Room> rooms : data.getMainFloor(1)) {
             for (Room room : rooms) {
                 root.getChildren().add(room.getRoom());
             }
-            for(ObjectHome objectHomeTmp : data.getObjectHomes(2)){
+            for(ObjectHome objectHomeTmp : data.getObjectHomes(1)){
                 root.getChildren().add(objectHomeTmp.group);
             }
             //Boucle pour afficher les objets du premier étage, place automatiquement, il faut trouver comment prendre cette liste sulement si on veut affcher le premier étage sur la map
@@ -59,6 +63,8 @@ public class HomeViewer extends Parent implements RequireReadService {
                 root.getChildren().add(objectHomeTmp.group);
             }*/
         }
+
+
         //loop to make placement of mini floors
         for(int i = 1 ; i <= 3; i++){
             for (ArrayList<Room> rooms : data.getSecondaryFloors(i)){

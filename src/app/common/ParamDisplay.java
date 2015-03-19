@@ -13,8 +13,8 @@ public class ParamDisplay {
     public static final int MAIN_FLOOR_DISPLAYED_Y = 5;
     public static final int MAIN_FLOOR_DISPLAYED_WIDTH = 590;
     public static final int MAIN_FLOOR_DISPLAYED_HEIGHT = 396;
-   /* public static final int MAIN_FLOOR_DISPLAYED_WIDTH = 290;
-    public static final int MAIN_FLOOR_DISPLAYED_HEIGHT = 200;*/
+    /* public static final int MAIN_FLOOR_DISPLAYED_WIDTH = 290;
+     public static final int MAIN_FLOOR_DISPLAYED_HEIGHT = 200;*/
     //Constants for the second block display on the application
     public static final int SECONDARY_FLOORS_BLOCK_X = 600;
     public static final int SECONDARY_FLOORS_BLOCK_Y = 5;
@@ -41,6 +41,46 @@ public class ParamDisplay {
 
     public static final int BIG_FLOOR_RADIUS_LIGTH = 15;
     public static final int MINI_FLOOR_LITTLE_RADIUS_LIGTH = 5;
+
+    //Constants for the legend
+    public static final int LEGEND_RADIUS_LIGHT = 10;
+    public static final int LEGEND_LABEL_X = LEGEND_BLOCK_X + 5;
+    public static final int LEGEND_LABEL_Y = LEGEND_BLOCK_Y + 5;
+
+    public static final int LEGEND_LIGHT_ON_X = LEGEND_LABEL_X + 15;
+    public static final int LEGEND_LIGHT_ON_Y = LEGEND_LABEL_Y + 30;
+    public static final int LEGEND_LIGHT_OFF_X = LEGEND_LIGHT_ON_X + 25;
+    public static final int LEGEND_LIGHT_OFF_Y = LEGEND_LIGHT_ON_Y;
+    public static final int LEGEND_LIGHT_LABEL_X = LEGEND_LIGHT_OFF_X + 20;
+    public static final int LEGEND_LIGHT_LABEL_Y = LEGEND_LIGHT_OFF_Y - 5;
+
+    //Il faut créer les autres constantes pour placer les autres icones de la légende en récupérent la constante précedente
+
+    //Legend des bouton switch
+    public static final int LEGEND_ACTIVTY_LABEL_X = INDICATORS_BLOCK_X + 5;
+    public static final int LEGEND_ACTIVTY_LABEL_Y = INDICATORS_BLOCK_Y + 5;
+
+    public static final int LEGEND_FIRST_FLOOR_LIGHT_LABEL_X = LEGEND_ACTIVTY_LABEL_X + 80;
+
+
+    public static final int LEGEND_FIRST_FLOOR_LABEL_X = LEGEND_ACTIVTY_LABEL_X;
+    public static final int LEGEND_FIRST_FLOOR_LABEL_Y = LEGEND_ACTIVTY_LABEL_Y + 15;
+
+    public static final int LEGEND_FIRST_FLOOR_LIGHT_1_X = LEGEND_FIRST_FLOOR_LABEL_X;
+    public static final int LEGEND_FIRST_FLOOR_LIGHT_1_Y = LEGEND_FIRST_FLOOR_LABEL_Y + 15;
+
+    /*public static final int LEGEND_FIRST_FLOOR_LIGHT_2_X = LEGEND_FIRST_FLOOR_LIGHT_1_X;
+    public static final int LEGEND_FIRST_FLOOR_LIGHT_2_Y = LEGEND_FIRST_FLOOR_LIGHT_1_Y + 15;
+
+    public static final int LEGEND_FIRST_FLOOR_LIGHT_3_X = LEGEND_FIRST_FLOOR_LIGHT_2_X;
+    public static final int LEGEND_FIRST_FLOOR_LIGHT_3_Y = LEGEND_FIRST_FLOOR_LIGHT_2_Y + 15;
+
+    public static final int LEGEND_FIRST_FLOOR_LIGHT_4_X = LEGEND_FIRST_FLOOR_LIGHT_3_X;
+    public static final int LEGEND_FIRST_FLOOR_LIGHT_4_Y = LEGEND_FIRST_FLOOR_LIGHT_3_Y + 15;
+
+    public static final int LEGEND_FIRST_FLOOR_LIGHT_5_X = LEGEND_FIRST_FLOOR_LIGHT_4_X;
+    public static final int LEGEND_FIRST_FLOOR_LIGHT_5_Y = LEGEND_FIRST_FLOOR_LIGHT_4_Y + 15;*/
+
 
 
 }

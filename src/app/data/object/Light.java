@@ -31,7 +31,7 @@ public class Light extends ObjectHome {
             light.setFill(Color.WHITE);
             super.state = true;
         }
-        light.setStroke(Color.BLACK);
+//        light.setStroke(Color.BLACK);
         light.setCenterX(dimension.getX());
         light.setCenterY(dimension.getY());
         super.group.getChildren().add(light);

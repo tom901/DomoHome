@@ -5,6 +5,7 @@ import app.data.Dimension;
 import app.data.home.Room;
 import app.data.object.Light;
 import app.display.Base;
+import app.display.HandlerSwitch;
 import app.display.HomeViewer;
 import app.services.CharacterService;
 import app.services.SimulatorService;
@@ -45,11 +46,11 @@ public class Main extends Application {
         Scene scene = new Scene(root, 800, 600, Color.web("#ECE9D8"));
 
         Base basePlan = new Base(root);
-
+        HandlerSwitch handlerSwitch = new HandlerSwitch();
         HomeViewer homeViewer = new HomeViewer();
         root.getChildren().add(basePlan);
         root.getChildren().add(homeViewer.init());
-
+        root.getChildren().add(handlerSwitch.getBtnSwitchFirstFloor());
         primaryStage.setOnShown(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
