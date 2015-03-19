@@ -18,7 +18,7 @@ import java.util.ArrayList;
 //Classe to handler the button switch
 public class HandlerSwitch extends Parent {
     private ReadService data;
-    public boolean state;
+//    public boolean state;
 
     public HandlerSwitch() {
         data = new Data();
@@ -54,20 +54,17 @@ public class HandlerSwitch extends Parent {
             lbllampe.setTranslateX(xDisplayFirstFloor + 70);
             lbllampe.setTranslateY(yDisplayFirstFloor);
             displayLabelObjectsHome.add(lbllampe);
+            ImageView imgViewLight1;
             if (!oH.state){
-                Image imgLight1 = new Image("file:images/switch_on.png");
-                ImageView imgViewLight1 = new ImageView(imgLight1);
-                imgViewLight1.setTranslateX(xDisplayFirstFloor);
-                imgViewLight1.setTranslateY(  yDisplayFirstFloor);
-                displayObjectsHome.add(imgViewLight1);
+                 imgViewLight1 = new ImageView(new Image("file:images/switch_on.png"));
             }
             else{
-                Image imgLight1 = new Image("file:images/switch_off.png");
-                ImageView imgViewLight1 = new ImageView(imgLight1);
-                imgViewLight1.setTranslateX(xDisplayFirstFloor);
-                imgViewLight1.setTranslateY(yDisplayFirstFloor);
-                displayObjectsHome.add(imgViewLight1);
+                 imgViewLight1 = new ImageView(new Image("file:images/switch_off.png"));
             }
+            imgViewLight1.setTranslateX(xDisplayFirstFloor);
+            imgViewLight1.setTranslateY(yDisplayFirstFloor);
+            displayObjectsHome.add(imgViewLight1);
+
             yDisplayFirstFloor = yDisplayFirstFloor+20;
 
             if (count == 6){
