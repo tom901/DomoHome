@@ -38,8 +38,8 @@ public class HomeViewer extends Parent implements RequireReadService {
     public ArrayList<Room> displayBigFloor;
 
     public HomeViewer() {
-        data = new Data();
-        data.init();
+//        data = new Data();
+//        data.init();
     }
 
     public Group init() {
@@ -55,7 +55,7 @@ public class HomeViewer extends Parent implements RequireReadService {
                 root.getChildren().add(room.getRoom());
             }
             for(ObjectHome objectHomeTmp : data.getObjectHomes(1)){
-                root.getChildren().add(objectHomeTmp.group);
+                root.getChildren().add(objectHomeTmp.getGroup());
             }
             //Boucle pour afficher les objets du premier étage, place automatiquement, il faut trouver comment prendre cette liste sulement si on veut affcher le premier étage sur la map
            /* for(ObjectHome objectHomeTmp : data.getObjectHomes(1)){
@@ -70,7 +70,9 @@ public class HomeViewer extends Parent implements RequireReadService {
             for (Room room : data.getRooms()){
                 i++;
                 root.getChildren().add(room.getRoomMini());
-                System.out.println("Y " + i + " : " + room.getPositionMini().getY());
+                for(ObjectHome oh : room.getObjectHomes()) {
+                    root.getChildren().add(oh.getGroupMini());
+                }
 //        for(int i = 1 ; i <= 3; i++){
 //            for (ArrayList<Room> rooms : data.getSecondaryFloors(i)){
 //                for(Room room : rooms) {
@@ -80,7 +82,7 @@ public class HomeViewer extends Parent implements RequireReadService {
 //                    root.getChildren().add(objectHomeTmp.groupMini);
 //                }
 //            }
-//        }
+        }
         //Il faudra vérifier que si on change l'état d'une lampe sur la grande map, il faudra aussi modifier la liste avec les minimaps pour mettre a jour l'object concerné
         /*for(ObjectHome objectHomeTmp : data.getObjectHomes(1)){
             root.getChildren().add(objectHomeTmp.groupMini);

@@ -14,10 +14,7 @@ public interface ReadService {
     public void init();
     public ArrayList<Room> getRooms();
     public ArrayList<ArrayList<Room>> getMainFloor(int floorNo);
-    public ArrayList<ArrayList<Room>> getSecondaryFloors(int floorNoInFull);
-    public ArrayList<ObjectHome> getObjectHomes(int floorNo);
-//    public ArrayList<ObjectHome> getMiniObjectHomes(/*int floorNo*/);
     public Dimension getCharacterPosition();
     public ArrayList<Floor> getFloors();
-
+    public ArrayList<ObjectHome> getObjectHomes(int floorNo);
 }

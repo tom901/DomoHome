@@ -8,9 +8,9 @@ import javafx.scene.shape.Shape;
  */
 public class ObjectHome {
 
-    public boolean state;
-    public Group group;
-    public Group groupMini;
+    protected boolean state;
+    protected Group group;
+    protected Group groupMini;
 
     public Group getGroup() {
         return group;
@@ -32,6 +32,11 @@ public class ObjectHome {
 
     public void setState(boolean state) {
         this.state = state;
+    }
+
+
+    public Group getGroupMini() {
+        return groupMini;
     }
 
 }

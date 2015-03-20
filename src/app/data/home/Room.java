@@ -112,7 +112,11 @@ public class Room {
 
     //Function to add object in room of the house
     public void addObject(ObjectHome obj){
+        this.objectHomes.add(obj);
+    }
 
+    public ArrayList<ObjectHome> getObjectHomes() {
+        return objectHomes;
     }
 
     //Function to change state of all objects

@@ -5,7 +5,9 @@ import app.data.Data;
 import app.data.object.Light;
 import app.data.object.ObjectHome;
 import app.data.object.Radiator;
+import app.services.DataService;
 import app.services.ReadService;
+import app.services.RequireReadService;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -18,12 +20,12 @@ import java.util.ArrayList;
  * Created by Thomas on 05/03/15.
  */
 //Classe to handler the button switch
-public class HandlerSwitch extends Parent {
+public class HandlerSwitch extends Parent implements RequireReadService {
     private ReadService data;
 //    public boolean state;
 
     public HandlerSwitch() {
-        data = new Data();
+//        data = new Data();
 
 
         /*Image imgLight1 = new Image("file:images/switch_on.png");
@@ -40,7 +42,7 @@ public class HandlerSwitch extends Parent {
         int count = 1;
         int xDisplayFirstFloor =ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_X;
         int yDisplayFirstFloor =ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_Y;
-        data = new Data();
+//        data = new Data();
         ArrayList<Label> displayLabelObjectsHome = new ArrayList<Label>();
         ArrayList<ImageView> displayObjectsHome = new ArrayList<ImageView>();
 
@@ -63,13 +65,13 @@ public class HandlerSwitch extends Parent {
             lbllampe.setTranslateY(yDisplayFirstFloor);
             displayLabelObjectsHome.add(lbllampe);
             ImageView imgViewLight1;
-            if (!oH.state){
+            if (!oH.isState()){
                  imgViewLight1 = new ImageView(new Image("file:images/switch_on.png"));
-                oH.state = true;
+                oH.setState(true);
             }
             else{
                  imgViewLight1 = new ImageView(new Image("file:images/switch_off.png"));
-                oH.state = false;
+                oH.setState(false);
             }
             imgViewLight1.setTranslateX(xDisplayFirstFloor);
             imgViewLight1.setTranslateY(yDisplayFirstFloor);
@@ -99,5 +101,10 @@ public class HandlerSwitch extends Parent {
         root.getChildren().addAll(displayLabelObjectsHome);
         root.getChildren().addAll(displayObjectsHome);
         return root;
+    }
+
+    @Override
+    public void bindDataService(DataService service) {
+        data = service;
     }
 }

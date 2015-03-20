@@ -21,7 +21,9 @@ public class Viewer implements ViewerService, RequireDataService {
         handlerSwitch = new HandlerSwitch();
         homeViewer = new HomeViewer();
         homeViewer.bindDataService(data);
+        handlerSwitch.bindDataService(data);
 
+//        data.init();
     }
 
     public Parent getPanel() {

@@ -1,6 +1,7 @@
 package app.data.home;
 
 import app.data.Dimension;
+import app.data.object.ObjectHome;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -13,24 +14,21 @@ import java.util.ArrayList;
 //Classe to handler the floor of the house
 public class Floor {
 
-
     // Attributes
     private Dimension dimension;
     private Dimension dimensionMini;
-    public ArrayList<Room> rooms;
-    public boolean inFront;
-    public Group group;
-    public Group groupMini;
-    Rectangle rectangle;
-    Rectangle rectangleMini;
+    private ArrayList<Room> rooms;
+    private ArrayList<ObjectHome> objectHomes;
+    private boolean inFront;
+    private Group group;
+    private Rectangle rectangle;
 
     // Constructors
     public Floor(){
         inFront = false;
         rooms = new ArrayList<Room>();
         group = new Group();
-        groupMini = new Group();
-
+        objectHomes = new ArrayList<ObjectHome>();
     }
 
     public Floor(Dimension p, int divider) {
@@ -57,16 +55,6 @@ public class Floor {
         rectangle.setStroke(Color.BLACK);
         rectangle.setStrokeWidth(1);
         group.getChildren().add(rectangle);
-
-        // Set the group and rectangle for the mini size
-//        this.setDimensionMini(pMini);
-//        rectangleMini = new Rectangle(pMini.getWidth(), pMini.getHeight(), Color.WHITE);
-//        rectangleMini.setX(pMini.getX());
-//        rectangleMini.setY(pMini.getY());
-//        rectangleMini.setFill(Color.WHITE);
-//        rectangleMini.setStroke(Color.BLACK);
-//        rectangleMini.setStrokeWidth(1);
-//        group.getChildren().add(rectangleMini);
     }
 
     /**
@@ -108,10 +96,6 @@ public class Floor {
         return dimension;
     }
 
-    public Dimension getDimensionMini() {
-        return dimensionMini;
-    }
-
     /**
      * Method to set the dimension(position + size) of a floor
      * @param p
@@ -124,6 +108,16 @@ public class Floor {
     }
 
 
+    public ArrayList<ObjectHome> getObjectHomes() {
+        return objectHomes;
+    }
 
+    public void addObjectHome(ObjectHome objectHome) {
+        this.objectHomes.add(objectHome);
+    }
+
+    public ObjectHome getSpecificObjectHome(int index) {
+        return objectHomes.get(index);
+    }
 
 }
