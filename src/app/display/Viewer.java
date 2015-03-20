@@ -26,6 +26,7 @@ public class Viewer implements ViewerService, RequireDataService {
 
     public Parent getPanel() {
         Group root = new Group();
+
         basePlan = new Base(root);
 
         root.getChildren().add(basePlan);
