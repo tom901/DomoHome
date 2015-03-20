@@ -57,9 +57,11 @@ public class HandlerSwitch extends Parent {
             ImageView imgViewLight1;
             if (!oH.state){
                  imgViewLight1 = new ImageView(new Image("file:images/switch_on.png"));
+                oH.state = true;
             }
             else{
                  imgViewLight1 = new ImageView(new Image("file:images/switch_off.png"));
+                oH.state = false;
             }
             imgViewLight1.setTranslateX(xDisplayFirstFloor);
             imgViewLight1.setTranslateY(yDisplayFirstFloor);
@@ -68,7 +70,7 @@ public class HandlerSwitch extends Parent {
             yDisplayFirstFloor = yDisplayFirstFloor+20;
 
             if (count == 6){
-                xDisplayFirstFloor = xDisplayFirstFloor + 150;
+                xDisplayFirstFloor = xDisplayFirstFloor + 250;
                 yDisplayFirstFloor =ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_Y;
 
                 Label lblSecondFloor = new Label("Etage 1");

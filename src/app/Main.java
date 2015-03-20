@@ -12,7 +12,10 @@ import app.services.SimulatorService;
 import app.simulator.Simulator;
 //import com.guigarage.responsive.ResponsiveHandler;
 import app.data.Character;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -20,6 +23,7 @@ import javafx.stage.Stage;
 
 import javafx.stage.WindowEvent;
 import javafx.event.EventHandler;
+import javafx.util.Duration;
 
 public class Main extends Application {
 
@@ -31,7 +35,7 @@ public class Main extends Application {
         character = new Character();
         simulator = new Simulator();
 
-        ((Simulator)simulator).bindCharacterService(character);
+        ((Simulator) simulator).bindCharacterService(character);
 
         simulator.init();
 
@@ -45,12 +49,16 @@ public class Main extends Application {
         Group root = new Group();
         Scene scene = new Scene(root, 800, 600, Color.web("#ECE9D8"));
 
+
         Base basePlan = new Base(root);
         HandlerSwitch handlerSwitch = new HandlerSwitch();
         HomeViewer homeViewer = new HomeViewer();
+
+
         root.getChildren().add(basePlan);
         root.getChildren().add(homeViewer.init());
         root.getChildren().add(handlerSwitch.getBtnSwitchFirstFloor());
+
         primaryStage.setOnShown(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
@@ -66,5 +74,16 @@ public class Main extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.show();
+        /*Timeline timerViewer = new Timeline(new KeyFrame(Duration.millis(100), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                System.out.println("this is called every 5 seconds on UI thread");
+            }
+
+
+        }));
+        timerViewer.setCycleCount(Timeline.INDEFINITE);
+        timerViewer.play();*/
     }
 }
