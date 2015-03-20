@@ -50,12 +50,33 @@ public class ParamDisplay {
     public static final int LEGEND_LABEL_X = LEGEND_BLOCK_X + 5;
     public static final int LEGEND_LABEL_Y = LEGEND_BLOCK_Y + 5;
 
+    //Constants for the legend Light
     public static final int LEGEND_LIGHT_ON_X = LEGEND_LABEL_X + 15;
     public static final int LEGEND_LIGHT_ON_Y = LEGEND_LABEL_Y + 30;
     public static final int LEGEND_LIGHT_OFF_X = LEGEND_LIGHT_ON_X + 25;
     public static final int LEGEND_LIGHT_OFF_Y = LEGEND_LIGHT_ON_Y;
     public static final int LEGEND_LIGHT_LABEL_X = LEGEND_LIGHT_OFF_X + 20;
     public static final int LEGEND_LIGHT_LABEL_Y = LEGEND_LIGHT_OFF_Y - 5;
+    //Constants for the legend Radiator
+    public static final int LEGEND_RADIATOR_WIDTH= 20;
+    public static final int LEGEND_RADIATOR_HEIGHT= 10;
+
+    public static final int LEGEND_RADIATOR_ON_X = LEGEND_BLOCK_X + 10  ;
+    public static final int LEGEND_RADIATOR_ON_Y = LEGEND_LIGHT_ON_Y + 30;
+    public static final int LEGEND_RADIATOR_OFF_X = LEGEND_RADIATOR_ON_X + 25;
+    public static final int LEGEND_RADIATOR_OFF_Y = LEGEND_RADIATOR_ON_Y;
+    public static final int LEGEND_RADIATOR_LABEL_X = LEGEND_LIGHT_LABEL_X;
+    public static final int LEGEND_RADIATOR_LABEL_Y = LEGEND_RADIATOR_OFF_Y - 5;
+
+    //Constants for the legend Garden
+    public static final int LEGEND_GARDEN_WIDTH= 30;
+    public static final int LEGEND_GARDEN_HEIGHT= 20;
+
+    public static final int LEGEND_GARDEN_X = LEGEND_BLOCK_X + 10  ;
+    public static final int LEGEND_GARDEN_Y = LEGEND_RADIATOR_ON_Y + 25;
+
+    public static final int LEGEND_GARDEN_LABEL_X = LEGEND_RADIATOR_LABEL_X;
+    public static final int LEGEND_GARDEN_LABEL_Y = LEGEND_GARDEN_Y;
 
     //Il faut créer les autres constantes pour placer les autres icones de la légende en récupérent la constante précedente
 
