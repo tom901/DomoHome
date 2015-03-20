@@ -57,14 +57,8 @@ public class Main extends Application {
         primaryStage.setTitle("DomoHome");
         // Always call the getPanel method to display our elements.
         final Scene scene = new Scene(((Viewer)viewer).getPanel(), Color.web("#ECE9D8"));
-                //new Scene(root, 800, 600, Color.web("#ECE9D8"));
+        //new Scene(root, 800, 600, Color.web("#ECE9D8"));
 
-        Base basePlan = new Base(root);
-        HandlerSwitch handlerSwitch = new HandlerSwitch();
-        HomeViewer homeViewer = new HomeViewer();
-        root.getChildren().add(basePlan);
-        root.getChildren().add(homeViewer.init());
-        root.getChildren().add(handlerSwitch.getBtnSwitchFirstFloor());
         primaryStage.setOnShown(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
@@ -80,5 +74,13 @@ public class Main extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        timerMain = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                scene.setRoot(((Viewer)viewer).getPanel());
+            }
+        };
+        timerMain.start();
     }
 }
