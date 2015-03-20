@@ -6,6 +6,9 @@ package app.common;
 //Classe for handler all constante of the application display
 public class ParamDisplay {
 
+    public static final int CHARACTER_WIDTH = 15;
+    public static final int CHARACTER_HEIGHT = 30;
+
     //Constants for the first block display on the application
     /*public static final int MAIN_FLOOR_DISPLAYED_X = 50;
     public static final int MAIN_FLOOR_DISPLAYED_Y = 50;*/
