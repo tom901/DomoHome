@@ -105,6 +105,6 @@ public class ParamDisplay {
     public static final int LEGEND_FIRST_FLOOR_LIGHT_5_X = LEGEND_FIRST_FLOOR_LIGHT_4_X;
     public static final int LEGEND_FIRST_FLOOR_LIGHT_5_Y = LEGEND_FIRST_FLOOR_LIGHT_4_Y + 15;*/
 
-
+    //Constants for doors
 
 }
