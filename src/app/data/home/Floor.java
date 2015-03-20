@@ -15,32 +15,28 @@ public class Floor {
 
 
     // Attributes
-    private Dimension p;
+    private Dimension dimension;
+    private Dimension dimensionMini;
     public ArrayList<Room> rooms;
     public boolean inFront;
     public Group group;
+    public Group groupMini;
+    Rectangle rectangle;
+    Rectangle rectangleMini;
 
     // Constructors
     public Floor(){
         inFront = false;
         rooms = new ArrayList<Room>();
-    }
-    public Floor(Dimension p) {
         group = new Group();
-        this.p = p;
-        Rectangle floor = new Rectangle(p.getWidth(),p.getHeight(), Color.WHITE);
-        floor.setX(p.getX());
-        floor.setY(p.getY());
-        floor.setFill(Color.WHITE);
-        floor.setStroke(Color.BLACK);
-        floor.setStrokeWidth(1);
-        group.getChildren().add(floor);
+        groupMini = new Group();
+
     }
 
     public Floor(Dimension p, int divider) {
 
         group = new Group();
-        this.p = p;
+        this.dimension = p;
         Rectangle floor = new Rectangle(p.getWidth()/divider,p.getHeight()/divider, Color.WHITE);
         floor.setX(p.getX());
         floor.setY(p.getY());
@@ -51,6 +47,27 @@ public class Floor {
     }
 
     //Methods
+    public void setGroup (Dimension p) {
+        // Set the group and rectangle for the normal size
+        this.setDimension(p);
+        rectangle = new Rectangle(p.getWidth(), p.getHeight(), Color.WHITE);
+        rectangle.setX(p.getX());
+        rectangle.setY(p.getY());
+        rectangle.setFill(Color.WHITE);
+        rectangle.setStroke(Color.BLACK);
+        rectangle.setStrokeWidth(1);
+        group.getChildren().add(rectangle);
+
+        // Set the group and rectangle for the mini size
+//        this.setDimensionMini(pMini);
+//        rectangleMini = new Rectangle(pMini.getWidth(), pMini.getHeight(), Color.WHITE);
+//        rectangleMini.setX(pMini.getX());
+//        rectangleMini.setY(pMini.getY());
+//        rectangleMini.setFill(Color.WHITE);
+//        rectangleMini.setStroke(Color.BLACK);
+//        rectangleMini.setStrokeWidth(1);
+//        group.getChildren().add(rectangleMini);
+    }
 
     /**
      * Method to return the group (therefore the rectangle) of the floor.
@@ -65,9 +82,13 @@ public class Floor {
      * Function to add floor in floor
      * @return Group
      */
-    public Group addRoom(){
-        return null;
+    public void addRoom(Room room){
+        this.rooms.add(room);
     }
+
+    public ArrayList<Room> getRooms() { return this.rooms; }
+
+    public Room getSpecificRoom(int index) { return this.rooms.get(index); }
 
     //Function to know what floor is in front of the view
     public void isInFront(){
@@ -84,7 +105,11 @@ public class Floor {
      * @return Dimension
      */
     public Dimension getDimension() {
-        return p;
+        return dimension;
+    }
+
+    public Dimension getDimensionMini() {
+        return dimensionMini;
     }
 
     /**
@@ -92,7 +117,10 @@ public class Floor {
      * @param p
      */
     public void setDimension(Dimension p) {
-        this.p = p;
+        this.dimension = p;
+    }
+    public void setDimensionMini(Dimension p) {
+        this.dimensionMini = p;
     }
 
 

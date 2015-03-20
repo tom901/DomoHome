@@ -1,6 +1,7 @@
 package app.services;
 
 import app.data.Dimension;
+import app.data.home.Floor;
 import app.data.home.Room;
 import app.data.object.ObjectHome;
 
@@ -17,5 +18,6 @@ public interface ReadService {
     public ArrayList<ObjectHome> getObjectHomes(int floorNo);
     public ArrayList<ObjectHome> getMiniObjectHomes(/*int floorNo*/);
     public Dimension getCharacterPosition();
+    public ArrayList<Floor> getFloors();
 
 }

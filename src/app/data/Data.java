@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class Data implements DataService {
     ArrayList<Floor> floors;
     ArrayList<Floor> miniFloors;
+    ArrayList<Room> rooms;
     Character character;
 
     //    ArrayList<Room> rooms;
@@ -26,91 +27,137 @@ public class Data implements DataService {
     public void init() {
         floors = new ArrayList<Floor>();
         miniFloors = new ArrayList<Floor>();
+        rooms = new ArrayList<Room>();
         character = new Character(new Dimension(10,200));
 
-//        rooms = new ArrayList<Room>();
-//        objects = new ArrayList<ObjectHome>();
         initFloors();
-        //initRooms();
-    }
+        initRooms(0, 6);
+        initRooms(1, 4);
+        initRooms(2,1);
 
-    public ArrayList<Room> getRooms() {
-        return null;
+        initRoomsFirstFloor();
+        initRoomsSecondFloor();
+        initRoomsThirdFloor();
+
     }
 
     /**
-     * Method to init the floors to be displayed in the main floor rectangle.
-     * We will hide 2 out of the 3 floors created here.
+     * Method to init the floors.
      */
     private void initFloors() {
-        floors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
-                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
-        ));
+        Floor floor_01 = new Floor();
+        floor_01.setGroup(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
+                        ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT));
+        floors.add(floor_01);
 
-        floors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
-                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
-        ));
+        Floor floor_02 = new Floor();
+        floor_02.setGroup(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
+                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT));
+        floors.add(floor_02);
 
-        floors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
-                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
-        ));
-
-    }
-
-    /**
-     * Method to init the floors to be displayed in the secondary floors rectangle.
-     */
-    private void initMiniFloors() {
-        miniFloors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
-                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
-        ));
-
-        miniFloors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
-                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
-        ));
-
-        miniFloors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
-                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
-        ));
+        Floor floor_03 = new Floor();
+        floor_03.setGroup(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
+                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT));
+        floors.add(floor_03);
 
     }
 
     /**
-     * Method to initialize all rooms for floors No. 1 (for the main floor rectangle)
-     *
-     * @return ArrayList<Room>
+     * Method to init the rooms without creating the rectangles for their display.
+     * @param floorIndex
+     * @param noOfRoom
      */
-    private ArrayList<Room> initRoomsFirstFloor() {
-        ArrayList<Room> rooms = new ArrayList<Room>();
-        Room room01_01 = new Room();
-        room01_01.setGroup(new Dimension(ParamFirstFloor.FIRST_ROOM_X, ParamFirstFloor.FIRST_ROOM_Y, ParamFirstFloor.FIRST_ROOM_WIDTH, ParamFirstFloor.FIRST_ROOM_HEIGHT),
-                floors.get(0), true);
-        rooms.add(room01_01);
+    private void initRooms(int floorIndex, int noOfRoom) {
+        RoomsEnum.ROOM enumRoom = RoomsEnum.ROOM.CHAMBRE_1;
+        for (int i = 0; i < noOfRoom; i++) {
+            if (floorIndex == 0) {
+                switch (i) {
+                    case 0:
+                        enumRoom = RoomsEnum.ROOM.CHAMBRE_1;
+                        break;
+                    case 1:
+                        enumRoom = RoomsEnum.ROOM.SALON_1;
+                        break;
+                    case 2:
+                        enumRoom = RoomsEnum.ROOM.ENTREE_1;
+                        break;
+                    case 3:
+                        enumRoom = RoomsEnum.ROOM.CUISINE_1;
+                        break;
+                    case 4:
+                        enumRoom = RoomsEnum.ROOM.SDB_1;
+                        break;
+                    case 5:
+                        enumRoom = RoomsEnum.ROOM.GARDEN_1;
+                        break;
+                }
+            } else {
+                if (floorIndex == 1) {
+                    switch (i) {
+                        case 0:
+                            enumRoom = RoomsEnum.ROOM.SALLE_JEU_2;
+                            break;
+                        case 1:
+                            enumRoom = RoomsEnum.ROOM.COULOIR_2;
+                            break;
+                        case 2:
+                            enumRoom = RoomsEnum.ROOM.CHAMBRE_2;
+                            break;
+                        case 3:
+                            enumRoom = RoomsEnum.ROOM.SDB_2;
+                            break;
+                    }
+                } else {
+                    switch (i) {
+                        case 0:
+                            enumRoom = RoomsEnum.ROOM.SALLE_JEU_2;
+                            break;
+                        case 1:
+                            enumRoom = RoomsEnum.ROOM.COULOIR_2;
+                            break;
+                        case 2:
+                            enumRoom = RoomsEnum.ROOM.CHAMBRE_2;
+                            break;
+                        case 3:
+                            enumRoom = RoomsEnum.ROOM.SDB_2;
+                            break;
+                    }
+                }
+            }
+            Room room = new Room(floors.get(floorIndex), enumRoom);
+            rooms.add(room);
+            floors.get(floorIndex).addRoom(room);
+        }
+    }
 
-        Room room01_02 = new Room();
-        room01_02.setGroup(new Dimension(ParamFirstFloor.SECOND_ROOM_X, ParamFirstFloor.SECOND_ROOM_Y, ParamFirstFloor.SECOND_ROOM_WIDTH, ParamFirstFloor.SECOND_ROOM_HEIGHT),
-                floors.get(0), false);
-        rooms.add(room01_02);
+    /**
+     * Method to initialize all rooms for floors No. 1 (for the main floor rectangle).
+     */
+    private void initRoomsFirstFloor() {
+        floors.get(0).getSpecificRoom(0).setGroup(new Dimension(ParamFirstFloor.FIRST_ROOM_X, ParamFirstFloor.FIRST_ROOM_Y, ParamFirstFloor.FIRST_ROOM_WIDTH, ParamFirstFloor.FIRST_ROOM_HEIGHT),
+                new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_FIRST_LITTLE_MAP, ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH, ParamFirstFloor.FIRST_LITTLE_ROOM_HEIGHT),
+                true);
 
-        Room room01_03 = new Room();
-        room01_03.setGroup(new Dimension(ParamFirstFloor.THIRD_ROOM_X, ParamFirstFloor.THIRD_ROOM_Y, ParamFirstFloor.THIRD_ROOM_WIDTH, ParamFirstFloor.THIRD_ROOM_HEIGHT),
-                floors.get(0), false);
-        rooms.add(room01_03);
+        floors.get(0).getSpecificRoom(1).setGroup(new Dimension(ParamFirstFloor.SECOND_ROOM_X, ParamFirstFloor.SECOND_ROOM_Y, ParamFirstFloor.SECOND_ROOM_WIDTH, ParamFirstFloor.SECOND_ROOM_HEIGHT),
+                new Dimension(ParamFirstFloor.SECOND_LITTLE_ROOM_X, ParamFirstFloor.SECOND_LITTLE_ROOM_Y, ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH, ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT),
+                false);
 
-        Room room01_04 = new Room();
-        room01_04.setGroup(new Dimension(ParamFirstFloor.FOURTH_ROOM_X, ParamFirstFloor.FOURTH_ROOM_Y, ParamFirstFloor.FOURTH_ROOM_WIDTH, ParamFirstFloor.FOURTH_ROOM_HEIGHT),
-                floors.get(0), false);
-        rooms.add(room01_04);
+        floors.get(0).getSpecificRoom(2).setGroup(new Dimension(ParamFirstFloor.THIRD_ROOM_X, ParamFirstFloor.THIRD_ROOM_Y, ParamFirstFloor.THIRD_ROOM_WIDTH, ParamFirstFloor.THIRD_ROOM_HEIGHT),
+                new Dimension(ParamFirstFloor.THIRD_LITTLE_ROOM_X, ParamFirstFloor.THIRD_LITTLE_ROOM_Y, ParamFirstFloor.THIRD_LITTLE_ROOM_WIDTH, ParamFirstFloor.THIRD_LITTLE_ROOM_HEIGHT),
+                false);
 
-        Room room01_05 = new Room();
-        room01_05.setGroup(new Dimension(ParamFirstFloor.FIFTH_ROOM_X, ParamFirstFloor.FIFTH_ROOM_Y, ParamFirstFloor.FIFTH_ROOM_WIDTH, ParamFirstFloor.FIFTH_ROOM_HEIGHT),
-                floors.get(0), false);
-        rooms.add(room01_05);
+        floors.get(0).getSpecificRoom(3).setGroup(new Dimension(ParamFirstFloor.FOURTH_ROOM_X, ParamFirstFloor.FOURTH_ROOM_Y, ParamFirstFloor.FOURTH_ROOM_WIDTH, ParamFirstFloor.FOURTH_ROOM_HEIGHT),
+                new Dimension(ParamFirstFloor.FOURTH_LITTLE_ROOM_X, ParamFirstFloor.FOURTH_LITTLE_ROOM_Y, ParamFirstFloor.FOURTH_LITTLE_ROOM_WIDTH, ParamFirstFloor.FOURTH_LITTLE_ROOM_HEIGHT),
+                false);
 
-        Room garden = new Room();
-        rooms.add(garden.getGarden(ParamFirstFloor.GARDEN_ROOM_WIDTH, ParamFirstFloor.GARDEN_ROOM_HEIGHT, ParamFirstFloor.GARDEN_ROOM_X, ParamFirstFloor.GARDEN_ROOM_Y));
+        floors.get(0).getSpecificRoom(4).setGroup(new Dimension(ParamFirstFloor.FIFTH_ROOM_X, ParamFirstFloor.FIFTH_ROOM_Y, ParamFirstFloor.FIFTH_ROOM_WIDTH, ParamFirstFloor.FIFTH_ROOM_HEIGHT),
+                new Dimension(ParamFirstFloor.FIFTH_LITTLE_ROOM_X, ParamFirstFloor.FIFTH_LITTLE_ROOM_Y, ParamFirstFloor.FIFTH_LITTLE_ROOM_WIDTH, ParamFirstFloor.FIFTH_LITTLE_ROOM_HEIGHT),
+                false);
 
-        return rooms;
+        floors.get(0).getSpecificRoom(5).setGroup(new Dimension(ParamFirstFloor.GARDEN_ROOM_X, ParamFirstFloor.GARDEN_ROOM_Y, ParamFirstFloor.GARDEN_ROOM_WIDTH, ParamFirstFloor.GARDEN_ROOM_HEIGHT),
+                new Dimension(ParamFirstFloor.GARDEN_LITTLE_ROOM_X, ParamFirstFloor.GARDEN_LITTLE_ROOM_Y,ParamFirstFloor.GARDEN_LITTLE_ROOM_WIDTH, ParamFirstFloor.GARDEN_LITTLE_HEIGHT),
+                false);
+
     }
 
     /**
@@ -118,56 +165,27 @@ public class Data implements DataService {
      *
      * @return ArrayList<Room>
      */
-    private ArrayList<Room> initRoomsSecondFloor() {
-        ArrayList<Room> rooms = new ArrayList<Room>();
-        Room room01_01 = new Room();
+    private void initRoomsSecondFloor() {
+        floors.get(1).getSpecificRoom(0).setGroup(new Dimension(ParamSecondFloor.FIRST_ROOM_X, ParamFirstFloor.FIRST_ROOM_Y, ParamSecondFloor.FIRST_ROOM_WIDTH, ParamSecondFloor.FIRST_ROOM_HEIGHT),
+                new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_SECOND_LITTLE_MAP, ParamSecondFloor.FIRST_LITTLE_ROOM_WIDTH, ParamSecondFloor.FIRST_LITTLE_ROOM_HEIGHT), true);
 
-        room01_01.setGroup(new Dimension(ParamSecondFloor.FIRST_ROOM_X, ParamFirstFloor.FIRST_ROOM_Y, ParamSecondFloor.FIRST_ROOM_WIDTH, ParamSecondFloor.FIRST_ROOM_HEIGHT),
-                floors.get(1), true);
-        rooms.add(room01_01);
+        floors.get(1).getSpecificRoom(1).setGroup(new Dimension(ParamSecondFloor.SECOND_ROOM_X, ParamSecondFloor.SECOND_ROOM_Y, ParamSecondFloor.SECOND_ROOM_WIDTH, ParamSecondFloor.SECOND_ROOM_HEIGHT),
+                new Dimension(ParamSecondFloor.SECOND_LITTLE_ROOM_X, ParamSecondFloor.SECOND_LITTLE_ROOM_Y, ParamSecondFloor.SECOND_LITTLE_ROOM_WIDTH, ParamSecondFloor.SECOND_LITTLE_ROOM_HEIGHT), false);
 
-        Room room01_02 = new Room();
-        room01_02.setGroup(new Dimension(ParamSecondFloor.SECOND_ROOM_X, ParamSecondFloor.SECOND_ROOM_Y, ParamSecondFloor.SECOND_ROOM_WIDTH, ParamSecondFloor.SECOND_ROOM_HEIGHT),
-                floors.get(1), false);
-        rooms.add(room01_02);
+        floors.get(1).getSpecificRoom(2).setGroup(new Dimension(ParamSecondFloor.THIRD_ROOM_X, ParamSecondFloor.THIRD_ROOM_Y, ParamSecondFloor.THIRD_ROOM_WIDTH, ParamSecondFloor.THIRD_ROOM_HEIGHT),
+                new Dimension(ParamSecondFloor.THIRD_LITTLE_ROOM_X, ParamSecondFloor.THIRD_LITTLE_ROOM_Y, ParamSecondFloor.THIRD_LITTLE_ROOM_WIDTH, ParamSecondFloor.THIRD_LITTLE_ROOM_HEIGHT), false);
 
-        Room room01_03 = new Room();
-        room01_03.setGroup(new Dimension(ParamSecondFloor.THIRD_ROOM_X, ParamSecondFloor.THIRD_ROOM_Y, ParamSecondFloor.THIRD_ROOM_WIDTH, ParamSecondFloor.THIRD_ROOM_HEIGHT),
-                floors.get(1), false);
-        rooms.add(room01_03);
-
-        Room room01_04 = new Room();
-        room01_04.setGroup(new Dimension(ParamSecondFloor.FOURTH_ROOM_X, ParamSecondFloor.FOURTH_ROOM_Y, ParamSecondFloor.FOURTH_ROOM_WIDTH, ParamSecondFloor.FOURTH_ROOM_HEIGHT),
-                floors.get(1), false);
-        rooms.add(room01_04);
-
-        return rooms;
+        floors.get(1).getSpecificRoom(3).setGroup(new Dimension(ParamSecondFloor.FOURTH_ROOM_X, ParamSecondFloor.FOURTH_ROOM_Y, ParamSecondFloor.FOURTH_ROOM_WIDTH, ParamSecondFloor.FOURTH_ROOM_HEIGHT),
+                new Dimension(ParamSecondFloor.FOURTH_LITTLE_ROOM_X, ParamSecondFloor.FOURTH_LITTLE_ROOM_Y, ParamSecondFloor.FOURTH_LITTLE_ROOM_WIDTH, ParamSecondFloor.FOURTH_LITTLE_ROOM_HEIGHT), false);
     }
 
     /**
      * Method to initialize all rooms for floors No. 3 (for the main floor rectangle)
-     *
-     * @return ArrayList<Room>
      */
-    private ArrayList<Room> initRoomsThirdFloor() {
-        ArrayList<Room> rooms = new ArrayList<Room>();
-        Room room01_01 = new Room();
-        room01_01.setGroup(new Dimension(ParamThirdFloor.FIRST_ROOM_X, ParamThirdFloor.FIRST_ROOM_Y, ParamThirdFloor.FIRST_ROOM_WIDTH, ParamThirdFloor.FIRST_ROOM_HEIGHT),
-                floors.get(2), true);
-        rooms.add(room01_01);
-
-        return rooms;
-    }
-
-
-    public ArrayList<Room> initMiniMapPosition() {
-        ArrayList<Room> rooms = new ArrayList<Room>();
-        Room room01_01 = new Room();
-        room01_01.setGroup(new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_FIRST_LITTLE_MAP, ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH, ParamFirstFloor.FIRST_LITTLE_ROOM_HEIGHT),
-                floors.get(0), true);
-        rooms.add(room01_01);
-
-        return rooms;
+    private void initRoomsThirdFloor() {
+        floors.get(2).getSpecificRoom(0).setGroup(new Dimension(ParamThirdFloor.FIRST_ROOM_X, ParamThirdFloor.FIRST_ROOM_Y, ParamThirdFloor.FIRST_ROOM_WIDTH, ParamThirdFloor.FIRST_ROOM_HEIGHT),
+                new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_THIRD_LITTLE_MAP, ParamThirdFloor.FIRST_LITTLE_ROOM_WIDTH, ParamThirdFloor.FIRST_LITTLE_ROOM_HEIGHT),
+                true);
     }
 
     /**
@@ -175,86 +193,91 @@ public class Data implements DataService {
      *
      * @return ArrayList<Room>
      */
-    private ArrayList<Room> initRoomsFirstMiniFloor() {
-        ArrayList<Room> rooms = new ArrayList<Room>();
-        Room room01_01 = new Room();
-        room01_01.setGroup(new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_FIRST_LITTLE_MAP, ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH, ParamFirstFloor.FIRST_LITTLE_ROOM_HEIGHT),
-                floors.get(0), true);
-        rooms.add(room01_01);
+//    private ArrayList<Room> initRoomsFirstMiniFloor() {
+//       /* ArrayList<Room> rooms = new ArrayList<Room>();
+//        Room room01_01 = new Room(RoomsEnum.ROOM.CHAMBRE_1);
+//
+//        room01_01.setGroup(new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_FIRST_LITTLE_MAP, ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH, ParamFirstFloor.FIRST_LITTLE_ROOM_HEIGHT),
+//                floors.get(0), true);
+//        rooms.add(room01_01);
+//
+//        Room room01_02 = new Room(RoomsEnum.ROOM.SALON_1);
+//        room01_02.setGroup(new Dimension(ParamFirstFloor.SECOND_LITTLE_ROOM_X, ParamFirstFloor.SECOND_LITTLE_ROOM_Y, ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH, ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT),
+//                floors.get(0), false);
+//        rooms.add(room01_02);
+//
+//        Room room01_03 = new Room(RoomsEnum.ROOM.ENTREE_1);
+//        room01_03.setGroup(new Dimension(ParamFirstFloor.THIRD_LITTLE_ROOM_X, ParamFirstFloor.THIRD_LITTLE_ROOM_Y, ParamFirstFloor.THIRD_LITTLE_ROOM_WIDTH, ParamFirstFloor.THIRD_LITTLE_ROOM_HEIGHT),
+//                floors.get(0), false);
+//        rooms.add(room01_03);
+//
+//        Room room01_04 = new Room(RoomsEnum.ROOM.CUISINE_1);
+//        room01_04.setGroup(new Dimension(ParamFirstFloor.FOURTH_LITTLE_ROOM_X, ParamFirstFloor.FOURTH_LITTLE_ROOM_Y, ParamFirstFloor.FOURTH_LITTLE_ROOM_WIDTH, ParamFirstFloor.FOURTH_LITTLE_ROOM_HEIGHT),
+//                floors.get(0), false);
+//        rooms.add(room01_04);
+//
+//        Room room01_05 = new Room(RoomsEnum.ROOM.SDB_1);
+//        room01_05.setGroup(new Dimension(ParamFirstFloor.FIFTH_LITTLE_ROOM_X, ParamFirstFloor.FIFTH_LITTLE_ROOM_Y, ParamFirstFloor.FIFTH_LITTLE_ROOM_WIDTH, ParamFirstFloor.FIFTH_LITTLE_ROOM_HEIGHT),
+//                floors.get(0), false);
+//        rooms.add(room01_05);
+//
+//        Room garden = new Room();
+//        rooms.add(garden.getGarden(ParamFirstFloor.GARDEN_LITTLE_ROOM_WIDTH, ParamFirstFloor.GARDEN_LITTLE_HEIGHT, ParamFirstFloor.GARDEN_LITTLE_ROOM_X, ParamFirstFloor.GARDEN_LITTLE_ROOM_Y));
+//
+//        return rooms;*/
+//        return null;
+//    }
 
-        Room room01_02 = new Room();
-        room01_02.setGroup(new Dimension(ParamFirstFloor.SECOND_LITTLE_ROOM_X, ParamFirstFloor.SECOND_LITTLE_ROOM_Y, ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH, ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT),
-                floors.get(0), false);
-        rooms.add(room01_02);
-
-        Room room01_03 = new Room();
-        room01_03.setGroup(new Dimension(ParamFirstFloor.THIRD_LITTLE_ROOM_X, ParamFirstFloor.THIRD_LITTLE_ROOM_Y, ParamFirstFloor.THIRD_LITTLE_ROOM_WIDTH, ParamFirstFloor.THIRD_LITTLE_ROOM_HEIGHT),
-                floors.get(0), false);
-        rooms.add(room01_03);
-
-        Room room01_04 = new Room();
-        room01_04.setGroup(new Dimension(ParamFirstFloor.FOURTH_LITTLE_ROOM_X, ParamFirstFloor.FOURTH_LITTLE_ROOM_Y, ParamFirstFloor.FOURTH_LITTLE_ROOM_WIDTH, ParamFirstFloor.FOURTH_LITTLE_ROOM_HEIGHT),
-                floors.get(0), false);
-        rooms.add(room01_04);
-
-        Room room01_05 = new Room();
-        room01_05.setGroup(new Dimension(ParamFirstFloor.FIFTH_LITTLE_ROOM_X, ParamFirstFloor.FIFTH_LITTLE_ROOM_Y, ParamFirstFloor.FIFTH_LITTLE_ROOM_WIDTH, ParamFirstFloor.FIFTH_LITTLE_ROOM_HEIGHT),
-                floors.get(0), false);
-        rooms.add(room01_05);
-
-        Room garden = new Room();
-        rooms.add(garden.getGarden(ParamFirstFloor.GARDEN_LITTLE_ROOM_WIDTH, ParamFirstFloor.GARDEN_LITTLE_HEIGHT, ParamFirstFloor.GARDEN_LITTLE_ROOM_X, ParamFirstFloor.GARDEN_LITTLE_ROOM_Y));
-
-        return rooms;
-    }
 
     /**
      * Method to initialize all rooms for the mini floor no. 2
      *
      * @return ArrayList<Room>
      */
-    private ArrayList<Room> initRoomsSecondMiniFloor() {
-        ArrayList<Room> rooms = new ArrayList<Room>();
-        Room room01_01 = new Room();
-
-        room01_01.setGroup(new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_SECOND_LITTLE_MAP, ParamSecondFloor.FIRST_LITTLE_ROOM_WIDTH, ParamSecondFloor.FIRST_LITTLE_ROOM_HEIGHT),
-                floors.get(1), true);
-        rooms.add(room01_01);
-
-        Room room01_02 = new Room();
-        room01_02.setGroup(new Dimension(ParamSecondFloor.SECOND_LITTLE_ROOM_X, ParamSecondFloor.SECOND_LITTLE_ROOM_Y, ParamSecondFloor.SECOND_LITTLE_ROOM_WIDTH, ParamSecondFloor.SECOND_LITTLE_ROOM_HEIGHT),
-                floors.get(1), false);
-        rooms.add(room01_02);
-
-        Room room01_03 = new Room();
-        room01_03.setGroup(new Dimension(ParamSecondFloor.THIRD_LITTLE_ROOM_X, ParamSecondFloor.THIRD_LITTLE_ROOM_Y, ParamSecondFloor.THIRD_LITTLE_ROOM_WIDTH, ParamSecondFloor.THIRD_LITTLE_ROOM_HEIGHT),
-                floors.get(1), false);
-        rooms.add(room01_03);
-
-        Room room01_04 = new Room();
-        room01_04.setGroup(new Dimension(ParamSecondFloor.FOURTH_LITTLE_ROOM_X, ParamSecondFloor.FOURTH_LITTLE_ROOM_Y, ParamSecondFloor.FOURTH_LITTLE_ROOM_WIDTH, ParamSecondFloor.FOURTH_LITTLE_ROOM_HEIGHT),
-                floors.get(1), false);
-        rooms.add(room01_04);
-
-        return rooms;
-    }
+//    private ArrayList<Room> initRoomsSecondMiniFloor() {
+//        /*ArrayList<Room> rooms = new ArrayList<Room>();
+//        Room room01_01 = new Room(RoomsEnum.ROOM.SALLE_JEU_2);
+//
+//        room01_01.setGroup(new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_SECOND_LITTLE_MAP, ParamSecondFloor.FIRST_LITTLE_ROOM_WIDTH, ParamSecondFloor.FIRST_LITTLE_ROOM_HEIGHT),
+//                floors.get(1), true);
+//        rooms.add(room01_01);
+//
+//        Room room01_02 = new Room(RoomsEnum.ROOM.COULOIR_2);
+//        room01_02.setGroup(new Dimension(ParamSecondFloor.SECOND_LITTLE_ROOM_X, ParamSecondFloor.SECOND_LITTLE_ROOM_Y, ParamSecondFloor.SECOND_LITTLE_ROOM_WIDTH, ParamSecondFloor.SECOND_LITTLE_ROOM_HEIGHT),
+//                floors.get(1), false);
+//        rooms.add(room01_02);
+//
+//        Room room01_03 = new Room(RoomsEnum.ROOM.CHAMBRE_2);
+//        room01_03.setGroup(new Dimension(ParamSecondFloor.THIRD_LITTLE_ROOM_X, ParamSecondFloor.THIRD_LITTLE_ROOM_Y, ParamSecondFloor.THIRD_LITTLE_ROOM_WIDTH, ParamSecondFloor.THIRD_LITTLE_ROOM_HEIGHT),
+//                floors.get(1), false);
+//        rooms.add(room01_03);
+//
+//        Room room01_04 = new Room(RoomsEnum.ROOM.SDB_2);
+//        room01_04.setGroup(new Dimension(ParamSecondFloor.FOURTH_LITTLE_ROOM_X, ParamSecondFloor.FOURTH_LITTLE_ROOM_Y, ParamSecondFloor.FOURTH_LITTLE_ROOM_WIDTH, ParamSecondFloor.FOURTH_LITTLE_ROOM_HEIGHT),
+//                floors.get(1), false);
+//        rooms.add(room01_04);
+//
+//        return rooms;*/
+//        return null;
+//    }
 
     /**
      * Method to initialize all rooms for the mini floor no. 3
      *
      * @return ArrayList<Room>
      */
-    private ArrayList<Room> initRoomsThirdMiniFloor() {
-        ArrayList<Room> rooms = new ArrayList<Room>();
-        Room room01_01 = new Room();
-
-        room01_01.setGroup(new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_THIRD_LITTLE_MAP, ParamThirdFloor.FIRST_LITTLE_ROOM_WIDTH, ParamThirdFloor.FIRST_LITTLE_ROOM_HEIGHT),
-                floors.get(2), true);
-
-        rooms.add(room01_01);
-
-        return rooms;
-    }
+//    private ArrayList<Room> initRoomsThirdMiniFloor() {
+//        /*ArrayList<Room> rooms = new ArrayList<Room>();
+//        Room room01_01 = new Room(RoomsEnum.ROOM.GRENIER_3);
+//
+//        room01_01.setGroup(new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_THIRD_LITTLE_MAP, ParamThirdFloor.FIRST_LITTLE_ROOM_WIDTH, ParamThirdFloor.FIRST_LITTLE_ROOM_HEIGHT),
+//                floors.get(2), true);
+//
+//        rooms.add(room01_01);
+//
+//        return rooms;*/
+//        return null;
+//    }
 
     /**
      * Method to initialize all the objects of the big house.
@@ -353,6 +376,8 @@ public class Data implements DataService {
         return character.getPosition();
     }
 
+    public ArrayList<Floor> getFloors() { return this.floors; }
+
     /**
      * Method to return the content of the main floor rectangle
      *
@@ -363,13 +388,13 @@ public class Data implements DataService {
         ArrayList<Room> rooms = new ArrayList<Room>();
         switch (floorNo) {
             case 1:
-                rooms = initRoomsFirstFloor();
+                rooms = floors.get(0).getRooms();
                 break;
             case 2:
-                rooms = initRoomsSecondFloor();
+                rooms = floors.get(1).getRooms();
                 break;
             case 3:
-                rooms = initRoomsThirdFloor();
+                rooms = floors.get(2).getRooms();
                 break;
         }
         ArrayList<ArrayList<Room>> roomsArray = new ArrayList<ArrayList<Room>>();
@@ -385,33 +410,65 @@ public class Data implements DataService {
      */
     public ArrayList<ArrayList<Room>> getSecondaryFloors(int floorNoInFull) {
         ArrayList<ArrayList<Room>> roomsArray = new ArrayList<ArrayList<Room>>();
-        ArrayList<Room> rooms;
-        switch (floorNoInFull) {
-            case 1:
-                rooms = initRoomsFirstMiniFloor();
-                roomsArray.add(rooms);
-               /* rooms = initRoomsThirdFloor(4);
-                roomsArray.add(rooms);*/
-                break;
-            case 2:
-                rooms = initRoomsSecondMiniFloor();
-                roomsArray.add(rooms);
-                /*rooms = initRoomsThirdFloor(4);
-                roomsArray.add(rooms);*/
-                break;
-            case 3:
-                rooms = initRoomsThirdMiniFloor();
-                roomsArray.add(rooms);
-                /*rooms = initRoomsFirstFloor(4);
-                roomsArray.add(rooms);*/
-                break;
-        }
+//        ArrayList<Room> rooms;
+//        switch (floorNoInFull) {
+//            case 1:
+//                rooms = initRoomsFirstMiniFloor();
+//                roomsArray.add(rooms);
+//               /* rooms = initRoomsThirdFloor(4);
+//                roomsArray.add(rooms);*/
+//                break;
+//            case 2:
+//                rooms = initRoomsSecondMiniFloor();
+//                roomsArray.add(rooms);
+//                /*rooms = initRoomsThirdFloor(4);
+//                roomsArray.add(rooms);*/
+//                break;
+//            case 3:
+//                rooms = initRoomsThirdMiniFloor();
+//                roomsArray.add(rooms);
+//                /*rooms = initRoomsFirstFloor(4);
+//                roomsArray.add(rooms);*/
+//                break;
+//        }
         return roomsArray;
+    }
+
+    /**
+     * Method to init the floors to be displayed in the secondary floors rectangle.
+     */
+    private void initMiniFloors() {
+       /* miniFloors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
+                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
+        ));
+
+        miniFloors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
+                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
+        ));
+
+        miniFloors.add(new Floor(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
+                ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
+        ));*/
+
     }
 
     @Override
     public void setCharacterPosition(Dimension position) {
         character.setPosition(position);
-        System.out.println("Dans setCharacterPosition" + position.getX());
+    }
+
+    public ArrayList<Room> getRooms() {
+        return this.rooms;
+    }
+
+    public ArrayList<Room> initMiniMapPosition() {
+        /*ArrayList<Room> rooms = new ArrayList<Room>();
+        Room room01_01 = new Room();
+        room01_01.setGroup(new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_FIRST_LITTLE_MAP, ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH, ParamFirstFloor.FIRST_LITTLE_ROOM_HEIGHT),
+                floors.get(0), true);
+        rooms.add(room01_01);
+
+        return rooms;*/
+        return null;
     }
 }

@@ -4,7 +4,7 @@ package app.common;
  * Created by Thomas on 17/03/15.
  */
 public class ParamFirstFloor {
-
+    /** Constantes pour les pièces du premier étage à taille normale */
     //Constants for the first room of the first floor
     public static final int FIRST_ROOM_WIDTH = ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH/2;
     public static final int FIRST_ROOM_HEIGHT = ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT/3;
@@ -41,7 +41,7 @@ public class ParamFirstFloor {
     public static final int GARDEN_ROOM_X = FIRST_ROOM_Y;
     public static final int GARDEN_ROOM_Y = FIRST_ROOM_HEIGHT+ParamDisplay.MAIN_FLOOR_DISPLAYED_Y;
 
-    //Constantes for all rool for mini floors
+    /** Constantes for all rool for mini floors */
     //Constants for the first room of the first floor
     public static final int FIRST_LITTLE_ROOM_WIDTH = (ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH/2)/4;
     public static final int FIRST_LITTLE_ROOM_HEIGHT = (ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT/3)/4;
@@ -78,7 +78,7 @@ public class ParamFirstFloor {
     public static final int GARDEN_LITTLE_ROOM_X = FIRST_LITTLE_ROOM_X;
     public static final int GARDEN_LITTLE_ROOM_Y = FIRST_LITTLE_ROOM_HEIGHT+FIRST_LITTLE_ROOM_Y;
 
-    //Constants for the objects house
+    /** Constants for the objects house */
 
     public static final int FIRST_LIGHT_X = (FIRST_ROOM_WIDTH / 2) + FIRST_ROOM_X;
     public static final int FIRST_LIGHT_Y = (FIRST_ROOM_HEIGHT / 2) + FIRST_ROOM_Y;

@@ -90,7 +90,7 @@ public class Base extends Parent {
         lblLegendLight.setTranslateY(ParamDisplay.LEGEND_LIGHT_LABEL_Y);
         root.getChildren().add(lblLegendLight);
 
-        //Il faut placer les autre element de la legende
+        //Il faut placer les autres element de la legende
 
         //Les switchs
 
@@ -98,7 +98,6 @@ public class Base extends Parent {
         lblActivity.setTranslateX(ParamDisplay.LEGEND_ACTIVTY_LABEL_X);
         lblActivity.setTranslateY(ParamDisplay.LEGEND_ACTIVTY_LABEL_Y);
         root.getChildren().add(lblActivity);
-
 
     }
 
