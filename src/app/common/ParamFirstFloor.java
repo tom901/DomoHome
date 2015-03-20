@@ -122,16 +122,45 @@ public class ParamFirstFloor {
     public static final int SIXTH_LITTLE_LIGHT_Y = (FIFTH_LITTLE_ROOM_HEIGHT / 2) + FIFTH_LITTLE_ROOM_Y;
 
     //Radiator BIG
-    public static final int FIRST_RADIATOR_WIDTH = ParamHome.RADIATOR_LANDSCAPE_WIDTH;
-    public static final int FIRST_RADIATOR_HEIGHT = ParamHome.RADIATOR_LANDSCAPE_HEIGHT;
+    /*public static final int FIRST_RADIATOR_WIDTH = ParamHome.RADIATOR_LANDSCAPE_WIDTH;
+    public static final int FIRST_RADIATOR_HEIGHT = ParamHome.RADIATOR_LANDSCAPE_HEIGHT;*/
     public static final int FIRST_RADIATOR_X = FIRST_ROOM_WIDTH / 2;
     public static final int FIRST_RADIATOR_Y = FIRST_ROOM_Y;
 
+    public static final int SECOND_RADIATOR_X = SECOND_ROOM_X ;
+    public static final int SECOND_RADIATOR_Y = SECOND_ROOM_Y+ SECOND_ROOM_HEIGHT/4;
+
+    public static final int THIRD_RADIATOR_X = SECOND_ROOM_X + SECOND_ROOM_WIDTH - ParamHome.RADIATOR_PORTRAIT_WIDTH;
+    public static final int THIRD_RADIATOR_Y = SECOND_ROOM_Y+SECOND_ROOM_HEIGHT- (SECOND_ROOM_HEIGHT/4);
+
+    public static final int FOURTH_RADIATOR_X = THIRD_ROOM_X + THIRD_ROOM_WIDTH/4  ;
+    public static final int FOURTH_RADIATOR_Y = THIRD_ROOM_Y;
+
+    public static final int FIFTH_RADIATOR_X = FOURTH_ROOM_X + FOURTH_ROOM_WIDTH/3  ;
+    public static final int FIFTH_RADIATOR_Y = FOURTH_ROOM_Y;
+
+    public static final int SIXTH_RADIATOR_X = FIFTH_ROOM_X + FIFTH_ROOM_WIDTH/3  ;
+    public static final int SIXTH_RADIATOR_Y = FIFTH_ROOM_Y;
 
     //Radiator Mini
-    public static final int FIRST_LITTLE_RADIATOR_WIDTH = ParamHome.RADIATOR_MINI_LANDSCAPE_WIDTH;
-    public static final int FIRST_LITTLE_RADIATOR_HEIGHT = ParamHome.RADIATOR_MINI_LANDSCAPE_HEIGHT;
+    /*public static final int FIRST_LITTLE_RADIATOR_WIDTH = ParamHome.RADIATOR_MINI_LANDSCAPE_WIDTH;
+    public static final int FIRST_LITTLE_RADIATOR_HEIGHT = ParamHome.RADIATOR_MINI_LANDSCAPE_HEIGHT;*/
     public static final int FIRST_LITTLE_RADIATOR_X = FIRST_LITTLE_ROOM_X + FIRST_LITTLE_ROOM_WIDTH / 2;
     public static final int FIRST_LITTLE_RADIATOR_Y = FIRST_LITTLE_ROOM_Y;
+
+    public static final int SECOND_LITTLE_RADIATOR_X = SECOND_LITTLE_ROOM_X ;
+    public static final int SECOND_LITTLE_RADIATOR_Y = SECOND_LITTLE_ROOM_Y + SECOND_LITTLE_ROOM_HEIGHT/4;
+
+    public static final int THIRD_LITTLE_RADIATOR_X = SECOND_LITTLE_ROOM_X + SECOND_LITTLE_ROOM_WIDTH - ParamHome.RADIATOR_MINI_PORTRAIT_WIDTH ;
+    public static final int THIRD_LITTLE_RADIATOR_Y = SECOND_LITTLE_ROOM_Y + SECOND_LITTLE_ROOM_HEIGHT-(SECOND_LITTLE_ROOM_HEIGHT/4);
+
+    public static final int FOURTH_LITTLE_RADIATOR_X = THIRD_LITTLE_ROOM_X + THIRD_LITTLE_ROOM_WIDTH / 4 ;
+    public static final int FOURTH_LITTLE_RADIATOR_Y = THIRD_LITTLE_ROOM_Y ;
+
+    public static final int FIFTH_LITTLE_RADIATOR_X = FOURTH_LITTLE_ROOM_X + FOURTH_LITTLE_ROOM_WIDTH / 3 ;
+    public static final int FIFTH_LITTLE_RADIATOR_Y = FOURTH_LITTLE_ROOM_Y ;
+
+    public static final int SIXTH_LITTLE_RADIATOR_X = FIFTH_LITTLE_ROOM_X + FIFTH_LITTLE_ROOM_WIDTH / 3 ;
+    public static final int SIXTH_LITTLE_RADIATOR_Y = FIFTH_LITTLE_ROOM_Y ;
 
 }

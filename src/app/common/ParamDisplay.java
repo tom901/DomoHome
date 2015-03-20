@@ -72,7 +72,7 @@ public class ParamDisplay {
     public static final int LEGEND_GARDEN_WIDTH= 30;
     public static final int LEGEND_GARDEN_HEIGHT= 20;
 
-    public static final int LEGEND_GARDEN_X = LEGEND_BLOCK_X + 10  ;
+    public static final int LEGEND_GARDEN_X = LEGEND_BLOCK_X + 15  ;
     public static final int LEGEND_GARDEN_Y = LEGEND_RADIATOR_ON_Y + 25;
 
     public static final int LEGEND_GARDEN_LABEL_X = LEGEND_RADIATOR_LABEL_X;

@@ -272,6 +272,11 @@ public class Data implements DataService {
                 Light lightFifthPlace = new Light();
                 Light lightSixthPlace = new Light();
                 Radiator radiatorFirst = new Radiator();
+                Radiator radiatorSecond = new Radiator();
+                Radiator radiatorThird = new Radiator();
+                Radiator radiatorFourth = new Radiator();
+                Radiator radiatorFifth = new Radiator();
+                Radiator radiatorSixth = new Radiator();
 
                 lightFirstPlace.setGroup(new Dimension(ParamFirstFloor.FIRST_LIGHT_X, ParamFirstFloor.FIRST_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH),
                         new Dimension(ParamFirstFloor.FIRST_LITTLE_LIGHT_X, ParamFirstFloor.FIRST_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), true);
@@ -288,6 +293,19 @@ public class Data implements DataService {
 
                 radiatorFirst.setGroupe(new Dimension(ParamFirstFloor.FIRST_RADIATOR_X, ParamFirstFloor.FIRST_RADIATOR_Y),
                         new Dimension(ParamFirstFloor.FIRST_LITTLE_RADIATOR_X, ParamFirstFloor.FIRST_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
+                radiatorSecond.setGroupe(new Dimension(ParamFirstFloor.SECOND_RADIATOR_X, ParamFirstFloor.SECOND_RADIATOR_Y),
+                        new Dimension(ParamFirstFloor.SECOND_LITTLE_RADIATOR_X, ParamFirstFloor.SECOND_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_PORTRAIT);
+                radiatorThird.setGroupe(new Dimension(ParamFirstFloor.THIRD_RADIATOR_X, ParamFirstFloor.THIRD_RADIATOR_Y),
+                        new Dimension(ParamFirstFloor.THIRD_LITTLE_RADIATOR_X, ParamFirstFloor.THIRD_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_PORTRAIT);
+
+                radiatorFourth.setGroupe(new Dimension(ParamFirstFloor.FOURTH_RADIATOR_X, ParamFirstFloor.FOURTH_RADIATOR_Y),
+                        new Dimension(ParamFirstFloor.FOURTH_LITTLE_RADIATOR_X, ParamFirstFloor.FOURTH_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
+
+                radiatorFifth.setGroupe(new Dimension(ParamFirstFloor.FIFTH_RADIATOR_X, ParamFirstFloor.FIFTH_RADIATOR_Y),
+                        new Dimension(ParamFirstFloor.FIFTH_LITTLE_RADIATOR_X, ParamFirstFloor.FIFTH_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
+
+                radiatorSixth.setGroupe(new Dimension(ParamFirstFloor.SIXTH_RADIATOR_X, ParamFirstFloor.SIXTH_RADIATOR_Y),
+                        new Dimension(ParamFirstFloor.SIXTH_LITTLE_RADIATOR_X, ParamFirstFloor.SIXTH_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
 
                 objectHomes.clear();
                 objectHomes.add(lightFirstPlace);
@@ -296,7 +314,13 @@ public class Data implements DataService {
                 objectHomes.add(lightFourthPlace);
                 objectHomes.add(lightFifthPlace);
                 objectHomes.add(lightSixthPlace);
+
                 objectHomes.add(radiatorFirst);
+                objectHomes.add(radiatorSecond);
+                objectHomes.add(radiatorThird);
+                objectHomes.add(radiatorFourth);
+                objectHomes.add(radiatorFifth);
+                objectHomes.add(radiatorSixth);
 
                 break;
             }
