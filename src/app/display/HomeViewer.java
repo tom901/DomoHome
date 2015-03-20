@@ -70,12 +70,15 @@ public class HomeViewer extends Parent implements RequireReadService {
                 for(Room room : rooms) {
                     root.getChildren().add(room.getRoom());
                 }
+                for(ObjectHome objectHomeTmp : data.getObjectHomes(i)){
+                    root.getChildren().add(objectHomeTmp.groupMini);
+                }
             }
         }
         //Il faudra vérifier que si on change l'état d'une lampe sur la grande map, il faudra aussi modifier la liste avec les minimaps pour mettre a jour l'object concerné
-        for(ObjectHome objectHomeTmp : data.getObjectHomes(1)){
+        /*for(ObjectHome objectHomeTmp : data.getObjectHomes(1)){
             root.getChildren().add(objectHomeTmp.groupMini);
-        }
+        }*/
 
         Rectangle rectCharacter = new Rectangle(ParamDisplay.CHARACTER_WIDTH,ParamDisplay.CHARACTER_HEIGHT);
         rectCharacter.setFill(Color.BLACK);
