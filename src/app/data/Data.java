@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class Data implements DataService {
     ArrayList<Floor> floors;
     ArrayList<Floor> miniFloors;
+    Character character;
 
     //    ArrayList<Room> rooms;
 //    ArrayList<ObjectHome> objects;
@@ -25,6 +26,7 @@ public class Data implements DataService {
     public void init() {
         floors = new ArrayList<Floor>();
         miniFloors = new ArrayList<Floor>();
+        character = new Character(new Dimension(10,200));
 
 //        rooms = new ArrayList<Room>();
 //        objects = new ArrayList<ObjectHome>();
@@ -346,6 +348,11 @@ public class Data implements DataService {
         return objectHomes;
     }
 
+    @Override
+    public Dimension getCharacterPosition() {
+        return character.getPosition();
+    }
+
     /**
      * Method to return the content of the main floor rectangle
      *
@@ -400,5 +407,11 @@ public class Data implements DataService {
                 break;
         }
         return roomsArray;
+    }
+
+    @Override
+    public void setCharacterPosition(Dimension position) {
+        character.setPosition(position);
+        System.out.println("Dans setCharacterPosition" + position.getX());
     }
 }

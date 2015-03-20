@@ -1,21 +1,21 @@
 package app;
 
+import app.algorithm.BrainCharacter;
 import app.common.ParamDisplay;
+import app.data.Data;
 import app.data.Dimension;
 import app.data.home.Room;
 import app.data.object.Light;
 import app.display.Base;
 import app.display.HandlerSwitch;
 import app.display.HomeViewer;
-import app.services.CharacterService;
-import app.services.SimulatorService;
+import app.display.Viewer;
+import app.services.*;
 import app.simulator.Simulator;
 //import com.guigarage.responsive.ResponsiveHandler;
 import app.data.Character;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
@@ -23,42 +23,47 @@ import javafx.stage.Stage;
 
 import javafx.stage.WindowEvent;
 import javafx.event.EventHandler;
-import javafx.util.Duration;
 
 public class Main extends Application {
 
     private static SimulatorService simulator;
-    private static CharacterService character;
+    private static DataService data;
+    private static ViewerService viewer;
+    private static BrainService brainCharacter;
+    private static AnimationTimer timerMain;
 
     public static void main(String[] args) {
 
-        character = new Character();
+        data = new Data();
         simulator = new Simulator();
+        viewer = new Viewer();
+        brainCharacter = new BrainCharacter();
 
-        ((Simulator) simulator).bindCharacterService(character);
+        ((Simulator)simulator).bindDataService(data);
+        ((Simulator)simulator).bindBrainService(brainCharacter);
+        ((Viewer)viewer).bindDataService(data);
+        ((BrainCharacter)brainCharacter).bindSimulatorService(simulator);
 
+        data.init();
         simulator.init();
+        viewer.init();
 
         launch(args);
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
+    public void start(final Stage primaryStage) throws Exception {
 
         primaryStage.setTitle("DomoHome");
-        Group root = new Group();
-        Scene scene = new Scene(root, 800, 600, Color.web("#ECE9D8"));
-
+        final Scene scene = new Scene(((Viewer)viewer).getPanel());
+                //new Scene(root, 800, 600, Color.web("#ECE9D8"));
 
         Base basePlan = new Base(root);
         HandlerSwitch handlerSwitch = new HandlerSwitch();
         HomeViewer homeViewer = new HomeViewer();
-
-
         root.getChildren().add(basePlan);
         root.getChildren().add(homeViewer.init());
         root.getChildren().add(handlerSwitch.getBtnSwitchFirstFloor());
-
         primaryStage.setOnShown(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
@@ -74,16 +79,5 @@ public class Main extends Application {
 
         primaryStage.setScene(scene);
         primaryStage.show();
-        /*Timeline timerViewer = new Timeline(new KeyFrame(Duration.millis(100), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                System.out.println("this is called every 5 seconds on UI thread");
-            }
-
-
-        }));
-        timerViewer.setCycleCount(Timeline.INDEFINITE);
-        timerViewer.play();*/
     }
 }
