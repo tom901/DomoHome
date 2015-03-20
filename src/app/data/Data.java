@@ -20,6 +20,7 @@ public class Data implements DataService {
     ArrayList<ObjectHome> objectHomes;
     Character character;
 
+    //    ArrayList<Room> rooms;
 //    ArrayList<ObjectHome> objects;
 
     /**
@@ -32,6 +33,8 @@ public class Data implements DataService {
         objectHomes = new ArrayList<ObjectHome>();
         character = new Character(new Dimension(10,200));
 
+//        rooms = new ArrayList<Room>();
+//        objects = new ArrayList<ObjectHome>();
         initFloors();
         initRooms(0, 6);
         initRooms(1, 4);

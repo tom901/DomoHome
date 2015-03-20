@@ -13,6 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 
 import java.util.ArrayList;
 
@@ -49,6 +51,7 @@ public class HandlerSwitch extends Parent implements RequireReadService {
         Group root = new Group();
 
         Label lblfirstFloor = new Label("Rez-de-chaussé");
+        lblfirstFloor.setFont(Font.font("Verdana", FontWeight.BOLD, 10));
         lblfirstFloor.setTranslateX(ParamDisplay.LEGEND_FIRST_FLOOR_LABEL_X);
         lblfirstFloor.setTranslateY(ParamDisplay.LEGEND_FIRST_FLOOR_LABEL_Y);
         displayLabelObjectsHome.add(lblfirstFloor);
@@ -67,11 +70,9 @@ public class HandlerSwitch extends Parent implements RequireReadService {
             ImageView imgViewLight1;
             if (!oH.isState()){
                  imgViewLight1 = new ImageView(new Image("file:images/switch_on.png"));
-                oH.setState(true);
             }
             else{
                  imgViewLight1 = new ImageView(new Image("file:images/switch_off.png"));
-                oH.setState(false);
             }
             imgViewLight1.setTranslateX(xDisplayFirstFloor);
             imgViewLight1.setTranslateY(yDisplayFirstFloor);
@@ -84,6 +85,7 @@ public class HandlerSwitch extends Parent implements RequireReadService {
                 yDisplayFirstFloor =ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_Y;
 
                 Label lblSecondFloor = new Label("Etage 1");
+                lblSecondFloor.setFont(Font.font("Verdana", FontWeight.BOLD, 10));
                 lblSecondFloor.setTranslateX(xDisplayFirstFloor);
                 lblSecondFloor.setTranslateY(ParamDisplay.LEGEND_FIRST_FLOOR_LABEL_Y);
                 displayLabelObjectsHome.add(lblSecondFloor);
@@ -92,6 +94,7 @@ public class HandlerSwitch extends Parent implements RequireReadService {
                 yDisplayFirstFloor =ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_Y;
 
                 Label lblThirdFloor = new Label("Etage 2");
+                lblThirdFloor.setFont(Font.font("Verdana", FontWeight.BOLD, 10));
                 lblThirdFloor.setTranslateX(xDisplayFirstFloor);
                 lblThirdFloor.setTranslateY(ParamDisplay.LEGEND_FIRST_FLOOR_LABEL_Y);
                 displayLabelObjectsHome.add(lblThirdFloor);

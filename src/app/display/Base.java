@@ -84,20 +84,48 @@ public class Base extends Parent {
         legendLightOff.setStroke(Color.YELLOW);
         legendLightOff.setFill(Color.WHITE);
         root.getChildren().add(legendLightOff);
-
-        Label lblLegendLight = new Label("Lampes");
+        //Light Legend
+        Label lblLegendLight = new Label("Lampes (On/Off)");
+        lblLegendLight.setFont(Font.font("Verdana", FontPosture.ITALIC, 12));
         lblLegendLight.setTranslateX(ParamDisplay.LEGEND_LIGHT_LABEL_X);
         lblLegendLight.setTranslateY(ParamDisplay.LEGEND_LIGHT_LABEL_Y);
         root.getChildren().add(lblLegendLight);
+        //Radiator Legend
+        Rectangle legendRadiatorOn = new Rectangle(ParamDisplay.LEGEND_RADIATOR_ON_X,ParamDisplay.LEGEND_RADIATOR_ON_Y, ParamDisplay.LEGEND_RADIATOR_WIDTH,ParamDisplay.LEGEND_RADIATOR_HEIGHT);
+        legendRadiatorOn.setStroke(Color.RED);
+        legendRadiatorOn.setFill(Color.RED);
+        root.getChildren().add(legendRadiatorOn);
 
-        //Il faut placer les autres element de la legende
+        Rectangle legendRadiatorOff = new Rectangle(ParamDisplay.LEGEND_RADIATOR_OFF_X,ParamDisplay.LEGEND_RADIATOR_OFF_Y, ParamDisplay.LEGEND_RADIATOR_WIDTH,ParamDisplay.LEGEND_RADIATOR_HEIGHT);
+        legendRadiatorOff.setStroke(Color.RED);
+        legendRadiatorOff.setFill(Color.WHITE);
+        root.getChildren().add(legendRadiatorOff);
 
+        Label lblLegendRadiator = new Label("Radiateur (On/Off)");
+        lblLegendRadiator.setFont(Font.font("Verdana", FontPosture.ITALIC, 12));
+        lblLegendRadiator.setTranslateX(ParamDisplay.LEGEND_RADIATOR_LABEL_X);
+        lblLegendRadiator.setTranslateY(ParamDisplay.LEGEND_RADIATOR_LABEL_Y);
+        root.getChildren().add(lblLegendRadiator);
+        //garden Legend
+
+        Rectangle legendGarden = new Rectangle(ParamDisplay.LEGEND_GARDEN_X,ParamDisplay.LEGEND_GARDEN_Y, ParamDisplay.LEGEND_GARDEN_WIDTH,ParamDisplay.LEGEND_GARDEN_HEIGHT);
+        legendGarden.setStroke(Color.BLACK);
+        legendGarden.setFill(Color.GREEN);
+        root.getChildren().add(legendGarden);
+
+        Label lblLegendGarden = new Label("Jardin");
+        lblLegendGarden.setFont(Font.font("Verdana", FontPosture.ITALIC, 12));
+        lblLegendGarden.setTranslateX(ParamDisplay.LEGEND_GARDEN_LABEL_X);
+        lblLegendGarden.setTranslateY(ParamDisplay.LEGEND_GARDEN_LABEL_Y);
+        root.getChildren().add(lblLegendGarden);
         //Les switchs
 
         Label lblActivity = new Label("Activité :");
+        lblActivity.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
         lblActivity.setTranslateX(ParamDisplay.LEGEND_ACTIVTY_LABEL_X);
         lblActivity.setTranslateY(ParamDisplay.LEGEND_ACTIVTY_LABEL_Y);
         root.getChildren().add(lblActivity);
+
 
     }
 
