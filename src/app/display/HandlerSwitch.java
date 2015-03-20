@@ -68,11 +68,9 @@ public class HandlerSwitch extends Parent {
             ImageView imgViewLight1;
             if (!oH.state){
                  imgViewLight1 = new ImageView(new Image("file:images/switch_on.png"));
-                oH.state = true;
             }
             else{
                  imgViewLight1 = new ImageView(new Image("file:images/switch_off.png"));
-                oH.state = false;
             }
             imgViewLight1.setTranslateX(xDisplayFirstFloor);
             imgViewLight1.setTranslateY(yDisplayFirstFloor);
