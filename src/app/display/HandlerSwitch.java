@@ -2,7 +2,9 @@ package app.display;
 
 import app.common.ParamDisplay;
 import app.data.Data;
+import app.data.object.Light;
 import app.data.object.ObjectHome;
+import app.data.object.Radiator;
 import app.services.ReadService;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -49,8 +51,14 @@ public class HandlerSwitch extends Parent {
         lblfirstFloor.setTranslateY(ParamDisplay.LEGEND_FIRST_FLOOR_LABEL_Y);
         displayLabelObjectsHome.add(lblfirstFloor);
 
-        for (ObjectHome oH : data.getMiniObjectHomes()) {
-            Label lbllampe = new Label("Lampe "+count);
+        for (ObjectHome oH : data.getObjectHomes(1)) {
+            Label lbllampe = new Label();
+
+            if(oH instanceof Light){
+                lbllampe.setText("Lampe "+count);
+            }else if (oH instanceof Radiator) {
+                lbllampe.setText("Radiateur " + count);
+            }
             lbllampe.setTranslateX(xDisplayFirstFloor + 70);
             lbllampe.setTranslateY(yDisplayFirstFloor);
             displayLabelObjectsHome.add(lbllampe);
