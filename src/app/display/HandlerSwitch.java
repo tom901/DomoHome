@@ -2,7 +2,9 @@ package app.display;
 
 import app.common.ParamDisplay;
 import app.data.Data;
+import app.data.object.Light;
 import app.data.object.ObjectHome;
+import app.data.object.Radiator;
 import app.services.ReadService;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -49,17 +51,25 @@ public class HandlerSwitch extends Parent {
         lblfirstFloor.setTranslateY(ParamDisplay.LEGEND_FIRST_FLOOR_LABEL_Y);
         displayLabelObjectsHome.add(lblfirstFloor);
 
-        for (ObjectHome oH : data.getMiniObjectHomes()) {
-            Label lbllampe = new Label("Lampe "+count);
+        for (ObjectHome oH : data.getObjectHomes(1)) {
+            Label lbllampe = new Label();
+
+            if(oH instanceof Light){
+                lbllampe.setText("Lampe "+count);
+            }else if (oH instanceof Radiator) {
+                lbllampe.setText("Radiateur " + count);
+            }
             lbllampe.setTranslateX(xDisplayFirstFloor + 70);
             lbllampe.setTranslateY(yDisplayFirstFloor);
             displayLabelObjectsHome.add(lbllampe);
             ImageView imgViewLight1;
             if (!oH.state){
                  imgViewLight1 = new ImageView(new Image("file:images/switch_on.png"));
+                oH.state = true;
             }
             else{
                  imgViewLight1 = new ImageView(new Image("file:images/switch_off.png"));
+                oH.state = false;
             }
             imgViewLight1.setTranslateX(xDisplayFirstFloor);
             imgViewLight1.setTranslateY(yDisplayFirstFloor);
@@ -68,7 +78,7 @@ public class HandlerSwitch extends Parent {
             yDisplayFirstFloor = yDisplayFirstFloor+20;
 
             if (count == 6){
-                xDisplayFirstFloor = xDisplayFirstFloor + 150;
+                xDisplayFirstFloor = xDisplayFirstFloor + 250;
                 yDisplayFirstFloor =ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_Y;
 
                 Label lblSecondFloor = new Label("Etage 1");

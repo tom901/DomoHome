@@ -10,6 +10,7 @@ public class ObjectHome {
 
     public boolean state;
     public Group group;
+    public Group groupMini;
 
     public Group getGroup() {
         return group;
@@ -22,6 +23,7 @@ public class ObjectHome {
     public ObjectHome(){
         state = false;
         group = new Group();
+        groupMini = new Group();
     }
 
     public boolean isState() {
