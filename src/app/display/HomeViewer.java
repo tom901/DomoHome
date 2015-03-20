@@ -77,7 +77,7 @@ public class HomeViewer extends Parent implements RequireReadService {
             root.getChildren().add(objectHomeTmp.group);
         }
 
-        Rectangle rectCharacter = new Rectangle(15,30);
+        Rectangle rectCharacter = new Rectangle(ParamDisplay.CHARACTER_WIDTH,ParamDisplay.CHARACTER_HEIGHT);
         rectCharacter.setFill(Color.BLACK);
         rectCharacter.setTranslateX(data.getCharacterPosition().getX());
         rectCharacter.setTranslateY(data.getCharacterPosition().getY());

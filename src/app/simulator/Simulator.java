@@ -1,5 +1,6 @@
 package app.simulator;
 
+import app.common.ParamDisplay;
 import app.data.Data;
 import app.data.Dimension;
 import app.services.*;
@@ -47,24 +48,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                         i++;
 //                      moveCharacter();
                         brainService.step();
-                        switch (direction) {
-                            case 0: // Move left
-                                data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX() + 1, data.getCharacterPosition().getY()));
-                                break;
-                            case 1: // Move right
-                                data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX() + 1, data.getCharacterPosition().getY()));
-                                break;
-                            case 2: // Move up
-                                data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() - 1));
-                                break;
-                            case 3: // Move bottom
-                                data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() + 1));
-                                break;
-                            default:
-                                data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX() + 1, data.getCharacterPosition().getY()));
-                                break;
-                        }
-                        direction = -1;
+                        checkCollision();
                         //System.out.println("Character X : " + data.getCharacterPosition().getX() + " - Character Y : " + data.getCharacterPosition().getY());
                     }
                 },
@@ -93,5 +77,49 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
     @Override
     public void bindDataService(DataService service) {
         data = service;
+    }
+
+    private void checkCollision() {
+
+        switch (direction) {
+            case 0: // Move left
+//                moveLeft();
+                moveRight();
+                break;
+            case 1: // Move right
+                moveRight();
+                break;
+            case 2: // Move up
+                moveUp();
+                break;
+            case 3: // Move bottom
+                moveDown();
+                break;
+            default:
+                moveRight();
+                break;
+        }
+        direction = -1;
+    }
+
+    private void moveLeft() {
+        if (data.getCharacterPosition().getX() > ParamDisplay.MAIN_FLOOR_DISPLAYED_X)
+            data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX() - 1, data.getCharacterPosition().getY()));
+
+    }
+    private void moveRight() {
+        if (data.getCharacterPosition().getX() + ParamDisplay.CHARACTER_WIDTH < ParamDisplay.MAIN_FLOOR_DISPLAYED_X + ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH)
+            data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX() + 1, data.getCharacterPosition().getY()));
+
+    }
+    private void moveUp() {
+        if (data.getCharacterPosition().getY() < ParamDisplay.MAIN_FLOOR_DISPLAYED_Y)
+            data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() - 1));
+
+    }
+    private void moveDown() {
+        if (data.getCharacterPosition().getY() + ParamDisplay.CHARACTER_HEIGHT < ParamDisplay.MAIN_FLOOR_DISPLAYED_Y + ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
+            data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() + 1));
+
     }
 }
