@@ -56,15 +56,13 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
     }
 
     /**
-     * Method to stop the process of the engine / simulator
+     * Method to destroy the process of the engine / simulator
      */
-    public void stop() {
-        simuTimer.cancel();
+    public void destroy() {
+        simuTimer.cancel(); simuTimer.purge();
     }
 
-    public void moveCharacterToTheLeft() {
-       // character.setPosition(new Dimension(character.getPosition().getX()-1,character.getPosition().getY()));
-    }
+    public void pause() { simuTimer.cancel(); simuTimer = new Timer(); }
 
     /**
      * Method to make a character move towards a direction.
@@ -107,19 +105,24 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
             data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX() - 1, data.getCharacterPosition().getY()));
 
     }
+
     private void moveRight() {
         if (data.getCharacterPosition().getX() + ParamDisplay.CHARACTER_WIDTH < ParamDisplay.MAIN_FLOOR_DISPLAYED_X + ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH)
             data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX() + 1, data.getCharacterPosition().getY()));
 
     }
+
     private void moveUp() {
         if (data.getCharacterPosition().getY() < ParamDisplay.MAIN_FLOOR_DISPLAYED_Y)
             data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() - 1));
 
     }
+
     private void moveDown() {
         if (data.getCharacterPosition().getY() + ParamDisplay.CHARACTER_HEIGHT < ParamDisplay.MAIN_FLOOR_DISPLAYED_Y + ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
             data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() + 1));
 
     }
+
+
 }

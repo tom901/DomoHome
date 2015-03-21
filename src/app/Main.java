@@ -1,23 +1,15 @@
 package app;
 
 import app.algorithm.BrainCharacter;
-import app.common.ParamDisplay;
 import app.data.Data;
-import app.data.Dimension;
-import app.data.home.Room;
-import app.data.object.Light;
-import app.display.Base;
-import app.display.HandlerSwitch;
-import app.display.HomeViewer;
 import app.display.Viewer;
 import app.services.*;
 import app.simulator.Simulator;
 //import com.guigarage.responsive.ResponsiveHandler;
-import app.data.Character;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -32,9 +24,10 @@ public class Main extends Application {
     private static ViewerService viewer;
     private static BrainService brainCharacter;
     private static AnimationTimer timerMain;
+    private static boolean onPause;
 
     public static void main(String[] args) {
-
+        onPause = false;
         data = new Data();
         simulator = new Simulator();
         viewer = new Viewer();
@@ -69,7 +62,7 @@ public class Main extends Application {
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
-                simulator.stop();
+                simulator.destroy();
             }
         });
 
@@ -86,7 +79,20 @@ public class Main extends Application {
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-//                if (event.getText()equals.)
+                System.out.println("Touche pressée " + event.getCode().toString() + " voila");
+                if (onPause) {
+                    if (event.getCode().equals(KeyCode.SPACE)){
+                        timerMain.start();
+                        simulator.start();
+                        onPause = false;
+                    }
+                } else {
+                    if (event.getCode().equals(KeyCode.SPACE)){
+                        timerMain.stop();
+                        simulator.pause();
+                        onPause = true;
+                    }
+                }
             }
         });
     }

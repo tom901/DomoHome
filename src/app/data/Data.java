@@ -213,7 +213,7 @@ public class Data implements DataService {
         floors.get(0).getSpecificRoom(2).addObject(lightThirdPlace);
         floors.get(0).getSpecificRoom(3).addObject(lightFourthPlace);
         floors.get(0).getSpecificRoom(4).addObject(lightFifthPlace);
-        floors.get(0).getSpecificRoom(5).addObject(lightSixthPlace);
+        floors.get(0).getSpecificRoom(1).addObject(lightSixthPlace);
         floors.get(0).getSpecificRoom(0).addObject(radiatorFirst);
         // Code pour ajouter les objets à la liste des objets des étages (pour afficher tous les objets d'un étage).
         floors.get(0).addObjectHome(lightFirstPlace);
@@ -253,7 +253,7 @@ public class Data implements DataService {
         lightFourthPlace.setGroup(new Dimension(ParamFirstFloor.FOURTH_LIGHT_X, ParamFirstFloor.FOURTH_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH),
                 new Dimension(ParamFirstFloor.FOURTH_LITTLE_LIGHT_X, ParamFirstFloor.FOURTH_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH),true);
         lightFifthPlace.setGroup(new Dimension(ParamFirstFloor.FIFTH_LIGHT_X, ParamFirstFloor.FIFTH_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH),
-                new Dimension(ParamFirstFloor.FIFTH_LITTLE_LIGHT_X, ParamFirstFloor.FIFTH_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH),false);
+                new Dimension(ParamFirstFloor.FIFTH_LITTLE_LIGHT_X, ParamFirstFloor.FIFTH_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH),true);
         lightSixthPlace.setGroup(new Dimension(ParamFirstFloor.SIXTH_LIGHT_X, ParamFirstFloor.SIXTH_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH),
                 new Dimension(ParamFirstFloor.SIXTH_LITTLE_LIGHT_X, ParamFirstFloor.SIXTH_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH),false);
 

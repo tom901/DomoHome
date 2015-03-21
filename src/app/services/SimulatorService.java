@@ -6,6 +6,7 @@ package app.services;
 public interface SimulatorService {
     public void init();
     public void start();
-    public void stop();
+    public void destroy();
     public void setCharacterMove(int direction);
+    public void pause();
 }
