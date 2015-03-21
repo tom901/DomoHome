@@ -55,6 +55,7 @@ public class HomeViewer extends Parent implements RequireReadService {
                 root.getChildren().add(room.getRoom());
             }
             for(ObjectHome objectHomeTmp : data.getObjectHomes(1)){
+                System.out.println("Type d'objet : " + objectHomeTmp.getClass());
                 root.getChildren().add(objectHomeTmp.getGroup());
             }
             //Boucle pour afficher les objets du premier étage, place automatiquement, il faut trouver comment prendre cette liste sulement si on veut affcher le premier étage sur la map
