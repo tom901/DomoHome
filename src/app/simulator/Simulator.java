@@ -95,7 +95,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                 moveUp();
                 break;
             case 3: // Move bottom
-                moveUp();
+                moveDown();
                 break;
             default:
                 moveRight();
@@ -118,7 +118,6 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
 
     private void moveUp() {
         if (data.getCharacterPosition().getY() > ParamDisplay.MAIN_FLOOR_DISPLAYED_Y) {
-            System.out.println("Je move up. Y : " + data.getCharacterPosition().getY() + " - YMap : " + ParamDisplay.MAIN_FLOOR_DISPLAYED_Y);
             data.setCharacterPosition(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() - 1);
         }
     }
@@ -138,4 +137,10 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
     public void setObjectsOn() {
         data.setObjectsOn();
     }
+
+    @Override
+    public void setObjectsOn(int roomID) {
+        data.setObjectsOn(roomID);
+    }
+
 }

@@ -15,4 +15,5 @@ public interface SimulatorService {
     public void pause();
     public boolean getDetect();
     public void setObjectsOn();
+    public void setObjectsOn(int RoomID);
 }

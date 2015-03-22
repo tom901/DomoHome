@@ -20,10 +20,10 @@ public class BrainHome implements BrainHomeService, RequireSimulatorService {
 
     @Override
     public void step() {
-
         if (simulator.getDetect()) {
             simulator.setObjectsOn();
         }
+        simulator.setObjectsOn(1);
     }
 
     @Override

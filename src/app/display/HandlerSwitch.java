@@ -24,6 +24,7 @@ import java.util.ArrayList;
 //Classe to handler the button switch
 public class HandlerSwitch extends Parent implements RequireReadService {
     private ReadService data;
+    private int firstFloorToDisplay;
 //    public boolean state;
 
     public HandlerSwitch() {
@@ -56,7 +57,7 @@ public class HandlerSwitch extends Parent implements RequireReadService {
         lblfirstFloor.setTranslateY(ParamDisplay.LEGEND_FIRST_FLOOR_LABEL_Y);
         displayLabelObjectsHome.add(lblfirstFloor);
 
-        for (ObjectHome oH : data.getObjectHomes(1)) {
+        for (ObjectHome oH : data.getObjectHomes(firstFloorToDisplay)) {
             Label lbllampe = new Label();
 
             if(oH instanceof Light){
@@ -109,5 +110,9 @@ public class HandlerSwitch extends Parent implements RequireReadService {
     @Override
     public void bindDataService(DataService service) {
         data = service;
+    }
+
+    public void setFirstFloorToDisplay(int firstFloorToDisplay) {
+        this.firstFloorToDisplay = firstFloorToDisplay;
     }
 }

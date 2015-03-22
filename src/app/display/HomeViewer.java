@@ -32,7 +32,7 @@ import java.util.ArrayList;
  */
 public class HomeViewer extends Parent implements RequireReadService {
     private ReadService data;
-    public int divider = 1;
+    public int divider = 1, firstFloorToDisplay;
     private double xShrink,yShrink,shrink,xModifier,yModifier,heroesScale;
 
     public ArrayList<Room> displayBigFloor;
@@ -50,12 +50,11 @@ public class HomeViewer extends Parent implements RequireReadService {
 
         Group root = new Group();
 
-
-        for (ArrayList<Room> rooms : data.getMainFloor(1)) {
+        for (ArrayList<Room> rooms : data.getMainFloor(firstFloorToDisplay)) {
             for (Room room : rooms) {
                 root.getChildren().add(room.getRoom());
             }
-            for(ObjectHome objectHomeTmp : data.getObjectHomes(1)){
+            for(ObjectHome objectHomeTmp : data.getObjectHomes(firstFloorToDisplay)){
                 root.getChildren().add(objectHomeTmp.getGroup());
             }
         }
@@ -92,6 +91,9 @@ public class HomeViewer extends Parent implements RequireReadService {
     public void getPanel() {
         shrink = Math.min(xShrink, yShrink);
 
+    }
+    public void setFirstFloorToDisplay(int firstFloorToDisplay) {
+        this.firstFloorToDisplay = firstFloorToDisplay;
     }
 
     public  Group changeBigMap(int numberFloor){

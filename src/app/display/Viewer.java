@@ -14,14 +14,18 @@ public class Viewer implements ViewerService, RequireDataService {
     Base basePlan;
     HandlerSwitch handlerSwitch;
     HomeViewer homeViewer;
-    int i;
+    int i, firstFloorToDisplay;
 
     public void init() {
         i = 0;
+        firstFloorToDisplay = 1;
         handlerSwitch = new HandlerSwitch();
         homeViewer = new HomeViewer();
         homeViewer.bindDataService(data);
         handlerSwitch.bindDataService(data);
+
+        homeViewer.setFirstFloorToDisplay(firstFloorToDisplay);
+        handlerSwitch.setFirstFloorToDisplay(firstFloorToDisplay);
 
 //        data.init();
     }

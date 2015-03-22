@@ -166,8 +166,8 @@ public class Data implements DataService {
      * @return ArrayList<Room>
      */
     private void initRoomsSecondFloor() {
-        floors.get(1).getSpecificRoom(0).setGroup(new Dimension(ParamSecondFloor.FIRST_ROOM_X, ParamFirstFloor.FIRST_ROOM_Y, ParamSecondFloor.FIRST_ROOM_WIDTH, ParamSecondFloor.FIRST_ROOM_HEIGHT),
-                new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_SECOND_LITTLE_MAP, ParamSecondFloor.FIRST_LITTLE_ROOM_WIDTH, ParamSecondFloor.FIRST_LITTLE_ROOM_HEIGHT), true);
+        floors.get(1).getSpecificRoom(0).setGroup(new Dimension(ParamSecondFloor.FIRST_ROOM_X, ParamSecondFloor.FIRST_ROOM_Y, ParamSecondFloor.FIRST_ROOM_WIDTH, ParamSecondFloor.FIRST_ROOM_HEIGHT),
+                new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_SECOND_LITTLE_MAP, ParamSecondFloor.FIRST_LITTLE_ROOM_WIDTH, ParamSecondFloor.FIRST_LITTLE_ROOM_HEIGHT), false);
 
         floors.get(1).getSpecificRoom(1).setGroup(new Dimension(ParamSecondFloor.SECOND_ROOM_X, ParamSecondFloor.SECOND_ROOM_Y, ParamSecondFloor.SECOND_ROOM_WIDTH, ParamSecondFloor.SECOND_ROOM_HEIGHT),
                 new Dimension(ParamSecondFloor.SECOND_LITTLE_ROOM_X, ParamSecondFloor.SECOND_LITTLE_ROOM_Y, ParamSecondFloor.SECOND_LITTLE_ROOM_WIDTH, ParamSecondFloor.SECOND_LITTLE_ROOM_HEIGHT), false);
@@ -441,4 +441,13 @@ public class Data implements DataService {
             room.turnOffObjects();
         }
     }
+
+    @Override
+    public void setObjectsOn(int roomID) {
+        System.out.println("Dans setObjectsOn ID " + floors.get(mainFloorNo).getRooms().size() + " - ID : " + roomID);
+        if (floors.get(mainFloorNo).getRooms().size() > roomID) {
+            floors.get(mainFloorNo).getSpecificRoom(roomID).turnOnObjects();
+        }
+    }
+
 }

@@ -10,4 +10,6 @@ public interface WriteService {
     public void setCharacterPosition(double x, double y);
     public void setObjectsOn();
     public void setObjectOff();
+    public void setObjectsOn(int roomID);
+
 }
