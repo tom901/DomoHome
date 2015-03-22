@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DomoHome.iml" filepath="$PROJECT_DIR$/DomoHome.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Simulator/src/Simulator.iml" filepath="$PROJECT_DIR$/../Simulator/src/Simulator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Simulator/Simulator1.iml" filepath="$PROJECT_DIR$/../Simulator/Simulator1.iml" />
     </modules>
   </component>
 </project>
