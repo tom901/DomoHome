@@ -137,7 +137,7 @@ public class ParamFirstFloor {
     public static final int FIFTH_RADIATOR_X = FOURTH_ROOM_X + FOURTH_ROOM_WIDTH/3  ;
     public static final int FIFTH_RADIATOR_Y = FOURTH_ROOM_Y;
 
-    public static final int SIXTH_RADIATOR_X = FIFTH_ROOM_X + FIFTH_ROOM_WIDTH/3  ;
+    public static final int SIXTH_RADIATOR_X = FIFTH_ROOM_X + FIFTH_ROOM_WIDTH/2  ;
     public static final int SIXTH_RADIATOR_Y = FIFTH_ROOM_Y;
 
     //Radiator Mini
@@ -156,7 +156,7 @@ public class ParamFirstFloor {
     public static final int FIFTH_LITTLE_RADIATOR_X = FOURTH_LITTLE_ROOM_X + FOURTH_LITTLE_ROOM_WIDTH / 3 ;
     public static final int FIFTH_LITTLE_RADIATOR_Y = FOURTH_LITTLE_ROOM_Y ;
 
-    public static final int SIXTH_LITTLE_RADIATOR_X = FIFTH_LITTLE_ROOM_X + FIFTH_LITTLE_ROOM_WIDTH / 3 ;
+    public static final int SIXTH_LITTLE_RADIATOR_X = FIFTH_LITTLE_ROOM_X + FIFTH_LITTLE_ROOM_WIDTH / 2 ;
     public static final int SIXTH_LITTLE_RADIATOR_Y = FIFTH_LITTLE_ROOM_Y ;
 
     public static final int SIXTH_LITTLE_LIGHT_X =(SECOND_LITTLE_ROOM_WIDTH / 2) + SECOND_LITTLE_ROOM_X + 10;

@@ -30,4 +30,26 @@ public class ParamThirdFloor {
 
     public static final int SECOND_LITTLE_LIGHT_X =((FIRST_LITTLE_ROOM_WIDTH / 3)*2) + ParamDisplay.X_MINI_MAP;
     public static final int SECOND_LITTLE_LIGHT_Y = (FIRST_LITTLE_ROOM_HEIGHT / 2) + ParamDisplay.Y_THIRD_LITTLE_MAP;
+
+
+    //Radiator BIG
+    public static final int FIRST_RADIATOR_X = FIRST_ROOM_X + FIRST_ROOM_WIDTH/4 ;
+    public static final int FIRST_RADIATOR_Y = FIRST_ROOM_Y;
+
+    public static final int SECOND_RADIATOR_X = FIRST_ROOM_X + FIRST_ROOM_WIDTH/4;
+    public static final int SECOND_RADIATOR_Y = FIRST_ROOM_Y+  FIRST_ROOM_HEIGHT - ParamHome.RADIATOR_LANDSCAPE_HEIGHT;
+
+    public static final int THIRD_RADIATOR_X = FIRST_ROOM_X + ((FIRST_ROOM_WIDTH/4)*3);
+    public static final int THIRD_RADIATOR_Y = FIRST_ROOM_Y+  FIRST_ROOM_HEIGHT - ParamHome.RADIATOR_LANDSCAPE_HEIGHT;
+
+
+    //Radiator Mini
+    public static final int FIRST_LITTLE_RADIATOR_X = FIRST_LITTLE_ROOM_X + FIRST_LITTLE_ROOM_WIDTH/4;
+    public static final int FIRST_LITTLE_RADIATOR_Y = ParamDisplay.Y_THIRD_LITTLE_MAP;
+
+    public static final int SECOND_LITTLE_RADIATOR_X = FIRST_LITTLE_ROOM_X +FIRST_LITTLE_ROOM_WIDTH /4;
+    public static final int SECOND_LITTLE_RADIATOR_Y = FIRST_LITTLE_RADIATOR_Y+ FIRST_LITTLE_ROOM_HEIGHT - ParamHome.RADIATOR_MINI_LANDSCAPE_HEIGHT;
+
+    public static final int THIRD_LITTLE_RADIATOR_X =FIRST_LITTLE_ROOM_X + ((FIRST_LITTLE_ROOM_WIDTH/4)*3);
+    public static final int THIRD_LITTLE_RADIATOR_Y =FIRST_LITTLE_RADIATOR_Y+  FIRST_LITTLE_ROOM_HEIGHT - ParamHome.RADIATOR_MINI_LANDSCAPE_HEIGHT;
 }
