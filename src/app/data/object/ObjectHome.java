@@ -6,15 +6,11 @@ import javafx.scene.shape.Shape;
 /**
  * Created by Thomas on 04/03/15.
  */
-public class ObjectHome {
+public abstract class ObjectHome {
 
     protected boolean state;
     protected Group group;
     protected Group groupMini;
-
-    public Group getGroup() {
-        return group;
-    }
 
     public void setGroup(Group group) {
         this.group = group;
@@ -34,6 +30,9 @@ public class ObjectHome {
         this.state = state;
     }
 
+//    public abstract void setGroup();
+
+    public abstract Group getGroup();
 
     public Group getGroupMini() {
         return groupMini;

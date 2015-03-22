@@ -20,7 +20,19 @@ public class Radiator extends ObjectHome {
     public Radiator() {
     }
 
-    public void setGroupe(Dimension dimension, Dimension dimensionMini, boolean stateRadiator, int orientation) {
+    @Override
+    public Group getGroup() {
+        if (this.state) {
+            radiator.setFill(Color.RED);
+            radiatorMini.setFill(Color.RED);
+        } else {
+            radiator.setFill(Color.WHITE);
+            radiatorMini.setFill(Color.WHITE);
+        }
+        return this.group;
+    }
+
+    public void setGroup(Dimension dimension, Dimension dimensionMini, boolean stateRadiator, int orientation) {
         super.state = stateRadiator;
         this.dimRadiator = dimension;
         this.dimRadiatorMini = dimensionMini;
@@ -32,15 +44,15 @@ public class Radiator extends ObjectHome {
             this.radiatorMini = new Rectangle(dimensionMini.getX(), dimensionMini.getY(), ParamHome.RADIATOR_MINI_PORTRAIT_WIDTH, ParamHome.RADIATOR_MINI_PORTRAIT_HEIGHT);
         }
         if (!stateRadiator) {
-            radiator.setFill(Color.RED);
-            radiator.setStroke(Color.RED);
-            radiatorMini.setFill(Color.RED);
-            radiatorMini.setStroke(Color.RED);
-
-        } else {
             radiator.setFill(Color.WHITE);
             radiator.setStroke(Color.RED);
             radiatorMini.setFill(Color.WHITE);
+            radiatorMini.setStroke(Color.RED);
+
+        } else {
+            radiator.setFill(Color.RED);
+            radiator.setStroke(Color.RED);
+            radiatorMini.setFill(Color.RED);
             radiatorMini.setStroke(Color.RED);
         }
         super.group.getChildren().add(radiator);

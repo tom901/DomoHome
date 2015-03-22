@@ -1,5 +1,7 @@
 package app.data.object;
 
+import javafx.scene.Group;
+
 /**
  * Created by Thomas on 04/03/15.
  */
@@ -7,4 +9,12 @@ package app.data.object;
 public class RollerShutter extends ObjectHome {
 
 
+    public void setGroup() {
+
+    }
+
+    @Override
+    public Group getGroup() {
+        return null;
+    }
 }

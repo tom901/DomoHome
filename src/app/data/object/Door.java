@@ -3,6 +3,7 @@ package app.data.object;
 import app.data.Dimension;
 import app.data.home.Floor;
 import app.data.home.Room;
+import javafx.scene.Group;
 import javafx.scene.paint.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -27,5 +28,10 @@ public class Door extends ObjectHome {
 
     public Rectangle getDoor() {
         return door;
+    }
+
+    @Override
+    public Group getGroup() {
+        return this.group;
     }
 }

@@ -45,17 +45,28 @@ public class Light extends ObjectHome {
             this.lightMini = new Circle(dimensionMini.getX(),dimensionMini.getY(),dimensionMini.getRadius());
         if (!stateLight) {
             light.setStroke(Color.YELLOW);
-            light.setFill(Color.YELLOW);
-            lightMini.setStroke(Color.YELLOW);
-            lightMini.setFill(Color.YELLOW);
-        } else {
-            light.setStroke(Color.YELLOW);
             light.setFill(Color.WHITE);
             lightMini.setStroke(Color.YELLOW);
             lightMini.setFill(Color.WHITE);
+        } else {
+            light.setStroke(Color.YELLOW);
+            light.setFill(Color.YELLOW);
+            lightMini.setStroke(Color.YELLOW);
+            lightMini.setFill(Color.YELLOW);
         }
         super.group.getChildren().add(light);
         super.groupMini.getChildren().add(lightMini);
+    }
+
+    public Group getGroup() {
+        if (this.state) {
+            light.setFill(Color.YELLOW);
+            lightMini.setFill(Color.YELLOW);
+        } else {
+            light.setFill(Color.WHITE);
+            lightMini.setFill(Color.WHITE);
+        }
+        return group;
     }
 
     public Group getLightGroup() {

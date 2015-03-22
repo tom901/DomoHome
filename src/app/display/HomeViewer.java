@@ -50,6 +50,7 @@ public class HomeViewer extends Parent implements RequireReadService {
 
         Group root = new Group();
 
+
         for (ArrayList<Room> rooms : data.getMainFloor(1)) {
             for (Room room : rooms) {
                 root.getChildren().add(room.getRoom());

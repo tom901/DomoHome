@@ -51,9 +51,9 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                         i++;
 //                      moveCharacter();
                         brainCharacterService.step();
+                        data.setObjectOff();
                         brainHomeService.step();
                         checkCollision();
-                        //System.out.println("Character X : " + data.getCharacterPosition().getX() + " - Character Y : " + data.getCharacterPosition().getY());
                     }
                 },
                 0, 10);
@@ -82,7 +82,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
     }
 
     private void checkCollision() {
-
+//        System.out.println("Direction vaut : " + direction);
         switch (direction) {
             case 0: // Move left
 //                moveLeft();
@@ -95,7 +95,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                 moveUp();
                 break;
             case 3: // Move bottom
-                moveDown();
+                moveUp();
                 break;
             default:
                 moveRight();
@@ -105,27 +105,28 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
     }
 
     private void moveLeft() {
-        if (data.getCharacterPosition().getX() > ParamDisplay.MAIN_FLOOR_DISPLAYED_X)
+        if (data.getCharacterPosition().getX() > ParamDisplay.MAIN_FLOOR_DISPLAYED_X) {
             data.setCharacterPosition(data.getCharacterPosition().getX() - 1, data.getCharacterPosition().getY());
-
+        }
     }
 
     private void moveRight() {
-        if (data.getCharacterPosition().getX() + ParamDisplay.CHARACTER_WIDTH < ParamDisplay.MAIN_FLOOR_DISPLAYED_X + ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH)
-            data.setCharacterPosition((data.getCharacterPosition().getX()+ 1), data.getCharacterPosition().getY());
-
+        if (data.getCharacterPosition().getX() + ParamDisplay.CHARACTER_WIDTH < ParamDisplay.MAIN_FLOOR_DISPLAYED_X + ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH) {
+            data.setCharacterPosition((data.getCharacterPosition().getX() + 1), data.getCharacterPosition().getY());
+        }
     }
 
     private void moveUp() {
-        if (data.getCharacterPosition().getY() < ParamDisplay.MAIN_FLOOR_DISPLAYED_Y)
+        if (data.getCharacterPosition().getY() > ParamDisplay.MAIN_FLOOR_DISPLAYED_Y) {
+            System.out.println("Je move up. Y : " + data.getCharacterPosition().getY() + " - YMap : " + ParamDisplay.MAIN_FLOOR_DISPLAYED_Y);
             data.setCharacterPosition(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() - 1);
-
+        }
     }
 
     private void moveDown() {
-        if (data.getCharacterPosition().getY() + ParamDisplay.CHARACTER_HEIGHT < ParamDisplay.MAIN_FLOOR_DISPLAYED_Y + ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
+        if (data.getCharacterPosition().getY() + ParamDisplay.CHARACTER_HEIGHT < ParamDisplay.MAIN_FLOOR_DISPLAYED_Y + ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT) {
             data.setCharacterPosition(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() + 1);
-
+        }
     }
 
     public boolean getDetect() {
@@ -135,6 +136,6 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
 
     @Override
     public void setObjectsOn() {
-
+        data.setObjectsOn();
     }
 }
