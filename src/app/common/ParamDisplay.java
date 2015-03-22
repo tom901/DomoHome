@@ -28,13 +28,13 @@ public class ParamDisplay {
     public static final int INDICATORS_BLOCK_X = 5;
     public static final int INDICATORS_BLOCK_Y = 406;
     public static final int INDICATORS_BLOCK_WIDTH = 590;
-    public static final int INDICATORS_BLOCK_HEIGHT = 180;
+    public static final int INDICATORS_BLOCK_HEIGHT = 200;
 
     //Constants for the fourth block display on the application
     public static final int LEGEND_BLOCK_X = 600;
     public static final int LEGEND_BLOCK_Y = 406;
     public static final int LEGEND_BLOCK_WIDTH = 190;
-    public static final int LEGEND_BLOCK_HEIGHT = 180;
+    public static final int LEGEND_BLOCK_HEIGHT = 200;
 
     //Constante for the mini map of floors
     public static final int X_MINI_MAP = SECONDARY_FLOORS_BLOCK_X + 15;

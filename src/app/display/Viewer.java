@@ -18,7 +18,7 @@ public class Viewer implements ViewerService, RequireDataService {
 
     public void init() {
         i = 0;
-        firstFloorToDisplay = 3;
+        firstFloorToDisplay = 2;
         handlerSwitch = new HandlerSwitch();
         homeViewer = new HomeViewer();
         homeViewer.bindDataService(data);
@@ -37,7 +37,7 @@ public class Viewer implements ViewerService, RequireDataService {
 
         root.getChildren().add(basePlan);
         root.getChildren().add(homeViewer.init());
-        root.getChildren().add(handlerSwitch.getBtnSwitchFirstFloor());
+        root.getChildren().add(handlerSwitch.getBtnSwitchObjectFloor());
 
         return root;
     }

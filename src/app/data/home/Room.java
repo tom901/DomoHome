@@ -87,6 +87,43 @@ public class Room {
 
         groupMini.getChildren().add(rectangleMini);
     }
+    public void setGroupGarden(Dimension p, Dimension p_mini, boolean firstRoom){
+        // Construct Main Recrangle
+        this.position = p;
+
+        rectangle.setWidth(p.getWidth());
+        rectangle.setHeight(p.getHeight());
+        rectangle.setFill(Color.GREEN);
+        if (firstRoom) {
+            rectangle.setX(p.getX());
+            rectangle.setY(p.getY());
+        } else {
+            rectangle.setX((floor.getDimension().getX() - floor.getDimension().getX()) + p.getX() );
+            rectangle.setY((floor.getDimension().getY() - floor.getDimension().getY()) + p.getY() );
+        }
+        rectangle.setStroke(Color.BLACK);
+        rectangle.setStrokeWidth(1);
+
+        group.getChildren().add(rectangle);
+
+        // Construct mini rectangle
+        this.positionMini = p_mini;
+
+        rectangleMini.setWidth(p_mini.getWidth());
+        rectangleMini.setHeight(p_mini.getHeight());
+        rectangleMini.setFill(Color.GREEN);
+        if (firstRoom) {
+            rectangleMini.setX(p_mini.getX());
+            rectangleMini.setY(p_mini.getY());
+        } else {
+            rectangleMini.setX((floor.getDimension().getX() - floor.getDimension().getX()) + p_mini.getX());
+            rectangleMini.setY((floor.getDimension().getY() - floor.getDimension().getY()) + p_mini.getY());
+        }
+        rectangleMini.setStroke(Color.BLACK);
+        rectangleMini.setStrokeWidth(1);
+
+        groupMini.getChildren().add(rectangleMini);
+    }
 
     /**
      * Method to return the group (therefore rectangle) for the room.

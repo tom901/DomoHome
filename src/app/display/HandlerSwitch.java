@@ -2,6 +2,7 @@ package app.display;
 
 import app.common.ParamDisplay;
 import app.data.Data;
+import app.data.object.Door;
 import app.data.object.Light;
 import app.data.object.ObjectHome;
 import app.data.object.Radiator;
@@ -25,26 +26,14 @@ import java.util.ArrayList;
 public class HandlerSwitch extends Parent implements RequireReadService {
     private ReadService data;
     private int firstFloorToDisplay;
-//    public boolean state;
 
     public HandlerSwitch() {
-//        data = new Data();
-
-
-        /*Image imgLight1 = new Image("file:images/switch_on.png");
-        ImageView imgViewLight1 = new ImageView(imgLight1);
-        imgViewLight1.setTranslateX(ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_X);
-        imgViewLight1.setTranslateY(ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_Y);*/
-
-//        Label lblLight1FirstFloor = new Label("Lampe 1", imgViewLight1);
-//        this.getChildren().add(imgViewLight1);
-//        this.getChildren().add(lblLight1FirstFloor);
     }
 
-    public Group getBtnSwitchFirstFloor() {
+    public Group getBtnSwitchObjectFloor() {
         int count = 1;
-        int xDisplayFirstFloor =ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_X;
-        int yDisplayFirstFloor =ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_Y;
+        int xDisplayFirstFloor = ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_X;
+        int yDisplayFirstFloor = ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_Y;
 //        data = new Data();
         ArrayList<Label> displayLabelObjectsHome = new ArrayList<Label>();
         ArrayList<ImageView> displayObjectsHome = new ArrayList<ImageView>();
@@ -57,50 +46,81 @@ public class HandlerSwitch extends Parent implements RequireReadService {
         lblfirstFloor.setTranslateY(ParamDisplay.LEGEND_FIRST_FLOOR_LABEL_Y);
         displayLabelObjectsHome.add(lblfirstFloor);
 
-        for (ObjectHome oH : data.getObjectHomes(firstFloorToDisplay)) {
-            Label lbllampe = new Label();
+        ArrayList<ObjectHome> tmpListObjectsHome = new ArrayList<ObjectHome>();
 
-            if(oH instanceof Light){
-                lbllampe.setText("Lampe "+count);
-            }else if (oH instanceof Radiator) {
-                lbllampe.setText("Radiateur " + count);
+        for (int i = 1; i <= 3; i++) {
+            for (ObjectHome oH : data.getObjectHomes(i)) {
+                if (oH instanceof Door) {
+
+                } else {
+                    tmpListObjectsHome.add(oH);
+                }
+                System.out.println(tmpListObjectsHome.size());
             }
-            lbllampe.setTranslateX(xDisplayFirstFloor + 70);
-            lbllampe.setTranslateY(yDisplayFirstFloor);
-            displayLabelObjectsHome.add(lbllampe);
+        }
+
+        int numberObject = 1;
+        for (ObjectHome oH : tmpListObjectsHome) {
+            Label labelButton = new Label();
+
+            if (oH instanceof Light) {
+                labelButton.setText("Lampe " + numberObject);
+            } else if (oH instanceof Radiator) {
+                labelButton.setText("Radiateur " + numberObject);
+            } else if (oH instanceof Door) {
+                labelButton.setText("Porte " + numberObject);
+            }
+            labelButton.setTranslateX(xDisplayFirstFloor + 70);
+            labelButton.setTranslateY(yDisplayFirstFloor);
+            displayLabelObjectsHome.add(labelButton);
             ImageView imgViewLight1;
-            if (oH.isState()){
-                 imgViewLight1 = new ImageView(new Image("file:images/switch_on.png"));
-            }
-            else{
-                 imgViewLight1 = new ImageView(new Image("file:images/switch_off.png"));
+            if (oH.isState()) {
+                imgViewLight1 = new ImageView(new Image("file:images/switch_on.png"));
+            } else {
+                imgViewLight1 = new ImageView(new Image("file:images/switch_off.png"));
             }
             imgViewLight1.setTranslateX(xDisplayFirstFloor);
             imgViewLight1.setTranslateY(yDisplayFirstFloor);
             displayObjectsHome.add(imgViewLight1);
 
-            yDisplayFirstFloor = yDisplayFirstFloor+20;
+            yDisplayFirstFloor = yDisplayFirstFloor + 20;
 
-            if (count == 6){
-                xDisplayFirstFloor = xDisplayFirstFloor + 250;
-                yDisplayFirstFloor =ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_Y;
+            if (count == 6) {
+                xDisplayFirstFloor = xDisplayFirstFloor + 130;
+                yDisplayFirstFloor = ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_Y;
+                numberObject = 0;
+
+            } else if (count == 12) {
+                numberObject = 0;
+
+                xDisplayFirstFloor = xDisplayFirstFloor + 150;
+                yDisplayFirstFloor = ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_Y;
 
                 Label lblSecondFloor = new Label("Etage 1");
                 lblSecondFloor.setFont(Font.font("Verdana", FontWeight.BOLD, 10));
                 lblSecondFloor.setTranslateX(xDisplayFirstFloor);
                 lblSecondFloor.setTranslateY(ParamDisplay.LEGEND_FIRST_FLOOR_LABEL_Y);
                 displayLabelObjectsHome.add(lblSecondFloor);
-            }else if (count == 10){
+
+
+            } else if (count == 16) {
+                numberObject = 0;
+            } else if (count == 20) {
+                numberObject = 0;
+
                 xDisplayFirstFloor = xDisplayFirstFloor + 150;
-                yDisplayFirstFloor =ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_Y;
+                yDisplayFirstFloor = ParamDisplay.LEGEND_FIRST_FLOOR_LIGHT_1_Y;
 
                 Label lblThirdFloor = new Label("Etage 2");
                 lblThirdFloor.setFont(Font.font("Verdana", FontWeight.BOLD, 10));
                 lblThirdFloor.setTranslateX(xDisplayFirstFloor);
                 lblThirdFloor.setTranslateY(ParamDisplay.LEGEND_FIRST_FLOOR_LABEL_Y);
                 displayLabelObjectsHome.add(lblThirdFloor);
+            } else if (count == 22) {
+                numberObject = 0;
             }
             count++;
+            numberObject++;
         }
         root.getChildren().addAll(displayLabelObjectsHome);
         root.getChildren().addAll(displayObjectsHome);
