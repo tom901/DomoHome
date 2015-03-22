@@ -1,6 +1,7 @@
 package app;
 
 import app.algorithm.BrainCharacter;
+import app.algorithm.BrainHome;
 import app.data.Data;
 import app.display.Viewer;
 import app.services.*;
@@ -22,21 +23,25 @@ public class Main extends Application {
     private static SimulatorService simulator;
     private static DataService data;
     private static ViewerService viewer;
-    private static BrainService brainCharacter;
+    private static BrainCharacterService brainCharacter;
+    private static BrainHomeService brainHome;
     private static AnimationTimer timerMain;
     private static boolean onPause;
 
     public static void main(String[] args) {
-        onPause = false;
+        onPause = true;
         data = new Data();
         simulator = new Simulator();
         viewer = new Viewer();
         brainCharacter = new BrainCharacter();
+        brainHome = new BrainHome();
 
         ((Simulator)simulator).bindDataService(data);
-        ((Simulator)simulator).bindBrainService(brainCharacter);
+        ((Simulator)simulator).bindBrainCharacterService(brainCharacter);
+        ((Simulator)simulator).bindBrainHomeService(brainHome);
         ((Viewer)viewer).bindDataService(data);
         ((BrainCharacter)brainCharacter).bindSimulatorService(simulator);
+        ((BrainHome)brainHome).bindSimulatorService(simulator);
 
         data.init();
         simulator.init();
@@ -53,12 +58,12 @@ public class Main extends Application {
         final Scene scene = new Scene(((Viewer)viewer).getPanel(), Color.web("#ECE9D8"));
         //new Scene(root, 800, 600, Color.web("#ECE9D8"));
 
-        primaryStage.setOnShown(new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                simulator.start();
-            }
-        });
+//        primaryStage.setOnShown(new EventHandler<WindowEvent>() {
+//            @Override
+//            public void handle(WindowEvent event) {
+//                simulator.start();
+//            }
+//        });
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
@@ -75,11 +80,11 @@ public class Main extends Application {
                 scene.setRoot(((Viewer)viewer).getPanel());
             }
         };
-        timerMain.start();
+//        timerMain.start();
+        // Gestion de la pause et de la reprise
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                System.out.println("Touche pressée " + event.getCode().toString() + " voila");
                 if (onPause) {
                     if (event.getCode().equals(KeyCode.SPACE)){
                         timerMain.start();

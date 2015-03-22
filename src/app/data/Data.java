@@ -20,6 +20,7 @@ public class Data implements DataService {
     ArrayList<Room> rooms;
     ArrayList<ObjectHome> objectHomes;
     Character character;
+    int mainFloorNo;
 
     //    ArrayList<Room> rooms;
 //    ArrayList<ObjectHome> objects;
@@ -28,11 +29,12 @@ public class Data implements DataService {
      * Method to init the main content of the simulator
      */
     public void init() {
+        mainFloorNo = -1;
         floors = new ArrayList<Floor>();
         miniFloors = new ArrayList<Floor>();
         rooms = new ArrayList<Room>();
         objectHomes = new ArrayList<ObjectHome>();
-        character = new Character(new Dimension(10,200));
+        character = new Character(new Dimension(10,200,ParamDisplay.CHARACTER_WIDTH,ParamDisplay.CHARACTER_HEIGHT));
 
 //        rooms = new ArrayList<Room>();
 //        objects = new ArrayList<ObjectHome>();
@@ -117,17 +119,9 @@ public class Data implements DataService {
                 } else {
                     switch (i) {
                         case 0:
-                            enumRoom = RoomsEnum.ROOM.SALLE_JEU_2;
+                            enumRoom = RoomsEnum.ROOM.GRENIER_3;
                             break;
-                        case 1:
-                            enumRoom = RoomsEnum.ROOM.COULOIR_2;
-                            break;
-                        case 2:
-                            enumRoom = RoomsEnum.ROOM.CHAMBRE_2;
-                            break;
-                        case 3:
-                            enumRoom = RoomsEnum.ROOM.SDB_2;
-                            break;
+
                     }
                 }
             }
@@ -386,12 +380,15 @@ public class Data implements DataService {
         switch (floorNo) {
             case 1:
                 rooms = floors.get(0).getRooms();
+                mainFloorNo = 0;
                 break;
             case 2:
                 rooms = floors.get(1).getRooms();
+                mainFloorNo = 1;
                 break;
             case 3:
                 rooms = floors.get(2).getRooms();
+                mainFloorNo = 2;
                 break;
         }
         ArrayList<ArrayList<Room>> roomsArray = new ArrayList<ArrayList<Room>>();
@@ -400,12 +397,40 @@ public class Data implements DataService {
     }
 
     @Override
-    public void setCharacterPosition(Dimension position) {
-        character.setPosition(position);
+    public void setCharacterPosition(double x, double y) {
+        character.getPosition().setX(x);
+        character.getPosition().setY(y);
     }
 
     public ArrayList<Room> getRooms() {
         return this.rooms;
     }
 
+    @Override
+    public ArrayList<Room> getPresence() {
+        ArrayList<Room> roomsNotEmpty = new ArrayList<Room>();
+        if (mainFloorNo > -1) {
+            for (Room room : floors.get(mainFloorNo).getRooms()) {
+                if (
+                    (
+                        (character.getPosition().getX() > room.getPosition().getX() && character.getPosition().getX() < room.getPosition().getX() + room.getPosition().getWidth()) ||
+                        (character.getPosition().getX() + character.getPosition().getWidth() > room.getPosition().getX() && character.getPosition().getX() + character.getPosition().getWidth() < room.getPosition().getX() + room.getPosition().getWidth())
+                    ) &&
+                    (
+                        (character.getPosition().getY() > room.getPosition().getY() && character.getPosition().getY() < room.getPosition().getY() + room.getPosition().getHeight()) ||
+                        (character.getPosition().getY() + character.getPosition().getHeight() > room.getPosition().getY() && character.getPosition().getY() + character.getPosition().getHeight() < room.getPosition().getY() + room.getPosition().getHeight())
+                    )
+                )
+                {
+                    roomsNotEmpty.add(room);
+                }
+            }
+        }
+        return roomsNotEmpty;
+    }
+
+    @Override
+    public void setObjectsOn() {
+
+    }
 }

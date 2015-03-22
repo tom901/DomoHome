@@ -57,36 +57,16 @@ public class HomeViewer extends Parent implements RequireReadService {
             for(ObjectHome objectHomeTmp : data.getObjectHomes(1)){
                 root.getChildren().add(objectHomeTmp.getGroup());
             }
-            //Boucle pour afficher les objets du premier étage, place automatiquement, il faut trouver comment prendre cette liste sulement si on veut affcher le premier étage sur la map
-           /* for(ObjectHome objectHomeTmp : data.getObjectHomes(1)){
-                root.getChildren().add(objectHomeTmp.group);
-            }*/
         }
 
 
         //loop to make placement of mini floors
-        int i = 0;
-//        for(Floor floor: data.getFloors()){
-            for (Room room : data.getRooms()){
-                i++;
-                root.getChildren().add(room.getRoomMini());
-                for(ObjectHome oh : room.getObjectHomes()) {
-                    root.getChildren().add(oh.getGroupMini());
-                }
-//        for(int i = 1 ; i <= 3; i++){
-//            for (ArrayList<Room> rooms : data.getSecondaryFloors(i)){
-//                for(Room room : rooms) {
-//                    root.getChildren().add(room.getRoom());
-//                }
-//                for(ObjectHome objectHomeTmp : data.getObjectHomes(i)){
-//                    root.getChildren().add(objectHomeTmp.groupMini);
-//                }
-//            }
+        for (Room room : data.getRooms()) {
+            root.getChildren().add(room.getRoomMini());
+            for (ObjectHome oh : room.getObjectHomes()) {
+                root.getChildren().add(oh.getGroupMini());
+            }
         }
-        //Il faudra vérifier que si on change l'état d'une lampe sur la grande map, il faudra aussi modifier la liste avec les minimaps pour mettre a jour l'object concerné
-        /*for(ObjectHome objectHomeTmp : data.getObjectHomes(1)){
-            root.getChildren().add(objectHomeTmp.groupMini);
-        }*/
 
         Rectangle rectCharacter = new Rectangle(ParamDisplay.CHARACTER_WIDTH,ParamDisplay.CHARACTER_HEIGHT);
         rectCharacter.setFill(Color.BLACK);

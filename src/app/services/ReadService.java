@@ -17,4 +17,5 @@ public interface ReadService {
     public Dimension getCharacterPosition();
     public ArrayList<Floor> getFloors();
     public ArrayList<ObjectHome> getObjectHomes(int floorNo);
+    public ArrayList<Room> getPresence();
 }

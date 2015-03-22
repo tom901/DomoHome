@@ -1,21 +1,19 @@
 package app.simulator;
 
 import app.common.ParamDisplay;
-import app.data.Data;
-import app.data.Dimension;
 import app.services.*;
 
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.Random;
 
 /**
  * Created by Thomas on 04/03/15.
  */
-public class Simulator implements SimulatorService, RequireDataService, RequireBrainService {
+public class Simulator implements SimulatorService, RequireDataService, RequireBrainCharacterService, RequireBrainHomeService {
     private Timer simuTimer;
     private DataService data;
-    private BrainService brainService;
+    private BrainCharacterService brainCharacterService;
+    private BrainHomeService brainHomeService;
     private int i = 0;
     private int direction;
 
@@ -26,13 +24,18 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         simuTimer = new Timer();
         direction = -1;
 
-        data.setCharacterPosition(new Dimension(10, 200));
+        data.setCharacterPosition(10, 200);
 
     }
 
     @Override
-    public void bindBrainService(BrainService service) {
-        brainService = service;
+    public void bindBrainCharacterService(BrainCharacterService service) {
+        brainCharacterService = service;
+    }
+
+    @Override
+    public void bindBrainHomeService(BrainHomeService service) {
+        brainHomeService = service;
     }
 
     /**
@@ -47,7 +50,8 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                         // do this
                         i++;
 //                      moveCharacter();
-                        brainService.step();
+                        brainCharacterService.step();
+                        brainHomeService.step();
                         checkCollision();
                         //System.out.println("Character X : " + data.getCharacterPosition().getX() + " - Character Y : " + data.getCharacterPosition().getY());
                     }
@@ -102,27 +106,35 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
 
     private void moveLeft() {
         if (data.getCharacterPosition().getX() > ParamDisplay.MAIN_FLOOR_DISPLAYED_X)
-            data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX() - 1, data.getCharacterPosition().getY()));
+            data.setCharacterPosition(data.getCharacterPosition().getX() - 1, data.getCharacterPosition().getY());
 
     }
 
     private void moveRight() {
         if (data.getCharacterPosition().getX() + ParamDisplay.CHARACTER_WIDTH < ParamDisplay.MAIN_FLOOR_DISPLAYED_X + ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH)
-            data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX() + 1, data.getCharacterPosition().getY()));
+            data.setCharacterPosition((data.getCharacterPosition().getX()+ 1), data.getCharacterPosition().getY());
 
     }
 
     private void moveUp() {
         if (data.getCharacterPosition().getY() < ParamDisplay.MAIN_FLOOR_DISPLAYED_Y)
-            data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() - 1));
+            data.setCharacterPosition(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() - 1);
 
     }
 
     private void moveDown() {
         if (data.getCharacterPosition().getY() + ParamDisplay.CHARACTER_HEIGHT < ParamDisplay.MAIN_FLOOR_DISPLAYED_Y + ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT)
-            data.setCharacterPosition(new Dimension(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() + 1));
+            data.setCharacterPosition(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() + 1);
 
     }
 
+    public boolean getDetect() {
+        return (!data.getPresence().isEmpty());
+    }
 
+
+    @Override
+    public void setObjectsOn() {
+
+    }
 }

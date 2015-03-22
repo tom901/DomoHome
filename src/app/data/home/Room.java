@@ -128,7 +128,27 @@ public class Room {
         return position;
     }
 
+    public RoomsEnum.ROOM getRoomName() {
+        return roomName;
+    }
+
     public Dimension getPositionMini() {
         return positionMini;
+    }
+
+    public void turnOnObjects() {
+        for(ObjectHome oh : objectHomes) {
+            if (!oh.isState()) {
+                oh.setState(true);
+            }
+        }
+    }
+
+    public void turnOffObjects() {
+        for(ObjectHome oh : objectHomes) {
+            if (oh.isState()) {
+                oh.setState(false);
+            }
+        }
     }
 }

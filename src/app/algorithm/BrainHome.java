@@ -1,13 +1,16 @@
 package app.algorithm;
 
-import app.services.BrainService;
+import app.data.home.Room;
+import app.services.BrainHomeService;
 import app.services.RequireSimulatorService;
 import app.services.SimulatorService;
+
+import java.util.ArrayList;
 
 /**
  * Created by Nicolas on 21/03/2015.
  */
-public class BrainHome implements BrainService, RequireSimulatorService {
+public class BrainHome implements BrainHomeService, RequireSimulatorService {
     private SimulatorService simulator;
 
     @Override
@@ -17,7 +20,10 @@ public class BrainHome implements BrainService, RequireSimulatorService {
 
     @Override
     public void step() {
-//        if (simulator.getDetect())
+
+        if (simulator.getDetect()) {
+            simulator.setObjectsOn();
+        }
     }
 
     @Override

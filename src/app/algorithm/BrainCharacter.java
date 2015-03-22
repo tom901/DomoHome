@@ -1,7 +1,7 @@
 package app.algorithm;
 
 import app.data.Dimension;
-import app.services.BrainService;
+import app.services.BrainCharacterService;
 import app.services.RequireSimulatorService;
 import app.services.SimulatorService;
 import app.simulator.Simulator;
@@ -11,7 +11,7 @@ import java.util.Random;
 /**
  * Created by Nicolas on 17/03/2015.
  */
-public class BrainCharacter implements BrainService, RequireSimulatorService {
+public class BrainCharacter implements BrainCharacterService, RequireSimulatorService {
 
     private SimulatorService simulator;
     private Random randomMove;

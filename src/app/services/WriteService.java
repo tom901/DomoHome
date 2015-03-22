@@ -7,5 +7,6 @@ import app.data.Dimension;
  */
 public interface WriteService {
 
-    public void setCharacterPosition(Dimension position);
+    public void setCharacterPosition(double x, double y);
+    public void setObjectsOn();
 }
