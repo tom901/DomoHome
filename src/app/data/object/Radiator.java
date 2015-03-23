@@ -32,6 +32,16 @@ public class Radiator extends ObjectHome {
         return this.group;
     }
 
+    @Override
+    public Group getGroupMini() {
+        if (this.state) {
+            radiatorMini.setFill(Color.RED);
+        } else {
+            radiatorMini.setFill(Color.WHITE);
+        }
+        return this.groupMini;
+    }
+
     public void setGroup(Dimension dimension, Dimension dimensionMini, boolean stateRadiator, int orientation) {
         super.state = stateRadiator;
         this.dimRadiator = dimension;

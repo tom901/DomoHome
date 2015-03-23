@@ -41,12 +41,12 @@ public class HomeViewer extends Parent implements RequireReadService {
     public HomeViewer() {
 //        roomsInBig = new ArrayList<ArrayList<Room>>();
 //        data = new Data();
-//        data.init();
+//        data.getPanel();
     }
 
 
 
-    public Group init() {
+    public Group getPanel() {
         xShrink =1;
         yShrink =1;
         xModifier=0;
@@ -55,20 +55,21 @@ public class HomeViewer extends Parent implements RequireReadService {
         Group root = new Group();
 //        roomsInBig.clear();
 //        roomsInBig = data.getMainFloor(firstFloorToDisplay);
-        for (ArrayList<Room> rooms : data.getMainFloor(firstFloorToDisplay)) {
-            for (Room room : rooms) {
+//        for (ArrayList<Room> rooms : data.getMainFloor(firstFloorToDisplay)) {
+            for (Room room : data.getMainFloor(firstFloorToDisplay)) {
                 root.getChildren().add(room.getRoom());
             }
             for(ObjectHome objectHomeTmp : data.getObjectHomes(firstFloorToDisplay)){
                 root.getChildren().add(objectHomeTmp.getGroup());
             }
-        }
+//        }
 
 
         //loop to make placement of mini floors
         for (Room room : data.getRooms()) {
             root.getChildren().add(room.getRoomMini());
             for (ObjectHome oh : room.getObjectHomes()) {
+                System.out.println("L'objet est : " + oh.isState() + " pour la pièce : " + room.getRoomName());
                 root.getChildren().add(oh.getGroupMini());
             }
         }
@@ -89,32 +90,15 @@ public class HomeViewer extends Parent implements RequireReadService {
 
         root.getChildren().add(rectCharacter);
         root.getChildren().add(head);
-//        root.getChildren().add(changeMap());
         return root;
     }
 
-    public void getPanel() {
-        shrink = Math.min(xShrink, yShrink);
-
-    }
     public void setFirstFloorToDisplay(int firstFloorToDisplay) {
         this.firstFloorToDisplay = firstFloorToDisplay;
-    }
-
-    public  Group changeBigMap(int numberFloor){
-        Group root = new Group();
-
-        for (ArrayList<Room> rooms : data.getMainFloor(numberFloor)) {
-            for (Room room : rooms) {
-                root.getChildren().add(room.getRoom());
-            }
-        }
-        return root;
     }
 
     @Override
     public void bindDataService(DataService service) {
         data = service;
     }
-
 }

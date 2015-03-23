@@ -19,6 +19,11 @@ public class Alarm extends ObjectHome {
         return null;
     }
 
+    @Override
+    public Group getGroupMini() {
+        return null;
+    }
+
     //Function to switch the state of the alarm
     public void switchAlarm(boolean stateAlarm){
         this.stateAlarm = stateAlarm;

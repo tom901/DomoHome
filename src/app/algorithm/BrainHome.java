@@ -12,7 +12,7 @@ public class BrainHome implements BrainHomeService, RequireSimulatorService {
 
     @Override
     public void activation() {
-
+        simulator.getObjectsDoors(0);
     }
 
     @Override
@@ -20,7 +20,7 @@ public class BrainHome implements BrainHomeService, RequireSimulatorService {
         if (simulator.getPresence()) {
             simulator.setObjectsOn();
         }
-        simulator.setObjectsOn(0);
+//        simulator.setObjectsOn(0);
     }
 
     @Override

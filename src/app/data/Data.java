@@ -27,7 +27,7 @@ public class Data implements DataService {
 //    ArrayList<ObjectHome> objects;
 
     /**
-     * Method to init the main content of the simulator
+     * Method to getPanel the main content of the simulator
      */
     public void init() {
         mainFloorNo = -1;
@@ -50,7 +50,7 @@ public class Data implements DataService {
     }
 
     /**
-     * Method to init the floors.
+     * Method to getPanel the floors.
      */
     private void initFloors() {
         Floor floor_01 = new Floor();
@@ -71,7 +71,7 @@ public class Data implements DataService {
     }
 
     /**
-     * Method to init the rooms without creating the rectangles for their display.
+     * Method to getPanel the rooms without creating the rectangles for their display.
      *
      * @param floorIndex
      * @param noOfRoom
@@ -460,7 +460,7 @@ public class Data implements DataService {
      * @param floorNo
      * @return ArrayList<ArrayList<Room>>
      */
-    public ArrayList<ArrayList<Room>> getMainFloor(int floorNo) {
+    public ArrayList<Room> getMainFloor(int floorNo) {
         ArrayList<Room> rooms = new ArrayList<Room>();
         switch (floorNo) {
             case 1:
@@ -476,9 +476,7 @@ public class Data implements DataService {
                 mainFloorNo = 2;
                 break;
         }
-        ArrayList<ArrayList<Room>> roomsArray = new ArrayList<ArrayList<Room>>();
-        roomsArray.add(rooms);
-        return roomsArray;
+        return rooms;
     }
 
     @Override
@@ -507,8 +505,6 @@ public class Data implements DataService {
                                 )
                         ) {
                     if (room.getRoomName() == RoomsEnum.ROOM.ENTREE_1) {
-                        System.out.println("Perso X : " + character.getPosition().getX() + " -  Room XWidth : " + (floors.get(0).getSpecificRoom(5).getPosition().getX() + floors.get(0).getSpecificRoom(5).getPosition().getWidth()));
-                        System.out.println("Garden Width : " + ParamFirstFloor.GARDEN_ROOM_WIDTH);
                         if (character.getPosition().getX() > floors.get(0).getSpecificRoom(5).getPosition().getX() + floors.get(0).getSpecificRoom(5).getPosition().getWidth() ||
                                 character.getPosition().getX() + character.getPosition().getWidth() > floors.get(0).getSpecificRoom(5).getPosition().getX() + floors.get(0).getSpecificRoom(5).getPosition().getWidth()) {
                             roomsNotEmpty.add(room);
@@ -536,7 +532,7 @@ public class Data implements DataService {
     }
 
     @Override
-    public void setObjectOff() {
+    public void setObjectsOff() {
         for (Room room : rooms) {
             room.turnOffObjects();
         }
@@ -546,6 +542,15 @@ public class Data implements DataService {
     public void setObjectsOn(int roomID) {
         if (floors.get(mainFloorNo).getRooms().size() > roomID) {
             floors.get(mainFloorNo).getSpecificRoom(roomID).turnOnObjects();
+        }
+    }
+
+    @Override
+    public void getObjectsDoors(int floorNo) {
+        for (ObjectHome door : floors.get(floorNo).getObjectHomes()) {
+            if (door instanceof Door) {
+                System.out.println("Voici la porte : " );
+            }
         }
     }
 

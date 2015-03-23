@@ -34,8 +34,6 @@ public abstract class ObjectHome {
 
     public abstract Group getGroup();
 
-    public Group getGroupMini() {
-        return groupMini;
-    }
+    public abstract Group getGroupMini();
 
 }
