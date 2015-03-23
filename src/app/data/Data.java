@@ -3,10 +3,7 @@ package app.data;
 import app.common.*;
 import app.data.home.Floor;
 import app.data.home.Room;
-import app.data.object.Door;
-import app.data.object.Light;
-import app.data.object.ObjectHome;
-import app.data.object.Radiator;
+import app.data.object.*;
 import app.services.DataService;
 
 import java.util.ArrayList;
@@ -206,6 +203,7 @@ public class Data implements DataService {
         Radiator radiatorFifth = new Radiator();
         Radiator radiatorSixth = new Radiator();
 
+
         // Code pour ajouter les objets aux pièces (room) respectives. Les objets sont dans la liste d'objet de chaque Room.
         floors.get(0).getSpecificRoom(0).addObject(lightFirstPlace);
         floors.get(0).getSpecificRoom(1).addObject(lightSecondPlace);
@@ -278,6 +276,7 @@ public class Data implements DataService {
                 new Dimension(ParamFirstFloor.FIFTH_LITTLE_RADIATOR_X, ParamFirstFloor.FIFTH_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
         radiatorSixth.setGroup(new Dimension(ParamFirstFloor.SIXTH_RADIATOR_X, ParamFirstFloor.SIXTH_RADIATOR_Y),
                 new Dimension(ParamFirstFloor.SIXTH_LITTLE_RADIATOR_X, ParamFirstFloor.SIXTH_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
+
 
         objectHomes.add(lightFirstPlace);
         objectHomes.add(lightSecondPlace);

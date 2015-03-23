@@ -87,6 +87,9 @@ public class HomeViewer extends Parent implements RequireReadService {
         head.setStroke(Color.WHITE);
         head.setFill(Color.TRANSPARENT);
 
+        StairViewer stair = new StairViewer();
+
+        root.getChildren().add(stair.getStair());
         root.getChildren().add(rectCharacter);
         root.getChildren().add(head);
 //        root.getChildren().add(changeMap());

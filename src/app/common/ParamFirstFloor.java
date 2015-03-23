@@ -187,4 +187,6 @@ public class ParamFirstFloor {
     public static final int FIFTH_ROOM_DOOR_Y = (FIFTH_ROOM_HEIGHT + FIRST_ROOM_HEIGHT);
     public static final int FIFTH_DOOR_WIDTH = FIFTH_ROOM_WIDTH / 4;
     public static final int FIFTH_DOOR_HEIGHT = FIFTH_ROOM_HEIGHT / 5;
+
+
 }
