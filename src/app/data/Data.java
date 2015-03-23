@@ -3,10 +3,7 @@ package app.data;
 import app.common.*;
 import app.data.home.Floor;
 import app.data.home.Room;
-import app.data.object.Door;
-import app.data.object.Light;
-import app.data.object.ObjectHome;
-import app.data.object.Radiator;
+import app.data.object.*;
 import app.services.DataService;
 
 import java.util.ArrayList;
@@ -27,7 +24,7 @@ public class Data implements DataService {
 //    ArrayList<ObjectHome> objects;
 
     /**
-     * Method to init the main content of the simulator
+     * Method to getPanel the main content of the simulator
      */
     public void init() {
         mainFloorNo = -1;
@@ -50,7 +47,7 @@ public class Data implements DataService {
     }
 
     /**
-     * Method to init the floors.
+     * Method to getPanel the floors.
      */
     private void initFloors() {
         Floor floor_01 = new Floor();
@@ -71,7 +68,7 @@ public class Data implements DataService {
     }
 
     /**
-     * Method to init the rooms without creating the rectangles for their display.
+     * Method to getPanel the rooms without creating the rectangles for their display.
      *
      * @param floorIndex
      * @param noOfRoom
@@ -155,7 +152,7 @@ public class Data implements DataService {
                 new Dimension(ParamFirstFloor.FIFTH_LITTLE_ROOM_X, ParamFirstFloor.FIFTH_LITTLE_ROOM_Y, ParamFirstFloor.FIFTH_LITTLE_ROOM_WIDTH, ParamFirstFloor.FIFTH_LITTLE_ROOM_HEIGHT),
                 false);
 
-        floors.get(0).getSpecificRoom(5).setGroup(new Dimension(ParamFirstFloor.GARDEN_ROOM_X, ParamFirstFloor.GARDEN_ROOM_Y, ParamFirstFloor.GARDEN_ROOM_WIDTH, ParamFirstFloor.GARDEN_ROOM_HEIGHT),
+        floors.get(0).getSpecificRoom(5).setGroupGarden(new Dimension(ParamFirstFloor.GARDEN_ROOM_X, ParamFirstFloor.GARDEN_ROOM_Y, ParamFirstFloor.GARDEN_ROOM_WIDTH, ParamFirstFloor.GARDEN_ROOM_HEIGHT),
                 new Dimension(ParamFirstFloor.GARDEN_LITTLE_ROOM_X, ParamFirstFloor.GARDEN_LITTLE_ROOM_Y, ParamFirstFloor.GARDEN_LITTLE_ROOM_WIDTH, ParamFirstFloor.GARDEN_LITTLE_HEIGHT),
                 false);
 
@@ -205,6 +202,7 @@ public class Data implements DataService {
         Radiator radiatorFourth = new Radiator();
         Radiator radiatorFifth = new Radiator();
         Radiator radiatorSixth = new Radiator();
+
 
         // Code pour ajouter les objets aux pièces (room) respectives. Les objets sont dans la liste d'objet de chaque Room.
         floors.get(0).getSpecificRoom(0).addObject(lightFirstPlace);
@@ -293,6 +291,7 @@ public class Data implements DataService {
         radiatorSixth.setGroup(new Dimension(ParamFirstFloor.SIXTH_RADIATOR_X, ParamFirstFloor.SIXTH_RADIATOR_Y),
                 new Dimension(ParamFirstFloor.SIXTH_LITTLE_RADIATOR_X, ParamFirstFloor.SIXTH_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
 
+
         objectHomes.add(lightFirstPlace);
         objectHomes.add(lightSecondPlace);
         objectHomes.add(lightThirdPlace);
@@ -326,7 +325,7 @@ public class Data implements DataService {
         Door doorFirstRoomPlaceSndFloor  = new Door();
 
         floors.get(1).getSpecificRoom(0).addObject(lightFirstPlaceSndFloor);
-        floors.get(1).addObjectHome(lightFirstPlace);
+        floors.get(1).addObjectHome(lightFirstPlaceSndFloor);
         floors.get(1).getSpecificRoom(1).addObject(lightSecondPlaceSndFloor);
         floors.get(1).addObjectHome(lightSecondPlaceSndFloor);
         floors.get(1).getSpecificRoom(2).addObject(lightThirdPlaceSndFloor);
@@ -486,7 +485,7 @@ public class Data implements DataService {
      * @param floorNo
      * @return ArrayList<ArrayList<Room>>
      */
-    public ArrayList<ArrayList<Room>> getMainFloor(int floorNo) {
+    public ArrayList<Room> getMainFloor(int floorNo) {
         ArrayList<Room> rooms = new ArrayList<Room>();
         switch (floorNo) {
             case 1:
@@ -502,9 +501,7 @@ public class Data implements DataService {
                 mainFloorNo = 2;
                 break;
         }
-        ArrayList<ArrayList<Room>> roomsArray = new ArrayList<ArrayList<Room>>();
-        roomsArray.add(rooms);
-        return roomsArray;
+        return rooms;
     }
 
     @Override
@@ -532,7 +529,20 @@ public class Data implements DataService {
                                                 (character.getPosition().getY() + character.getPosition().getHeight() > room.getPosition().getY() && character.getPosition().getY() + character.getPosition().getHeight() < room.getPosition().getY() + room.getPosition().getHeight())
                                 )
                         ) {
-                    roomsNotEmpty.add(room);
+                    if (room.getRoomName() == RoomsEnum.ROOM.ENTREE_1) {
+                        if (character.getPosition().getX() > floors.get(0).getSpecificRoom(5).getPosition().getX() + floors.get(0).getSpecificRoom(5).getPosition().getWidth() ||
+                                character.getPosition().getX() + character.getPosition().getWidth() > floors.get(0).getSpecificRoom(5).getPosition().getX() + floors.get(0).getSpecificRoom(5).getPosition().getWidth()) {
+                            roomsNotEmpty.add(room);
+                        }
+                    } else if (room.getRoomName() == RoomsEnum.ROOM.SALON_1) {
+                        if (character.getPosition().getX() > floors.get(0).getSpecificRoom(4).getPosition().getX() + floors.get(0).getSpecificRoom(4).getPosition().getWidth() ||
+                                character.getPosition().getX() + character.getPosition().getWidth() > floors.get(0).getSpecificRoom(4).getPosition().getX() + floors.get(0).getSpecificRoom(4).getPosition().getWidth() ||
+                                character.getPosition().getY() < floors.get(0).getSpecificRoom(4).getPosition().getY()) {
+                            roomsNotEmpty.add(room);
+                        }
+                    } else {
+                        roomsNotEmpty.add(room);
+                    }
                 }
             }
         }
@@ -547,7 +557,7 @@ public class Data implements DataService {
     }
 
     @Override
-    public void setObjectOff() {
+    public void setObjectsOff() {
         for (Room room : rooms) {
             room.turnOffObjects();
         }
@@ -557,6 +567,15 @@ public class Data implements DataService {
     public void setObjectsOn(int roomID) {
         if (floors.get(mainFloorNo).getRooms().size() > roomID) {
             floors.get(mainFloorNo).getSpecificRoom(roomID).turnOnObjects();
+        }
+    }
+
+    @Override
+    public void getObjectsDoors(int floorNo) {
+        for (ObjectHome door : floors.get(floorNo).getObjectHomes()) {
+            if (door instanceof Door) {
+                System.out.println("Voici la porte : " );
+            }
         }
     }
 

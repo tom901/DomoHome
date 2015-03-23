@@ -42,4 +42,9 @@ public class Door extends ObjectHome {
     public Group getGroup() {
         return this.group;
     }
+
+    @Override
+    public Group getGroupMini() {
+        return this.groupMini;
+    }
 }

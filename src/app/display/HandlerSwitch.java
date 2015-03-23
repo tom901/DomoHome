@@ -73,9 +73,12 @@ public class HandlerSwitch extends Parent implements RequireReadService {
             labelButton.setTranslateY(yDisplayFirstFloor);
             displayLabelObjectsHome.add(labelButton);
             ImageView imgViewLight1;
-            if (oH.isState()) {
-                imgViewLight1 = new ImageView(new Image("file:images/switch_on.png"));
-            } else {
+            if (oH.isState() && oH instanceof Light ) {
+                imgViewLight1 = new ImageView(new Image("file:images/switch_on_blue.png"));
+            }else if(oH.isState() && oH instanceof Radiator ){
+                imgViewLight1 = new ImageView(new Image("file:images/switch_on_red.png"));
+            }
+            else {
                 imgViewLight1 = new ImageView(new Image("file:images/switch_off.png"));
             }
             imgViewLight1.setTranslateX(xDisplayFirstFloor);

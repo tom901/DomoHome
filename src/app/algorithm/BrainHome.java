@@ -1,11 +1,8 @@
 package app.algorithm;
 
-import app.data.home.Room;
 import app.services.BrainHomeService;
 import app.services.RequireSimulatorService;
 import app.services.SimulatorService;
-
-import java.util.ArrayList;
 
 /**
  * Created by Nicolas on 21/03/2015.
@@ -15,15 +12,15 @@ public class BrainHome implements BrainHomeService, RequireSimulatorService {
 
     @Override
     public void activation() {
-
+        simulator.getObjectsDoors(0);
     }
 
     @Override
     public void step() {
-        if (simulator.getDetect()) {
+        if (simulator.getPresence()) {
             simulator.setObjectsOn();
         }
-        simulator.setObjectsOn(1);
+//        simulator.setObjectsOn(0);
     }
 
     @Override

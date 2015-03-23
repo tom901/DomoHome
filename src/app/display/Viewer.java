@@ -4,7 +4,6 @@ import app.services.DataService;
 import app.services.RequireDataService;
 import app.services.ViewerService;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 
 /**
  * Created by Nicolas on 19/03/2015.
@@ -15,6 +14,8 @@ public class Viewer implements ViewerService, RequireDataService {
     HandlerSwitch handlerSwitch;
     HomeViewer homeViewer;
     int i, firstFloorToDisplay;
+
+
 
     public void init() {
         i = 0;
@@ -27,7 +28,6 @@ public class Viewer implements ViewerService, RequireDataService {
         homeViewer.setFirstFloorToDisplay(firstFloorToDisplay);
         handlerSwitch.setFirstFloorToDisplay(firstFloorToDisplay);
 
-//        data.init();
     }
 
     public Group getPanel() {
@@ -36,10 +36,14 @@ public class Viewer implements ViewerService, RequireDataService {
         basePlan = new Base(root);
 
         root.getChildren().add(basePlan);
-        root.getChildren().add(homeViewer.init());
+        root.getChildren().add(homeViewer.getPanel());
         root.getChildren().add(handlerSwitch.getBtnSwitchObjectFloor());
 
         return root;
+    }
+
+    public void setFirstFloorToDisplay(int firstFloorToDisplay) {
+        homeViewer.setFirstFloorToDisplay(firstFloorToDisplay);
     }
 
     @Override

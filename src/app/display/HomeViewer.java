@@ -36,34 +36,40 @@ public class HomeViewer extends Parent implements RequireReadService {
     private double xShrink,yShrink,shrink,xModifier,yModifier,heroesScale;
 
     public ArrayList<Room> displayBigFloor;
+//    private ArrayList<ArrayList<Room>> roomsInBig;
 
     public HomeViewer() {
+//        roomsInBig = new ArrayList<ArrayList<Room>>();
 //        data = new Data();
-//        data.init();
+//        data.getPanel();
     }
 
-    public Group init() {
+
+
+    public Group getPanel() {
         xShrink =1;
         yShrink =1;
         xModifier=0;
         yModifier=0;
 
         Group root = new Group();
-
-        for (ArrayList<Room> rooms : data.getMainFloor(firstFloorToDisplay)) {
-            for (Room room : rooms) {
+//        roomsInBig.clear();
+//        roomsInBig = data.getMainFloor(firstFloorToDisplay);
+//        for (ArrayList<Room> rooms : data.getMainFloor(firstFloorToDisplay)) {
+            for (Room room : data.getMainFloor(firstFloorToDisplay)) {
                 root.getChildren().add(room.getRoom());
             }
             for(ObjectHome objectHomeTmp : data.getObjectHomes(firstFloorToDisplay)){
                 root.getChildren().add(objectHomeTmp.getGroup());
             }
-        }
+//        }
 
 
         //loop to make placement of mini floors
         for (Room room : data.getRooms()) {
             root.getChildren().add(room.getRoomMini());
             for (ObjectHome oh : room.getObjectHomes()) {
+                System.out.println("L'objet est : " + oh.isState() + " pour la pièce : " + room.getRoomName());
                 root.getChildren().add(oh.getGroupMini());
             }
         }
@@ -82,29 +88,16 @@ public class HomeViewer extends Parent implements RequireReadService {
         head.setStroke(Color.WHITE);
         head.setFill(Color.TRANSPARENT);
 
+        StairViewer stair = new StairViewer();
+
+        root.getChildren().add(stair.getStair());
         root.getChildren().add(rectCharacter);
         root.getChildren().add(head);
-
         return root;
     }
 
-    public void getPanel() {
-        shrink = Math.min(xShrink, yShrink);
-
-    }
     public void setFirstFloorToDisplay(int firstFloorToDisplay) {
         this.firstFloorToDisplay = firstFloorToDisplay;
-    }
-
-    public  Group changeBigMap(int numberFloor){
-        Group root = new Group();
-
-        for (ArrayList<Room> rooms : data.getMainFloor(numberFloor)) {
-            for (Room room : rooms) {
-                root.getChildren().add(room.getRoom());
-            }
-        }
-        return root;
     }
 
     @Override

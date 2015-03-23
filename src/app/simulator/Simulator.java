@@ -14,17 +14,20 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
     private DataService data;
     private BrainCharacterService brainCharacterService;
     private BrainHomeService brainHomeService;
-    private int i = 0;
+    private int i;
     private int direction;
 
     /**
-     * Method to init the attributes of the engine / simulator.
+     * Method to getPanel the attributes of the engine / simulator.
      */
     public void init() {
         simuTimer = new Timer();
         direction = -1;
+        i = 0;
 
         data.setCharacterPosition(10, 200);
+
+        brainHomeService.activation();
 
     }
 
@@ -42,7 +45,6 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
      * Method to start the process of the engine.
      */
     public void start() {
-
         simuTimer.schedule(
                 new TimerTask() {
                     @Override
@@ -51,9 +53,10 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                         i++;
 //                      moveCharacter();
                         brainCharacterService.step();
-                        data.setObjectOff();
+                        data.setObjectsOff();
                         brainHomeService.step();
                         checkCollision();
+
                     }
                 },
                 0, 10);
@@ -92,7 +95,10 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                 moveRight();
                 break;
             case 2: // Move up
-                moveUp();
+                i++;
+                if (i % 2 == 0) {
+                    moveUp();
+                }
                 break;
             case 3: // Move bottom
                 moveDown();
@@ -128,7 +134,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         }
     }
 
-    public boolean getDetect() {
+    public boolean getPresence() {
         return (!data.getPresence().isEmpty());
     }
 
@@ -143,4 +149,8 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         data.setObjectsOn(roomID);
     }
 
+    @Override
+    public void getObjectsDoors(int floorNo) {
+        data.getObjectsDoors(floorNo);
+    }
 }
