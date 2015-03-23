@@ -106,4 +106,31 @@ public class ParamSecondFloor {
 
     public static final int FOURTH_LITTLE_RADIATOR_X = FOURTH_LITTLE_ROOM_X + FOURTH_LITTLE_ROOM_WIDTH - ParamHome.RADIATOR_MINI_PORTRAIT_WIDTH;
     public static final int FOURTH_LITTLE_RADIATOR_Y = SECOND_LITTLE_RADIATOR_Y ;
+
+    //Door of room
+    public static final int FIRST_DOOR_X = FIRST_ROOM_WIDTH;
+    public static final int FIRST_ROOM_DOOR_Y = FIRST_ROOM_HEIGHT /4 ;
+    public static final int FIRST_DOOR_WIDTH = FIRST_ROOM_WIDTH / 6;
+    public static final int FIRST_DOOR_HEIGHT = FIRST_ROOM_HEIGHT / 6;
+
+    public static final int THIRD_ROOM_DOOR_X = (SECOND_ROOM_WIDTH / 2) + (FIRST_ROOM_HEIGHT/4);
+    public static final int THIRD_ROOM_DOOR_Y = SECOND_ROOM_HEIGHT ;
+    public static final int THIRD_DOOR_WIDTH = SECOND_ROOM_WIDTH / 6;
+    public static final int THIRD_DOOR_HEIGHT = SECOND_ROOM_HEIGHT / 8;
+
+    public static final int FOURTH_ROOM_DOOR_X = (SECOND_ROOM_WIDTH / 5) + (FIRST_ROOM_HEIGHT);
+    public static final int FOURTH_ROOM_DOOR_Y = THIRD_ROOM_HEIGHT;
+    public static final int FOURTH_DOOR_WIDTH = THIRD_ROOM_WIDTH / 3;
+    public static final int FOURTH_DOOR_HEIGHT = THIRD_ROOM_HEIGHT / 6;
+
+    // Mini Door of room
+    public static final int FIRST_LITTLE_ROOM_DOOR_X = FIRST_LITTLE_ROOM_WIDTH ;
+    public static final int FIRST_LITTLE_ROOM_DOOR_Y = SECOND_LITTLE_ROOM_Y /4;
+    public static final int FIRST_LITTLE_DOOR_WIDTH = SECOND_LITTLE_ROOM_WIDTH /6;
+    public static final int FIRST_LITTLE_DOOR_HEIGHT = SECOND_LITTLE_ROOM_HEIGHT / 4 ;
+
+    public static final int THIRD_LITTLE_ROOM_DOOR_X = SECOND_LITTLE_ROOM_X +FIRST_LITTLE_ROOM_WIDTH - ParamHome.RADIATOR_MINI_PORTRAIT_WIDTH;
+    public static final int THIRD_LITTLE_ROOM_DOOR_Y = SECOND_LITTLE_ROOM_Y /4 ;
+    public static final int THIRD_LITTLE_DOOR_WIDTH = THIRD_LITTLE_ROOM_WIDTH /6;
+    public static final int THIRD_LITTLE_DOOR_HEIGHT = THIRD_LITTLE_ROOM_HEIGHT /6 ;
 }

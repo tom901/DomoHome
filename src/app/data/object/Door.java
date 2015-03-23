@@ -15,15 +15,23 @@ import java.awt.*;
  */
 public class Door extends ObjectHome {
     private Dimension dimensionDoor;
+    private Dimension dimensionMiniDoor;
     private Rectangle door;
-    private int room;
+    private Rectangle miniDoor;
 
-    public Door(Dimension dimension, boolean stateDoor, int room) {
+    public Door() {
+    }
+
+    public void setGroup(Dimension dimension, Dimension dimensionMiniDoor, boolean stateDoor) {
         this.dimensionDoor = dimension;
-        this.room = room;
+        this.dimensionMiniDoor = dimensionMiniDoor;
+
         Rectangle door = new Rectangle(dimension.getX(), dimension.getY(), dimension.getWidth(), dimension.getHeight());
         door.setFill(Color.BLUE);
+        Rectangle miniDoor = new Rectangle(dimensionMiniDoor.getX(), dimensionMiniDoor.getY(), dimensionMiniDoor.getWidth(), dimensionMiniDoor.getHeight());
+        door.setFill(Color.BLUE);
         super.group.getChildren().add(door);
+        super.groupMini.getChildren().add(miniDoor);
     }
 
     public Rectangle getDoor() {
