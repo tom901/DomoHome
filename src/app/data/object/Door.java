@@ -39,4 +39,8 @@ public class Door extends ObjectHome {
     public Group getGroupMini() {
         return this.groupMini;
     }
+
+    public Dimension getDimension() {
+        return dimensionDoor;
+    }
 }

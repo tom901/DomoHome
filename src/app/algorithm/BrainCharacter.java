@@ -1,10 +1,8 @@
 package app.algorithm;
 
-import app.data.Dimension;
 import app.services.BrainCharacterService;
 import app.services.RequireSimulatorService;
 import app.services.SimulatorService;
-import app.simulator.Simulator;
 
 import java.util.Random;
 
@@ -15,6 +13,7 @@ public class BrainCharacter implements BrainCharacterService, RequireSimulatorSe
 
     private SimulatorService simulator;
     private Random randomMove;
+    private int compteur;
 
     public BrainCharacter() {
         //simulator = new Simulator();
@@ -23,24 +22,32 @@ public class BrainCharacter implements BrainCharacterService, RequireSimulatorSe
 
     @Override
     public void activation() {
-
+        compteur = 0;
     }
 
     @Override
     public void step() {
-        switch (randomMove.nextInt(4)) {
-            case 0: // Move left
-                simulator.setCharacterMove(0);
-                break;
-            case 1: // Move right
-                simulator.setCharacterMove(1);
-                break;
-            case 2: // Move up
-                simulator.setCharacterMove(2);
-                break;
-            case 3: // Move bottom
-                simulator.setCharacterMove(3);
-                break;
+        simulator.setRoomCharacterIsIn();
+        compteur++;
+        if (compteur < 500) {
+            switch (randomMove.nextInt(4)) {
+                case 0: // Move left
+                    simulator.setCharacterMove(0);
+                    break;
+                case 1: // Move right
+                    simulator.setCharacterMove(1);
+                    break;
+                case 2: // Move up
+                    simulator.setCharacterMove(2);
+                    break;
+                case 3: // Move bottom
+                    simulator.setCharacterMove(3);
+                    break;
+            }
+        } else {
+            simulator.setInTransition(true);
+            simulator.setPositionToGoTo();
+
         }
     }
 

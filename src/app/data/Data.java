@@ -549,7 +549,7 @@ public class Data implements DataService {
     public void getObjectsDoors(int floorNo) {
         for (ObjectHome door : floors.get(floorNo).getObjectHomes()) {
             if (door instanceof Door) {
-                System.out.println("Voici la porte : " );
+
             }
         }
     }

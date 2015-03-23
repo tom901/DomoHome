@@ -60,14 +60,7 @@ public class Main extends Application {
         primaryStage.setTitle("DomoHome");
         // Always call the getPanel method to display our elements.
         final Scene scene = new Scene(((Viewer)viewer).getPanel(),800,620, Color.web("#ECE9D8"));
-        //new Scene(root, 800, 600, Color.web("#ECE9D8"));
 
-//        primaryStage.setOnShown(new EventHandler<WindowEvent>() {
-//            @Override
-//            public void handle(WindowEvent event) {
-//                simulator.start();
-//            }
-//        });
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
             public void handle(WindowEvent event) {
@@ -84,8 +77,7 @@ public class Main extends Application {
                 scene.setRoot(((Viewer)viewer).getPanel());
             }
         };
-//        timerMain.start();
-        // Gestion de la pause et de la reprise
+        // Gestion de la pause, de la reprise et du reset.
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -110,6 +102,8 @@ public class Main extends Application {
                 }
             }
         });
+
+        // Gestion du changement d'étage dans l'affichage principal.é
         scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

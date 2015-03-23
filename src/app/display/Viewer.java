@@ -19,7 +19,7 @@ public class Viewer implements ViewerService, RequireDataService {
 
     public void init() {
         i = 0;
-        firstFloorToDisplay = 2;
+        firstFloorToDisplay = 1;
         handlerSwitch = new HandlerSwitch();
         homeViewer = new HomeViewer();
         homeViewer.bindDataService(data);

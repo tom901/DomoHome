@@ -1,5 +1,6 @@
 package app.services;
 
+import app.data.Dimension;
 import app.data.home.Room;
 
 import java.util.ArrayList;
@@ -17,4 +18,7 @@ public interface SimulatorService {
     public void setObjectsOn();
     public void setObjectsOn(int RoomID);
     public void getObjectsDoors(int floorNo);
+    public void setRoomCharacterIsIn();
+    public void setPositionToGoTo();
+    public void setInTransition(boolean inTransition);
 }
