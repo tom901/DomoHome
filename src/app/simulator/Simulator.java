@@ -128,7 +128,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         }
     }
 
-    public boolean getDetect() {
+    public boolean getPresence() {
         return (!data.getPresence().isEmpty());
     }
 

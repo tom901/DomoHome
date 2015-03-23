@@ -13,7 +13,7 @@ public interface SimulatorService {
     public void destroy();
     public void setCharacterMove(int direction);
     public void pause();
-    public boolean getDetect();
+    public boolean getPresence();
     public void setObjectsOn();
     public void setObjectsOn(int RoomID);
 }
