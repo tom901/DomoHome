@@ -129,6 +129,25 @@ public class Base extends Parent {
         lblActivity.setTranslateY(ParamDisplay.LEGEND_ACTIVTY_LABEL_Y);
         root.getChildren().add(lblActivity);
 
+        Label lblSpace = new Label("Lancer/Pause :");
+        lblSpace.setTranslateX(ParamDisplay.LEGEND_SPACE_X);
+        lblSpace.setTranslateY(ParamDisplay.LEGEND_SPACE_Y);
+        root.getChildren().add(lblSpace);
+
+        Label lblSpaceBtn = new Label(" ESPACE");
+        lblSpaceBtn.setTranslateX(ParamDisplay.LEGEND_SPACE_LABEL_X);
+        lblSpaceBtn.setTranslateY(ParamDisplay.LEGEND_SPACE_LABEL_Y);
+        root.getChildren().add(lblSpaceBtn);
+
+        Label lblReset = new Label("Relancer :");
+        lblReset.setTranslateX(ParamDisplay.LEGEND_RESET_X);
+        lblReset.setTranslateY(ParamDisplay.LEGEND_RESET_Y);
+        root.getChildren().add(lblReset);
+
+        Label lblResetBtn = new Label(" R ");
+        lblResetBtn.setTranslateX(ParamDisplay.LEGEND_RESET_LABEL_X);
+        lblResetBtn.setTranslateY(ParamDisplay.LEGEND_RESET_LABEL_Y);
+        root.getChildren().add(lblResetBtn);
 
     }
 

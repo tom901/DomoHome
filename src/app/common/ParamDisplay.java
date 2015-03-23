@@ -78,7 +78,22 @@ public class ParamDisplay {
     public static final int LEGEND_GARDEN_LABEL_X = LEGEND_RADIATOR_LABEL_X;
     public static final int LEGEND_GARDEN_LABEL_Y = LEGEND_GARDEN_Y;
 
-    //Il faut créer les autres constantes pour placer les autres icones de la légende en récupérent la constante précedente
+    //Constants for the legend Space
+
+    public static final int LEGEND_SPACE_X = LEGEND_RADIATOR_ON_X ;
+    public static final int LEGEND_SPACE_Y = LEGEND_GARDEN_Y + 30;
+
+    public static final int LEGEND_SPACE_LABEL_X = LEGEND_GARDEN_LABEL_X +30;
+    public static final int LEGEND_SPACE_LABEL_Y = LEGEND_GARDEN_LABEL_Y + 30;
+
+    //Constants for the legend Reset
+
+    public static final int LEGEND_RESET_X = LEGEND_RADIATOR_ON_X  ;
+    public static final int LEGEND_RESET_Y = LEGEND_SPACE_Y + 25;
+
+    public static final int LEGEND_RESET_LABEL_X = LEGEND_GARDEN_LABEL_X + 5;
+    public static final int LEGEND_RESET_LABEL_Y = LEGEND_SPACE_LABEL_Y + 25;
+
 
     //Legend des bouton switch
     public static final int LEGEND_ACTIVTY_LABEL_X = INDICATORS_BLOCK_X + 5;
