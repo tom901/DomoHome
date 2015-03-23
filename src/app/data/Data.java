@@ -251,7 +251,7 @@ public class Data implements DataService {
         floors.get(0).addObjectHome(doorFifth);
 
         lightFirstPlace.setGroup(new Dimension(ParamFirstFloor.FIRST_LIGHT_X, ParamFirstFloor.FIRST_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH),
-                new Dimension(ParamFirstFloor.FIRST_LITTLE_LIGHT_X, ParamFirstFloor.FIRST_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), true);
+                new Dimension(ParamFirstFloor.FIRST_LITTLE_LIGHT_X, ParamFirstFloor.FIRST_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), false);
         lightSecondPlace.setGroup(new Dimension(ParamFirstFloor.SECOND_LIGHT_X, ParamFirstFloor.SECOND_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH),
                 new Dimension(ParamFirstFloor.SECOND_LITTLE_LIGHT_X, ParamFirstFloor.SECOND_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), false);
         lightThirdPlace.setGroup(new Dimension(ParamFirstFloor.THIRD_LIGHT_X, ParamFirstFloor.THIRD_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH),
