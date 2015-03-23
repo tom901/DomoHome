@@ -55,7 +55,7 @@ public class Main extends Application {
 
         primaryStage.setTitle("DomoHome");
         // Always call the getPanel method to display our elements.
-        final Scene scene = new Scene(((Viewer)viewer).getPanel(), Color.web("#ECE9D8"));
+        final Scene scene = new Scene(((Viewer)viewer).getPanel(),800,620, Color.web("#ECE9D8"));
         //new Scene(root, 800, 600, Color.web("#ECE9D8"));
 
 //        primaryStage.setOnShown(new EventHandler<WindowEvent>() {
