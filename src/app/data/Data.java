@@ -267,17 +267,17 @@ public class Data implements DataService {
                 new Dimension(ParamFirstFloor.SIXTH_LITTLE_LIGHT_X, ParamFirstFloor.SIXTH_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), false);
 
         radiatorFirst.setGroup(new Dimension(ParamFirstFloor.FIRST_RADIATOR_X, ParamFirstFloor.FIRST_RADIATOR_Y),
-                new Dimension(ParamFirstFloor.FIRST_LITTLE_RADIATOR_X, ParamFirstFloor.FIRST_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_LANDSCAPE);
+                new Dimension(ParamFirstFloor.FIRST_LITTLE_RADIATOR_X, ParamFirstFloor.FIRST_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
         radiatorSecond.setGroup(new Dimension(ParamFirstFloor.SECOND_RADIATOR_X, ParamFirstFloor.SECOND_RADIATOR_Y),
-                new Dimension(ParamFirstFloor.SECOND_LITTLE_RADIATOR_X, ParamFirstFloor.SECOND_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_PORTRAIT);
+                new Dimension(ParamFirstFloor.SECOND_LITTLE_RADIATOR_X, ParamFirstFloor.SECOND_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_PORTRAIT);
         radiatorThird.setGroup(new Dimension(ParamFirstFloor.THIRD_RADIATOR_X, ParamFirstFloor.THIRD_RADIATOR_Y),
-                new Dimension(ParamFirstFloor.THIRD_LITTLE_RADIATOR_X, ParamFirstFloor.THIRD_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_PORTRAIT);
+                new Dimension(ParamFirstFloor.THIRD_LITTLE_RADIATOR_X, ParamFirstFloor.THIRD_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_PORTRAIT);
         radiatorFourth.setGroup(new Dimension(ParamFirstFloor.FOURTH_RADIATOR_X, ParamFirstFloor.FOURTH_RADIATOR_Y),
-                new Dimension(ParamFirstFloor.FOURTH_LITTLE_RADIATOR_X, ParamFirstFloor.FOURTH_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_LANDSCAPE);
+                new Dimension(ParamFirstFloor.FOURTH_LITTLE_RADIATOR_X, ParamFirstFloor.FOURTH_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
         radiatorFifth.setGroup(new Dimension(ParamFirstFloor.FIFTH_RADIATOR_X, ParamFirstFloor.FIFTH_RADIATOR_Y),
-                new Dimension(ParamFirstFloor.FIFTH_LITTLE_RADIATOR_X, ParamFirstFloor.FIFTH_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_LANDSCAPE);
+                new Dimension(ParamFirstFloor.FIFTH_LITTLE_RADIATOR_X, ParamFirstFloor.FIFTH_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
         radiatorSixth.setGroup(new Dimension(ParamFirstFloor.SIXTH_RADIATOR_X, ParamFirstFloor.SIXTH_RADIATOR_Y),
-                new Dimension(ParamFirstFloor.SIXTH_LITTLE_RADIATOR_X, ParamFirstFloor.SIXTH_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_LANDSCAPE);
+                new Dimension(ParamFirstFloor.SIXTH_LITTLE_RADIATOR_X, ParamFirstFloor.SIXTH_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
 
         objectHomes.add(lightFirstPlace);
         objectHomes.add(lightSecondPlace);
@@ -336,13 +336,13 @@ public class Data implements DataService {
                 new Dimension(ParamSecondFloor.FOURTH_LITTLE_LIGHT_X, ParamSecondFloor.FOURTH_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), false);
 
         radiatorFirstPlaceSndFloor.setGroup(new Dimension(ParamSecondFloor.FIRST_RADIATOR_X, ParamSecondFloor.FIRST_RADIATOR_Y),
-                new Dimension(ParamSecondFloor.FIRST_LITTLE_RADIATOR_X, ParamSecondFloor.FIRST_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_PORTRAIT);
+                new Dimension(ParamSecondFloor.FIRST_LITTLE_RADIATOR_X, ParamSecondFloor.FIRST_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_PORTRAIT);
         radiatorSecondPlaceSndFloor.setGroup(new Dimension(ParamSecondFloor.SECOND_RADIATOR_X, ParamSecondFloor.SECOND_RADIATOR_Y),
-                new Dimension(ParamSecondFloor.SECOND_LITTLE_RADIATOR_X, ParamSecondFloor.SECOND_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_PORTRAIT);
+                new Dimension(ParamSecondFloor.SECOND_LITTLE_RADIATOR_X, ParamSecondFloor.SECOND_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_PORTRAIT);
         radiatorThirdPlaceSndFloor.setGroup(new Dimension(ParamSecondFloor.THIRD_RADIATOR_X, ParamSecondFloor.THIRD_RADIATOR_Y),
-                new Dimension(ParamSecondFloor.THIRD_LITTLE_RADIATOR_X, ParamSecondFloor.THIRD_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_PORTRAIT);
+                new Dimension(ParamSecondFloor.THIRD_LITTLE_RADIATOR_X, ParamSecondFloor.THIRD_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_PORTRAIT);
         radiatorFourthPlaceSndFloor.setGroup(new Dimension(ParamSecondFloor.FOURTH_RADIATOR_X, ParamSecondFloor.FOURTH_RADIATOR_Y),
-                new Dimension(ParamSecondFloor.FOURTH_LITTLE_RADIATOR_X, ParamSecondFloor.FOURTH_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_PORTRAIT);
+                new Dimension(ParamSecondFloor.FOURTH_LITTLE_RADIATOR_X, ParamSecondFloor.FOURTH_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_PORTRAIT);
 
         objectHomes.add(lightFirstPlaceSndFloor);
         objectHomes.add(lightSecondPlaceSndFloor);
@@ -381,7 +381,7 @@ public class Data implements DataService {
         radiatorFirstPlaceThrdFloor.setGroup(new Dimension(ParamThirdFloor.FIRST_RADIATOR_X, ParamThirdFloor.FIRST_RADIATOR_Y),
                 new Dimension(ParamThirdFloor.FIRST_LITTLE_RADIATOR_X, ParamThirdFloor.FIRST_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
         radiatorSecondPlaceThrdFloor.setGroup(new Dimension(ParamThirdFloor.SECOND_RADIATOR_X, ParamThirdFloor.SECOND_RADIATOR_Y),
-                new Dimension(ParamThirdFloor.SECOND_LITTLE_RADIATOR_X, ParamThirdFloor.SECOND_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_LANDSCAPE);
+                new Dimension(ParamThirdFloor.SECOND_LITTLE_RADIATOR_X, ParamThirdFloor.SECOND_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
         radiatorThirdPlaceThrdFloor.setGroup(new Dimension(ParamThirdFloor.THIRD_RADIATOR_X, ParamThirdFloor.THIRD_RADIATOR_Y),
                 new Dimension(ParamThirdFloor.THIRD_LITTLE_RADIATOR_X, ParamThirdFloor.THIRD_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
 
@@ -529,7 +529,6 @@ public class Data implements DataService {
 
     @Override
     public void setObjectsOn(int roomID) {
-        System.out.println("Dans setObjectsOn ID " + floors.get(mainFloorNo).getRooms().size() + " - ID : " + roomID);
         if (floors.get(mainFloorNo).getRooms().size() > roomID) {
             floors.get(mainFloorNo).getSpecificRoom(roomID).turnOnObjects();
         }
