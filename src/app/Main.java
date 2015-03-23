@@ -1,6 +1,7 @@
 package app;
 
 import app.algorithm.BrainCharacter;
+import app.algorithm.BrainCharacterDirige;
 import app.algorithm.BrainHome;
 import app.common.ParamDisplay;
 import app.common.ParamFirstFloor;
@@ -38,13 +39,16 @@ public class Main extends Application {
         simulator = new Simulator();
         viewer = new Viewer();
         brainCharacter = new BrainCharacter();
+//        brainCharacter = new BrainCharacterDirige();
         brainHome = new BrainHome();
 
         ((Simulator)simulator).bindDataService(data);
+//        ((Simulator)simulator).bindBrainCharacterService(brainCharacter);
         ((Simulator)simulator).bindBrainCharacterService(brainCharacter);
         ((Simulator)simulator).bindBrainHomeService(brainHome);
         ((Viewer)viewer).bindDataService(data);
         ((BrainCharacter)brainCharacter).bindSimulatorService(simulator);
+//        ((BrainCharacterDirige)brainCharacter).bindSimulatorService(simulator);
         ((BrainHome)brainHome).bindSimulatorService(simulator);
 
         data.init();
@@ -81,14 +85,12 @@ public class Main extends Application {
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if (onPause) {
-                    if (event.getCode().equals(KeyCode.SPACE)){
+                if (event.getCode().equals(KeyCode.SPACE)){
+                    if (onPause) {
                         timerMain.start();
                         simulator.start();
                         onPause = false;
-                    }
-                } else {
-                    if (event.getCode().equals(KeyCode.SPACE)){
+                    } else {
                         timerMain.stop();
                         simulator.pause();
                         onPause = true;
@@ -107,16 +109,16 @@ public class Main extends Application {
         scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if(event.getX()> ParamDisplay.X_MINI_MAP && event.getX()< ParamDisplay.X_MINI_MAP+ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH+ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH &&
-                        event.getY()> ParamDisplay.Y_FIRST_LITTLE_MAP && event.getY()< ParamDisplay.Y_FIRST_LITTLE_MAP+ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT){
+                if (event.getX() > ParamDisplay.X_MINI_MAP && event.getX() < ParamDisplay.X_MINI_MAP + ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH + ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH &&
+                        event.getY() > ParamDisplay.Y_FIRST_LITTLE_MAP && event.getY() < ParamDisplay.Y_FIRST_LITTLE_MAP + ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT) {
                     viewer.setFirstFloorToDisplay(1);
                     scene.setRoot(((Viewer) viewer).getPanel());
-                }else if(event.getX()> ParamDisplay.X_MINI_MAP && event.getX()< ParamDisplay.X_MINI_MAP+ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH+ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH &&
-                        event.getY()> ParamDisplay.Y_SECOND_LITTLE_MAP && event.getY()< ParamDisplay.Y_SECOND_LITTLE_MAP+ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT){
+                } else if (event.getX() > ParamDisplay.X_MINI_MAP && event.getX() < ParamDisplay.X_MINI_MAP + ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH + ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH &&
+                        event.getY() > ParamDisplay.Y_SECOND_LITTLE_MAP && event.getY() < ParamDisplay.Y_SECOND_LITTLE_MAP + ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT) {
                     viewer.setFirstFloorToDisplay(2);
                     scene.setRoot(((Viewer) viewer).getPanel());
-                }else if(event.getX()> ParamDisplay.X_MINI_MAP && event.getX()< ParamDisplay.X_MINI_MAP+ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH+ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH &&
-                        event.getY()> ParamDisplay.Y_THIRD_LITTLE_MAP && event.getY()< ParamDisplay.Y_THIRD_LITTLE_MAP+ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT){
+                } else if (event.getX() > ParamDisplay.X_MINI_MAP && event.getX() < ParamDisplay.X_MINI_MAP + ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH + ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH &&
+                        event.getY() > ParamDisplay.Y_THIRD_LITTLE_MAP && event.getY() < ParamDisplay.Y_THIRD_LITTLE_MAP + ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT) {
                     viewer.setFirstFloorToDisplay(3);
                     scene.setRoot(((Viewer) viewer).getPanel());
                 }

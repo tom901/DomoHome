@@ -21,4 +21,9 @@ public interface SimulatorService {
     public void setRoomCharacterIsIn();
     public void setPositionToGoTo();
     public void setInTransition(boolean inTransition);
+    public boolean isInTransition();
+    public boolean isFinishCrossing();
+    public boolean hasArrived();
+    public void setGoTo(Dimension position);
+    public void setHasArrived(boolean bool);
 }

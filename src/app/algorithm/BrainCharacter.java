@@ -27,28 +27,107 @@ public class BrainCharacter implements BrainCharacterService, RequireSimulatorSe
 
     @Override
     public void step() {
-        simulator.setRoomCharacterIsIn();
+//        simulator.setRoomCharacterIsIn();
         compteur++;
-        if (compteur < 500) {
+        // Si le paramètre de setCharacterMove est 0 : gauche, 1 : droite, 2 : haut, 3 : bas
+        if (compteur < 150) {
             switch (randomMove.nextInt(4)) {
                 case 0: // Move left
-                    simulator.setCharacterMove(0);
+//                    simulator.setCharacterMove(0);
+                    simulator.setCharacterMove(3);
                     break;
                 case 1: // Move right
                     simulator.setCharacterMove(1);
                     break;
                 case 2: // Move up
-                    simulator.setCharacterMove(2);
+//                    simulator.setCharacterMove(2);
+                    simulator.setCharacterMove(3);
                     break;
                 case 3: // Move bottom
                     simulator.setCharacterMove(3);
                     break;
             }
-        } else {
-            simulator.setInTransition(true);
-            simulator.setPositionToGoTo();
-
+        } else if (compteur > 149 && compteur < 700) {
+            switch (randomMove.nextInt(4)) {
+                case 0: // Move left
+                    if (compteur % 2 == 0) {
+                        simulator.setCharacterMove(2);
+                    } else {
+                        simulator.setCharacterMove(3);
+                    }
+                    break;
+                case 1: // Move right
+                    simulator.setCharacterMove(1);
+                    break;
+                case 2: // Move up
+                    simulator.setCharacterMove(1);
+                    break;
+                case 3: // Move bottom
+                    simulator.setCharacterMove(1);
+                    break;
+            }
+        } else if (compteur > 699 && compteur < 1000) {
+            switch (randomMove.nextInt(4)) {
+                case 0: // Move left
+                    if (compteur % 2 == 0) {
+                        simulator.setCharacterMove(0);
+                    } else {
+                        simulator.setCharacterMove(1);
+                    }
+                    break;
+                case 1: // Move right
+                    simulator.setCharacterMove(2);
+                    break;
+                case 2: // Move up
+                    simulator.setCharacterMove(2);
+                    break;
+                case 3: // Move bottom
+                    simulator.setCharacterMove(2);
+                    break;
+            }
+        } else if (compteur > 999 && compteur < 1500) {
+            switch (randomMove.nextInt(4)) {
+                case 0: // Move left
+                    if (compteur % 2 == 0) {
+                        simulator.setCharacterMove(2);
+                    } else {
+                        simulator.setCharacterMove(3);
+                    }
+                    break;
+                case 1: // Move right
+                    simulator.setCharacterMove(0);
+                    break;
+                case 2: // Move up
+                    simulator.setCharacterMove(0);
+                    break;
+                case 3: // Move bottom
+                    simulator.setCharacterMove(0);
+                    break;
+            }
+        } else if (compteur > 1499 && compteur < 1800) {
+            switch (randomMove.nextInt(4)) {
+                case 0: // Move left
+                    if (compteur % 2 == 0) {
+                        simulator.setCharacterMove(0);
+                    } else {
+                        simulator.setCharacterMove(1);
+                    }
+                    break;
+                case 1: // Move right
+                    simulator.setCharacterMove(3);
+                    break;
+                case 2: // Move up
+                    simulator.setCharacterMove(3);
+                    break;
+                case 3: // Move bottom
+                    simulator.setCharacterMove(3);
+                    break;
+            }
+            if (compteur == 1799) {
+                compteur = 150;
+            }
         }
+//        System.out.println("Compteur : " + compteur);
     }
 
     @Override

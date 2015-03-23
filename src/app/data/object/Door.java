@@ -19,6 +19,7 @@ public class Door extends ObjectHome {
     private Dimension dimensionMiniDoor;
     private Rectangle door;
     private Rectangle miniDoor;
+    private boolean isLandscape;
 
     public Door() {
     }
@@ -28,11 +29,13 @@ public class Door extends ObjectHome {
         this.dimensionMiniDoor = dimensionMiniDoor;
 
         if(orientation == ParamHome.RADIATOR_LANDSCAPE) {
-             door = new Rectangle(dimension.getX(), dimension.getY(), ParamHome.DOOR_WIDTH_LANDSCAPE, ParamHome.DOOR_HEIGHT_LANDSCAPE);
-             miniDoor = new Rectangle(dimensionMiniDoor.getX(), dimensionMiniDoor.getY(), ParamHome.DOOR_LITTLE_WIDTH_LANDSCAPE, ParamHome.DOOR_LITTLE_HEIGHT_LANDSCAPE);
+            setLandscape(true);
+            door = new Rectangle(dimension.getX(), dimension.getY(), ParamHome.DOOR_WIDTH_LANDSCAPE, ParamHome.DOOR_HEIGHT_LANDSCAPE);
+            miniDoor = new Rectangle(dimensionMiniDoor.getX(), dimensionMiniDoor.getY(), ParamHome.DOOR_LITTLE_WIDTH_LANDSCAPE, ParamHome.DOOR_LITTLE_HEIGHT_LANDSCAPE);
         }else{
-             door = new Rectangle(dimension.getX(), dimension.getY(), ParamHome.DOOR_WIDTH_PORTRAIT, ParamHome.DOOR_HEIGHT_PORTRAIT);
-             miniDoor = new Rectangle(dimensionMiniDoor.getX(), dimensionMiniDoor.getY(), ParamHome.DOOR_LITTLE_WIDTH_PORTRAIT, ParamHome.DOOR_LITTLE_HEIGHT_PORTRAIT);
+            setLandscape(false);
+            door = new Rectangle(dimension.getX(), dimension.getY(), ParamHome.DOOR_WIDTH_PORTRAIT, ParamHome.DOOR_HEIGHT_PORTRAIT);
+            miniDoor = new Rectangle(dimensionMiniDoor.getX(), dimensionMiniDoor.getY(), ParamHome.DOOR_LITTLE_WIDTH_PORTRAIT, ParamHome.DOOR_LITTLE_HEIGHT_PORTRAIT);
         }
         door.setFill(Color.WHITE);
         door.setStroke(Color.WHITE);
@@ -45,6 +48,14 @@ public class Door extends ObjectHome {
 
     public Rectangle getDoor() {
         return door;
+    }
+
+    public boolean isLandscape() {
+        return isLandscape;
+    }
+
+    public void setLandscape(boolean isLandscape) {
+        this.isLandscape = isLandscape;
     }
 
     @Override

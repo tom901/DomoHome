@@ -1,6 +1,8 @@
 package app.simulator;
 
+import app.algorithm.BrainCharacter;
 import app.common.ParamDisplay;
+import app.common.ParamHome;
 import app.common.RoomsEnum;
 import app.data.Dimension;
 import app.data.home.Room;
@@ -9,6 +11,7 @@ import app.data.object.ObjectHome;
 import app.services.*;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -18,23 +21,28 @@ import java.util.TimerTask;
 public class Simulator implements SimulatorService, RequireDataService, RequireBrainCharacterService, RequireBrainHomeService {
     private Timer simuTimer;
     private DataService data;
-    private Dimension dimNotToExceed, positionToGoTo;
+    private Dimension dimNotToExceed, positionToGoTo, dimToGoTo;
     private BrainCharacterService brainCharacterService;
     private BrainHomeService brainHomeService;
     private Door doorToCross;
     private int i;
     private int direction;
-    private boolean inTransition;
+    private boolean inTransition,isPositioned, finishCrossing,doorIsOnTheRightOrAtBottom, brainDirige, hasArrived;
 
     /**
      * Method to getPanel the attributes of the engine / simulator.
      */
     public void init() {
         inTransition = false;
+        isPositioned = false;
+        finishCrossing = false;
+        doorIsOnTheRightOrAtBottom = false;
+        hasArrived = false;
         simuTimer = new Timer();
         direction = -1;
         i = 0;
         dimNotToExceed = new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X,ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH,ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT);
+        dimToGoTo = new Dimension(10,200);
         data.setCharacterPosition(10, 200);
 
         brainHomeService.activation();
@@ -56,7 +64,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
      * Method to start the process of the engine.
      */
     public void start() {
-        brainCharacterService.activation();
+        //brainCharacterService.activation();
         simuTimer.schedule(
                 new TimerTask() {
                     @Override
@@ -67,12 +75,23 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                         brainCharacterService.step();
                         data.setObjectsOff();
                         brainHomeService.step();
+//                        System.out.println("transition : " + inTransition);
                         if (!inTransition) {
-                            if (direction != -1) {
+                            if (brainDirige) {
+                                goToDirige();
+                            } else {
+//
+//                                finishCrossing = false;
+//                                if (direction != -1) {
                                 checkCollision();
+//                                } else {
+//                                    if (!isPositioned) {
+//                                        goToPosition();
+//                                    } else {
+//                                        crossTheDoor();
+//                                    }
+//                                }
                             }
-                        } else {
-                            goToPosition();
                         }
                     }
                 },
@@ -117,7 +136,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                 moveDown();
                 break;
             default:
-                moveRight();
+//                moveRight();
                 break;
         }
         direction = -1;
@@ -158,6 +177,14 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         }
     }
 
+    public boolean isInTransition() {
+        return inTransition;
+    }
+
+    public boolean isFinishCrossing() {
+        return finishCrossing;
+    }
+
     @Override
     public void setObjectsOn() {
         data.setObjectsOn();
@@ -174,6 +201,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
     }
 
     public void setInTransition(boolean inTransition) {
+//            System.out.println("Dans setInTransition.");
         this.inTransition = inTransition;
     }
 
@@ -185,33 +213,144 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                 for(ObjectHome door : data.getFloors().get(0).getSpecificRoom(2).getObjectHomes()) {
                     if (door instanceof Door) {
                         doorToCross = (Door)door;
+                        checkWhereDoorIs(doorToCross);
                         this.positionToGoTo = ((Door) door).getDimension();
+
                     }
                 }
-            } else {
+            } else if (roomIn.get(0).getRoomName().equals(RoomsEnum.ROOM.ENTREE_1)) {
+//                Random rand = new Random();
+//                switch ()
+            }
+            else {
                 for (ObjectHome door : roomIn.get(0).getObjectHomes()) {
                     if (door instanceof Door) {
                         doorToCross = (Door)door;
+                        checkWhereDoorIs(doorToCross);
                         this.positionToGoTo = ((Door) door).getDimension();
                     }
                 }
             }
         }
+
     }
 
     public void goToPosition() {
         int moveX = 0, moveY = 0;
-        if (doorToCross.)
-        if ((data.getCharacterPosition().getX() + data.getCharacterPosition().getWidth() / 2) < (positionToGoTo.getX() + positionToGoTo.getWidth() / 2)) {
-            moveX++;
-        } else if ((data.getCharacterPosition().getX() + data.getCharacterPosition().getWidth() / 2) > (positionToGoTo.getX() + positionToGoTo.getWidth() / 2)) {
-            moveX--;
+        if (doorToCross.isLandscape()) {
+            if ((data.getCharacterPosition().getX() + data.getCharacterPosition().getWidth() / 2) < (positionToGoTo.getX() + ParamHome.DOOR_WIDTH_LANDSCAPE / 2)) {
+                moveX++;
+            } else if ((data.getCharacterPosition().getX() + data.getCharacterPosition().getWidth() / 2) > (positionToGoTo.getX() + ParamHome.DOOR_WIDTH_LANDSCAPE / 2)) {
+                moveX--;
+            }
+            if (data.getCharacterPosition().getY() + data.getCharacterPosition().getHeight() < positionToGoTo.getY()) {
+                moveY++;
+            } else if (data.getCharacterPosition().getY() > positionToGoTo.getY() + ParamHome.DOOR_HEIGHT_LANDSCAPE) {
+                moveY--;
+            }
+        } else {
+            if (data.getCharacterPosition().getX() + data.getCharacterPosition().getWidth() < positionToGoTo.getX()) {
+                moveX++;
+            } else if (data.getCharacterPosition().getX() > positionToGoTo.getX() + ParamHome.DOOR_WIDTH_PORTRAIT) {
+                moveX--;
+            }
+            if ((data.getCharacterPosition().getY() + data.getCharacterPosition().getHeight() / 2) > (positionToGoTo.getY() + ParamHome.DOOR_HEIGHT_PORTRAIT / 2)) {
+                moveY--;
+            } else if ((data.getCharacterPosition().getY() + data.getCharacterPosition().getHeight() / 2) < (positionToGoTo.getY() + ParamHome.DOOR_HEIGHT_PORTRAIT / 2)) {
+                moveY++;
+            }
+
         }
-        if ((data.getCharacterPosition().getY() + data.getCharacterPosition().getHeight() / 2) > (positionToGoTo.getY() + positionToGoTo.getHeight() / 2)) {
+        if (moveX == 0 && moveY == 0) {
+            isPositioned = true;
+        } else {
+            data.setCharacterPosition(data.getCharacterPosition().getX() + moveX, data.getCharacterPosition().getY() + moveY);
+        }
+    }
+
+    public void crossTheDoor() {
+        if (doorToCross.isLandscape()) {
+            if (doorIsOnTheRightOrAtBottom) {
+                if (data.getCharacterPosition().getY() < doorToCross.getDimension().getY() + ParamHome.DOOR_HEIGHT_LANDSCAPE) {
+                    data.setCharacterPosition(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() + 1);
+                }
+                else {
+                    finishCrossing = true;
+                }
+            } else {
+                if (data.getCharacterPosition().getY() + data.getCharacterPosition().getHeight() > doorToCross.getDimension().getY()) {
+                    data.setCharacterPosition(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() - 1);
+                } else {
+                    finishCrossing = true;
+                }
+            }
+        } else {
+            if (doorIsOnTheRightOrAtBottom) {
+//                System.out.println("Perso X : " + data.getCharacterPosition().getX() + " - DoorWidth: " + (doorToCross.getDimension().getX() + ParamHome.DOOR_WIDTH_PORTRAIT));
+                if (data.getCharacterPosition().getX() < (doorToCross.getDimension().getX() + ParamHome.DOOR_WIDTH_PORTRAIT)) {
+                    data.setCharacterPosition(data.getCharacterPosition().getX() + 1, data.getCharacterPosition().getY());
+                }
+                else {
+                    finishCrossing = true;
+                }
+            } else {
+                if (data.getCharacterPosition().getX() + data.getCharacterPosition().getWidth() > doorToCross.getDimension().getX()) {
+                    data.setCharacterPosition(data.getCharacterPosition().getX()-1, data.getCharacterPosition().getY());
+                } else {
+                    finishCrossing = true;
+                }
+            }
+        }
+        System.out.println("FinishCross : " + finishCrossing);
+    }
+
+    public void checkWhereDoorIs(Door door) {
+        if (door.isLandscape()) {
+            if (data.getCharacterPosition().getY() > door.getDimension().getY() || data.getCharacterPosition().getY() + data.getCharacterPosition().getHeight() > door.getDimension().getY()) {
+                doorIsOnTheRightOrAtBottom = false;
+            } else {
+                doorIsOnTheRightOrAtBottom = true;
+            }
+        } else {
+            if (data.getCharacterPosition().getX() < door.getDimension().getX() || data.getCharacterPosition().getX() + data.getCharacterPosition().getWidth() < door.getDimension().getX()) {
+                doorIsOnTheRightOrAtBottom = true;
+            } else {
+                doorIsOnTheRightOrAtBottom = false;
+            }
+        }
+    }
+
+    public void setGoTo(Dimension position) {
+        brainDirige = true;
+        dimToGoTo = position;
+    }
+
+    public boolean hasArrived() {
+        if (data.getCharacterPosition().getX() ==
+                dimToGoTo.getX() &&
+                data.getCharacterPosition().getY() ==
+                        dimToGoTo.getY()) {
+            hasArrived = true;
+        }
+        return hasArrived;
+    }
+
+    public void setHasArrived(boolean bool) {
+        this.hasArrived = bool;
+    }
+
+    public void goToDirige() {
+        int moveX = 0, moveY = 0;
+        if (data.getCharacterPosition().getX() > dimToGoTo.getX()) {
+            moveX--;
+        } else if (data.getCharacterPosition().getX() < dimToGoTo.getX()) {
+            moveX++;
+        }
+        if (data.getCharacterPosition().getY() > dimToGoTo.getY()) {
             moveY--;
-        } else if ((data.getCharacterPosition().getY() + data.getCharacterPosition().getHeight() / 2) < (positionToGoTo.getY() + positionToGoTo.getHeight() / 2)) {
+        } else if (data.getCharacterPosition().getY() < dimToGoTo.getY()) {
             moveY++;
         }
-        data.setCharacterPosition(data.getCharacterPosition().getX()+moveX,data.getCharacterPosition().getY()+moveY);
+        data.setCharacterPosition(data.getCharacterPosition().getX() + moveX, data.getCharacterPosition().getY() + moveY);
     }
 }

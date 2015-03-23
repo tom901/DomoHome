@@ -2,6 +2,7 @@ package app.display;
 
 import app.common.ParamDisplay;
 import app.common.ParamFirstFloor;
+import app.common.ParamHome;
 import app.data.Data;
 import app.data.Dimension;
 import app.data.home.Floor;
@@ -32,8 +33,9 @@ import java.util.ArrayList;
  */
 public class HomeViewer extends Parent implements RequireReadService {
     private ReadService data;
-    public int divider = 1, firstFloorToDisplay;
+    public int divider = 1, firstFloorToDisplay, j, lastFloor;
     private double xShrink,yShrink,shrink,xModifier,yModifier,heroesScale;
+    private boolean changeFloor;
 
     public ArrayList<Room> displayBigFloor;
 //    private ArrayList<ArrayList<Room>> roomsInBig;
@@ -42,6 +44,9 @@ public class HomeViewer extends Parent implements RequireReadService {
 //        roomsInBig = new ArrayList<ArrayList<Room>>();
 //        data = new Data();
 //        data.getPanel();
+        changeFloor = true;
+        j = 0;
+        lastFloor = -1;
     }
 
 
@@ -51,6 +56,28 @@ public class HomeViewer extends Parent implements RequireReadService {
         yShrink =1;
         xModifier=0;
         yModifier=0;
+
+        //System.out.println("Y : " + data.getCharacterPosition().getY() + " - Y+H : " + (data.getCharacterPosition().getY() + ParamDisplay.CHARACTER_HEIGHT) + " StairY: " + ParamHome.FIRST_STAIR_Y + " - StairY+H: " + (ParamHome.FIRST_STAIR_Y + ParamHome.STAIR_HEIGHT));
+        if (changeFloor && data.getCharacterPosition().getY() > ParamHome.FIRST_STAIR_Y && data.getCharacterPosition().getY() + ParamDisplay.CHARACTER_HEIGHT <= ParamHome.FIRST_STAIR_Y + ParamHome.STAIR_HEIGHT) {
+            if (firstFloorToDisplay == 1 || firstFloorToDisplay == 3) {
+                System.out.println("firstFloor : " + firstFloorToDisplay);
+                lastFloor = firstFloorToDisplay;
+                firstFloorToDisplay = 2;
+                System.out.println("lastFloor : " + lastFloor);
+            } else if (firstFloorToDisplay == 2) {
+                if (lastFloor == 1) {
+                    firstFloorToDisplay = 3;
+                } else {
+                    firstFloorToDisplay = 1;
+                }
+            }
+            changeFloor = false;
+        }
+        if (!changeFloor) {
+            j++;
+            if (j == 5) { changeFloor = true; j = 0; }
+        }
+
 
         Group root = new Group();
 //        roomsInBig.clear();
