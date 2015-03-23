@@ -1,5 +1,6 @@
 package app.data.object;
 
+import app.common.ParamHome;
 import app.data.Dimension;
 import app.data.home.Floor;
 import app.data.home.Room;
@@ -15,15 +16,28 @@ import java.awt.*;
  */
 public class Door extends ObjectHome {
     private Dimension dimensionDoor;
+    private Dimension dimensionMiniDoor;
     private Rectangle door;
-    private int room;
+    private Rectangle miniDoor;
 
-    public Door(Dimension dimension, boolean stateDoor, int room) {
+    public Door() {
+    }
+
+    public void setGroup(Dimension dimension, Dimension dimensionMiniDoor, int orientation) {
         this.dimensionDoor = dimension;
-        this.room = room;
-        Rectangle door = new Rectangle(dimension.getX(), dimension.getY(), dimension.getWidth(), dimension.getHeight());
-        door.setFill(Color.BLUE);
+        this.dimensionMiniDoor = dimensionMiniDoor;
+
+        if(orientation == ParamHome.RADIATOR_LANDSCAPE) {
+             door = new Rectangle(dimension.getX(), dimension.getY(), ParamHome.DOOR_WIDTH_LANDSCAPE, ParamHome.DOOR_HEIGHT_LANDSCAPE);
+             miniDoor = new Rectangle(dimensionMiniDoor.getX(), dimensionMiniDoor.getY(), ParamHome.DOOR_LITTLE_WIDTH_LANDSCAPE, ParamHome.DOOR_LITTLE_HEIGHT_LANDSCAPE);
+        }else{
+             door = new Rectangle(dimension.getX(), dimension.getY(), ParamHome.DOOR_WIDTH_PORTRAIT, ParamHome.DOOR_HEIGHT_PORTRAIT);
+             miniDoor = new Rectangle(dimensionMiniDoor.getX(), dimensionMiniDoor.getY(), ParamHome.DOOR_LITTLE_WIDTH_PORTRAIT, ParamHome.DOOR_LITTLE_HEIGHT_PORTRAIT);
+        }
+        door.setFill(Color.WHITE);
+        miniDoor.setFill(Color.WHITE);
         super.group.getChildren().add(door);
+        super.groupMini.getChildren().add(miniDoor);
     }
 
     public Rectangle getDoor() {
