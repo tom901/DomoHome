@@ -69,7 +69,7 @@ public class HomeViewer extends Parent implements RequireReadService {
         for (Room room : data.getRooms()) {
             root.getChildren().add(room.getRoomMini());
             for (ObjectHome oh : room.getObjectHomes()) {
-                System.out.println("L'objet est : " + oh.isState() + " pour la pièce : " + room.getRoomName());
+              //  System.out.println("L'objet est : " + oh.isState() + " pour la pièce : " + room.getRoomName());
                 root.getChildren().add(oh.getGroupMini());
             }
         }

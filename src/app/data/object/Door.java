@@ -35,7 +35,10 @@ public class Door extends ObjectHome {
              miniDoor = new Rectangle(dimensionMiniDoor.getX(), dimensionMiniDoor.getY(), ParamHome.DOOR_LITTLE_WIDTH_PORTRAIT, ParamHome.DOOR_LITTLE_HEIGHT_PORTRAIT);
         }
         door.setFill(Color.WHITE);
+        door.setStroke(Color.WHITE);
         miniDoor.setFill(Color.WHITE);
+        miniDoor.setStroke(Color.WHITE);
+
         super.group.getChildren().add(door);
         super.groupMini.getChildren().add(miniDoor);
     }
