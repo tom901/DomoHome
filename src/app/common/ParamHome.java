@@ -6,8 +6,21 @@ package app.common;
 //Classe for the parameters of floor, room of the house
 public class ParamHome {
 
-    public static final int DOOR_WIDTH = 5;
-    public static final int DOOR_HEIGHT= 5;
+    public static final int DOOR_PORTRAIT = 0;
+    public static final int DOOR_LANDSCAPE = 1;
+
+
+    public static final int DOOR_WIDTH_LANDSCAPE = 50;
+    public static final int DOOR_HEIGHT_LANDSCAPE= 20;
+
+    public static final int DOOR_LITTLE_WIDTH_LANDSCAPE = DOOR_WIDTH_LANDSCAPE / 3;
+    public static final int DOOR_LITTLE_HEIGHT_LANDSCAPE= DOOR_HEIGHT_LANDSCAPE / 3;
+
+    public static final int DOOR_WIDTH_PORTRAIT = 20;
+    public static final int DOOR_HEIGHT_PORTRAIT= 50;
+
+    public static final int DOOR_LITTLE_WIDTH_PORTRAIT = DOOR_WIDTH_PORTRAIT / 3;
+    public static final int DOOR_LITTLE_HEIGHT_PORTRAIT= DOOR_HEIGHT_PORTRAIT / 3;
 
     public static final int RADIATOR_LANDSCAPE_WIDTH = 40;
     public static final int RADIATOR_LANDSCAPE_HEIGHT= 10;

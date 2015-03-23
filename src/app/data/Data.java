@@ -190,6 +190,7 @@ public class Data implements DataService {
      * Method to initialize all the objects of the big house.
      */
     public void initObjectHomes() {
+        //First floor
         Light lightFirstPlace = new Light();
         Light lightSecondPlace = new Light();
         Light lightThirdPlace = new Light();
@@ -202,6 +203,12 @@ public class Data implements DataService {
         Radiator radiatorFourth = new Radiator();
         Radiator radiatorFifth = new Radiator();
         Radiator radiatorSixth = new Radiator();
+
+        Door doorFirst = new Door();
+        Door doorSecond= new Door();
+        Door doorThird = new Door();
+        Door doorFourth = new Door();
+        Door doorFifth= new Door();
 
 
         // Code pour ajouter les objets aux pièces (room) respectives. Les objets sont dans la liste d'objet de chaque Room.
@@ -217,6 +224,12 @@ public class Data implements DataService {
         floors.get(0).getSpecificRoom(2).addObject(radiatorFourth);
         floors.get(0).getSpecificRoom(3).addObject(radiatorFifth);
         floors.get(0).getSpecificRoom(4).addObject(radiatorSixth);
+
+        floors.get(0).getSpecificRoom(0).addObject(doorFirst);
+        floors.get(0).getSpecificRoom(1).addObject(doorSecond);
+        floors.get(0).getSpecificRoom(2).addObject(doorThird);
+        floors.get(0).getSpecificRoom(3).addObject(doorFourth);
+        floors.get(0).getSpecificRoom(4).addObject(doorFifth);
         // Code pour ajouter les objets à la liste des objets des étages (pour afficher tous les objets d'un étage).
         floors.get(0).addObjectHome(lightFirstPlace);
         floors.get(0).addObjectHome(lightSecondPlace);
@@ -231,39 +244,11 @@ public class Data implements DataService {
         floors.get(0).addObjectHome(radiatorFifth);
         floors.get(0).addObjectHome(radiatorSixth);
 
-        /*Door doorFirstRoom = new Door(new Dimension(ParamFirstFloor.FIRST_DOOR_X, ParamFirstFloor.FIRST_ROOM_DOOR_Y, ParamFirstFloor.FIRST_DOOR_WIDTH, ParamFirstFloor.FIRST_DOOR_HEIGHT),
-                new Dimension(ParamFirstFloor.FIRST_DOOR_X, ParamFirstFloor.FIRST_ROOM_DOOR_Y, ParamFirstFloor.FIRST_DOOR_WIDTH, ParamFirstFloor.FIRST_DOOR_HEIGHT), false, 1);
-        Door doorSecondRoom = new Door(new Dimension(ParamFirstFloor.SECOND_ROOM_DOOR_X, ParamFirstFloor.SECOND_ROOM_DOOR_Y, ParamFirstFloor.SECOND_DOOR_WIDTH, ParamFirstFloor.SECOND_DOOR_HEIGHT), false, 1);
-        Door doorThirdRoom = new Door(new Dimension(ParamFirstFloor.THIRD_ROOM_DOOR_X, ParamFirstFloor.THIRD_ROOM_DOOR_Y, ParamFirstFloor.THIRD_DOOR_WIDTH, ParamFirstFloor.THIRD_DOOR_HEIGHT), false, 1);
-        Door doorFourthRoom = new Door(new Dimension(ParamFirstFloor.FOURTH_ROOM_DOOR_X, ParamFirstFloor.FOURTH_ROOM_DOOR_Y, ParamFirstFloor.FOURTH_DOOR_WIDTH, ParamFirstFloor.FOURTH_DOOR_HEIGHT), false, 1);
-        Door doorFifthRoom = new Door(new Dimension(ParamFirstFloor.FIFTH_ROOM_DOOR_X, ParamFirstFloor.FIFTH_ROOM_DOOR_Y, ParamFirstFloor.FIFTH_DOOR_WIDTH, ParamFirstFloor.FIFTH_DOOR_HEIGHT), false, 1);
-        */
-
-        /*Door doorThirdRoom_floor2 = new Door(new Dimension(ParamSecondFloor.THIRD_ROOM_DOOR_X, ParamSecondFloor.THIRD_ROOM_DOOR_Y, ParamSecondFloor.THIRD_DOOR_WIDTH, ParamSecondFloor.THIRD_DOOR_HEIGHT), false, 1);
-        Door doorFourthRoom_floor2 = new Door(new Dimension(ParamSecondFloor.FOURTH_ROOM_DOOR_X, ParamSecondFloor.FOURTH_ROOM_DOOR_Y, ParamSecondFloor.FOURTH_DOOR_WIDTH, ParamSecondFloor.FOURTH_DOOR_HEIGHT), false, 1);
-
-        Door minidoorFirstRoom_floor2 = new Door(new Dimension(ParamSecondFloor.FIRST_DOOR_X, ParamSecondFloor.FIRST_ROOM_DOOR_Y, ParamSecondFloor.FIRST_DOOR_WIDTH, ParamSecondFloor.FIRST_DOOR_HEIGHT), false, 1);
-        */
-
-        // Code pour ajouter les portes à la liste d'une pièce. On associe donc une porte à une pièce.
-        /*floors.get(0).getSpecificRoom(0).addObject(doorFirstRoom);
-        floors.get(0).getSpecificRoom(1).addObject(doorSecondRoom);
-        floors.get(0).getSpecificRoom(2).addObject(doorThirdRoom);
-        floors.get(0).getSpecificRoom(3).addObject(doorFourthRoom);
-        floors.get(0).getSpecificRoom(4).addObject(doorFifthRoom);
-        floors.get(1).getSpecificRoom(0).addObject(doorFirstRoom_floor2);
-        floors.get(1).getSpecificRoom(1).addObject(doorThirdRoom_floor2);
-        floors.get(1).getSpecificRoom(2).addObject(doorFourthRoom_floor2);*/
-        // Code pour ajouter les portes à un étage donné.
-        /*floors.get(0).addObjectHome(doorFirstRoom);
-        floors.get(0).addObjectHome(doorSecondRoom);
-        floors.get(0).addObjectHome(doorThirdRoom);
-        floors.get(0).addObjectHome(doorFourthRoom);
-        floors.get(0).addObjectHome(doorFifthRoom);*/
-        //floors.get(1).addObjectHome(doorFirstRoom_floor2);
-        /*floors.get(1).addObjectHome(doorThirdRoom_floor2);
-        floors.get(1).addObjectHome(doorFourthRoom_floor2);*/
-
+        floors.get(0).addObjectHome(doorFirst);
+        floors.get(0).addObjectHome(doorSecond);
+        floors.get(0).addObjectHome(doorThird);
+        floors.get(0).addObjectHome(doorFourth);
+        floors.get(0).addObjectHome(doorFifth);
 
         lightFirstPlace.setGroup(new Dimension(ParamFirstFloor.FIRST_LIGHT_X, ParamFirstFloor.FIRST_LIGHT_Y, ParamDisplay.BIG_FLOOR_RADIUS_LIGTH),
                 new Dimension(ParamFirstFloor.FIRST_LITTLE_LIGHT_X, ParamFirstFloor.FIRST_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), true);
@@ -291,6 +276,17 @@ public class Data implements DataService {
         radiatorSixth.setGroup(new Dimension(ParamFirstFloor.SIXTH_RADIATOR_X, ParamFirstFloor.SIXTH_RADIATOR_Y),
                 new Dimension(ParamFirstFloor.SIXTH_LITTLE_RADIATOR_X, ParamFirstFloor.SIXTH_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
 
+        doorFirst.setGroup(new Dimension(ParamFirstFloor.FIRST_ROOM_DOOR_X, ParamFirstFloor.FIRST_ROOM_DOOR_Y),
+                new Dimension(ParamFirstFloor.FIRST_LITTLE_ROOM_DOOR_X, ParamFirstFloor.FIRST_LITTLE_ROOM_DOOR_Y),ParamHome.DOOR_LANDSCAPE);
+        doorSecond.setGroup(new Dimension(ParamFirstFloor.SECOND_ROOM_DOOR_X, ParamFirstFloor.SECOND_ROOM_DOOR_Y),
+                new Dimension(ParamFirstFloor.SECOND_LITTLE_ROOM_DOOR_X, ParamFirstFloor.SECOND_LITTLE_ROOM_DOOR_Y),ParamHome.DOOR_PORTRAIT);
+        doorThird.setGroup(new Dimension(ParamFirstFloor.THIRD_ROOM_DOOR_X, ParamFirstFloor.THIRD_ROOM_DOOR_Y),
+                new Dimension(ParamFirstFloor.THIRD_LITTLE_ROOM_DOOR_X, ParamFirstFloor.THIRD_LITTLE_ROOM_DOOR_Y),ParamHome.DOOR_PORTRAIT);
+        doorFourth.setGroup(new Dimension(ParamFirstFloor.FOURTH_ROOM_DOOR_X, ParamFirstFloor.FOURTH_ROOM_DOOR_Y),
+                new Dimension(ParamFirstFloor.FOURTH_LITTLE_ROOM_DOOR_X, ParamFirstFloor.FOURTH_LITTLE_ROOM_DOOR_Y),ParamHome.DOOR_LANDSCAPE);
+        doorFifth.setGroup(new Dimension(ParamFirstFloor.FIFTH_ROOM_DOOR_X, ParamFirstFloor.FIFTH_ROOM_DOOR_Y),
+                new Dimension(ParamFirstFloor.FIFTH_LITTLE_ROOM_DOOR_X, ParamFirstFloor.FIFTH_LITTLE_ROOM_DOOR_Y),ParamHome.DOOR_LANDSCAPE);
+
 
         objectHomes.add(lightFirstPlace);
         objectHomes.add(lightSecondPlace);
@@ -305,13 +301,14 @@ public class Data implements DataService {
         objectHomes.add(radiatorFifth);
         objectHomes.add(radiatorSixth);
 
-        /*objectHomes.add(doorFirstRoom);
-        objectHomes.add(doorSecondRoom);
-        objectHomes.add(doorThirdRoom);
-        objectHomes.add(doorFourthRoom);
-        objectHomes.add(doorFifthRoom);*/
-        //objectHomes.add(doorFirstRoom_floor2);
+        objectHomes.add(doorFirst);
+        objectHomes.add(doorSecond);
+        objectHomes.add(doorThird);
+        objectHomes.add(doorFourth);
+        objectHomes.add(doorFifth);
 
+
+        //Second floor
         Light lightFirstPlaceSndFloor = new Light();
         Light lightSecondPlaceSndFloor = new Light();
         Light lightThirdPlaceSndFloor = new Light();
@@ -363,9 +360,6 @@ public class Data implements DataService {
         radiatorFourthPlaceSndFloor.setGroup(new Dimension(ParamSecondFloor.FOURTH_RADIATOR_X, ParamSecondFloor.FOURTH_RADIATOR_Y),
                 new Dimension(ParamSecondFloor.FOURTH_LITTLE_RADIATOR_X, ParamSecondFloor.FOURTH_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_PORTRAIT);
 
-        doorFirstRoomPlaceSndFloor.setGroup(new Dimension(ParamSecondFloor.FIRST_DOOR_X, ParamSecondFloor.FIRST_ROOM_DOOR_Y, ParamSecondFloor.FIRST_DOOR_WIDTH, ParamSecondFloor.FIRST_DOOR_HEIGHT),
-                new Dimension(ParamSecondFloor.FIRST_LITTLE_ROOM_DOOR_X, ParamSecondFloor.FIRST_LITTLE_ROOM_DOOR_Y, ParamSecondFloor.FIRST_LITTLE_DOOR_WIDTH, ParamSecondFloor.FIRST_LITTLE_DOOR_HEIGHT),false);
-
 
         objectHomes.add(lightFirstPlaceSndFloor);
         objectHomes.add(lightSecondPlaceSndFloor);
@@ -377,7 +371,7 @@ public class Data implements DataService {
         objectHomes.add(radiatorThirdPlaceSndFloor);
         objectHomes.add(radiatorFourthPlaceSndFloor);
 
-        objectHomes.add(doorFirstRoomPlaceSndFloor);
+//        objectHomes.add(doorFirstRoomPlaceSndFloor);
 
         Light lightFirstPlaceThrdFloor = new Light();
         Light lightSecondPlaceThrdFloor = new Light();
