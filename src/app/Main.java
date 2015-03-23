@@ -99,12 +99,10 @@ public class Main extends Application {
                     }
                 }
                 if (event.getCode().equals(KeyCode.R)) {
-                    timerMain.stop();
-                    simulator.pause();
                     simulator.init();
                     data.init();
                     scene.setRoot(((Viewer) viewer).getPanel());
-                    onPause = true;
+                    timerMain.start();
                 }
             }
         });
