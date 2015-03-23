@@ -51,6 +51,11 @@ public class Viewer implements ViewerService, RequireDataService {
         return root;
     }
 
+    public void setFirstFloorToDisplay(int firstFloorToDisplay) {
+//        this.firstFloorToDisplay = firstFloorToDisplay;
+        homeViewer.setFirstFloorToDisplay(firstFloorToDisplay);
+    }
+
     @Override
     public void bindDataService(DataService service) {
         data = service;

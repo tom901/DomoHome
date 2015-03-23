@@ -2,6 +2,8 @@ package app;
 
 import app.algorithm.BrainCharacter;
 import app.algorithm.BrainHome;
+import app.common.ParamDisplay;
+import app.common.ParamFirstFloor;
 import app.data.Data;
 import app.display.Viewer;
 import app.services.*;
@@ -12,7 +14,9 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import javafx.stage.WindowEvent;
@@ -104,6 +108,25 @@ public class Main extends Application {
                     scene.setRoot(((Viewer) viewer).getPanel());
                     timerMain.start();
                 }
+            }
+        });
+        scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(event.getX()> ParamDisplay.X_MINI_MAP && event.getX()< ParamDisplay.X_MINI_MAP+ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH+ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH &&
+                        event.getY()> ParamDisplay.Y_FIRST_LITTLE_MAP && event.getY()< ParamDisplay.Y_FIRST_LITTLE_MAP+ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT){
+                    viewer.setFirstFloorToDisplay(1);
+                    scene.setRoot(((Viewer) viewer).getPanel());
+                }else if(event.getX()> ParamDisplay.X_MINI_MAP && event.getX()< ParamDisplay.X_MINI_MAP+ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH+ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH &&
+                        event.getY()> ParamDisplay.Y_SECOND_LITTLE_MAP && event.getY()< ParamDisplay.Y_SECOND_LITTLE_MAP+ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT){
+                    viewer.setFirstFloorToDisplay(2);
+                    scene.setRoot(((Viewer) viewer).getPanel());
+                }else if(event.getX()> ParamDisplay.X_MINI_MAP && event.getX()< ParamDisplay.X_MINI_MAP+ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH+ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH &&
+                        event.getY()> ParamDisplay.Y_THIRD_LITTLE_MAP && event.getY()< ParamDisplay.Y_THIRD_LITTLE_MAP+ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT){
+                    viewer.setFirstFloorToDisplay(3);
+                    scene.setRoot(((Viewer) viewer).getPanel());
+                }
+
             }
         });
     }

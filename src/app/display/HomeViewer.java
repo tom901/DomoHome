@@ -89,7 +89,7 @@ public class HomeViewer extends Parent implements RequireReadService {
 
         root.getChildren().add(rectCharacter);
         root.getChildren().add(head);
-        root.getChildren().add(changeMap());
+//        root.getChildren().add(changeMap());
         return root;
     }
 
@@ -117,53 +117,4 @@ public class HomeViewer extends Parent implements RequireReadService {
         data = service;
     }
 
-    //Function to change the big map when a mini map was clicked
-    private Group changeMap(){
-        Group root = new Group();
-        Rectangle firstMiniMap = new Rectangle(ParamDisplay.X_MINI_MAP,ParamDisplay.Y_FIRST_LITTLE_MAP
-                ,ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH+ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH,
-                (ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT)
-        );
-
-        Rectangle secondMiniMap = new Rectangle(ParamDisplay.X_MINI_MAP,ParamDisplay.Y_SECOND_LITTLE_MAP
-                ,ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH+ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH,
-                (ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT)
-        );
-
-        Rectangle ThirdMiniMap = new Rectangle(ParamDisplay.X_MINI_MAP,ParamDisplay.Y_THIRD_LITTLE_MAP
-                ,ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH+ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH,
-                (ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT)
-        );
-
-        firstMiniMap.setFill(Color.TRANSPARENT);
-        secondMiniMap.setFill(Color.TRANSPARENT);
-        ThirdMiniMap.setFill(Color.TRANSPARENT);
-
-        firstMiniMap.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-                firstFloorToDisplay = 1;
-                System.out.println("Je suis bien dans la fonction changeMap(1) ");
-            }
-        });
-        secondMiniMap.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-                firstFloorToDisplay = 2;
-                System.out.println("Je suis bien dans la fonction changeMap(2)");
-            }
-        });
-        ThirdMiniMap.setOnMouseClicked(new EventHandler<javafx.scene.input.MouseEvent>() {
-            @Override
-            public void handle(javafx.scene.input.MouseEvent event) {
-                firstFloorToDisplay = 3;
-                System.out.println("Je suis bien dans la fonction changeMap(3)");
-            }
-        });
-
-        root.getChildren().add(firstMiniMap);
-        root.getChildren().add(secondMiniMap);
-        root.getChildren().add(ThirdMiniMap);
-        return root;
-    }
 }
