@@ -99,7 +99,6 @@ public class Main extends Application {
                     }
                 }
                 if (event.getCode().equals(KeyCode.R)) {
-                    System.out.println("J'ai cliqué sur R.");
                     timerMain.stop();
                     simulator.pause();
                     simulator.init();
