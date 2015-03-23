@@ -309,7 +309,7 @@ public class Data implements DataService {
         Radiator radiatorFourthPlaceSndFloor  = new Radiator();
 
         floors.get(1).getSpecificRoom(0).addObject(lightFirstPlaceSndFloor);
-        floors.get(1).addObjectHome(lightFirstPlace);
+        floors.get(1).addObjectHome(lightFirstPlaceSndFloor);
         floors.get(1).getSpecificRoom(1).addObject(lightSecondPlaceSndFloor);
         floors.get(1).addObjectHome(lightSecondPlaceSndFloor);
         floors.get(1).getSpecificRoom(2).addObject(lightThirdPlaceSndFloor);
