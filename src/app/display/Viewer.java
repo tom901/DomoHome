@@ -30,7 +30,7 @@ public class Viewer implements ViewerService, RequireDataService {
 //        data.init();
     }
 
-    public Parent getPanel() {
+    public Group getPanel() {
         Group root = new Group();
 
         basePlan = new Base(root);

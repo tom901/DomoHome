@@ -155,7 +155,7 @@ public class Data implements DataService {
                 new Dimension(ParamFirstFloor.FIFTH_LITTLE_ROOM_X, ParamFirstFloor.FIFTH_LITTLE_ROOM_Y, ParamFirstFloor.FIFTH_LITTLE_ROOM_WIDTH, ParamFirstFloor.FIFTH_LITTLE_ROOM_HEIGHT),
                 false);
 
-        floors.get(0).getSpecificRoom(5).setGroupGarden(new Dimension(ParamFirstFloor.GARDEN_ROOM_X, ParamFirstFloor.GARDEN_ROOM_Y, ParamFirstFloor.GARDEN_ROOM_WIDTH, ParamFirstFloor.GARDEN_ROOM_HEIGHT),
+        floors.get(0).getSpecificRoom(5).setGroup(new Dimension(ParamFirstFloor.GARDEN_ROOM_X, ParamFirstFloor.GARDEN_ROOM_Y, ParamFirstFloor.GARDEN_ROOM_WIDTH, ParamFirstFloor.GARDEN_ROOM_HEIGHT),
                 new Dimension(ParamFirstFloor.GARDEN_LITTLE_ROOM_X, ParamFirstFloor.GARDEN_LITTLE_ROOM_Y, ParamFirstFloor.GARDEN_LITTLE_ROOM_WIDTH, ParamFirstFloor.GARDEN_LITTLE_HEIGHT),
                 false);
 
@@ -379,11 +379,11 @@ public class Data implements DataService {
                 new Dimension(ParamThirdFloor.SECOND_LITTLE_LIGHT_X, ParamThirdFloor.SECOND_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), false);
 
         radiatorFirstPlaceThrdFloor.setGroup(new Dimension(ParamThirdFloor.FIRST_RADIATOR_X, ParamThirdFloor.FIRST_RADIATOR_Y),
-                new Dimension(ParamThirdFloor.FIRST_LITTLE_RADIATOR_X, ParamThirdFloor.FIRST_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
+                new Dimension(ParamThirdFloor.FIRST_LITTLE_RADIATOR_X, ParamThirdFloor.FIRST_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_LANDSCAPE);
         radiatorSecondPlaceThrdFloor.setGroup(new Dimension(ParamThirdFloor.SECOND_RADIATOR_X, ParamThirdFloor.SECOND_RADIATOR_Y),
                 new Dimension(ParamThirdFloor.SECOND_LITTLE_RADIATOR_X, ParamThirdFloor.SECOND_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
         radiatorThirdPlaceThrdFloor.setGroup(new Dimension(ParamThirdFloor.THIRD_RADIATOR_X, ParamThirdFloor.THIRD_RADIATOR_Y),
-                new Dimension(ParamThirdFloor.THIRD_LITTLE_RADIATOR_X, ParamThirdFloor.THIRD_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
+                new Dimension(ParamThirdFloor.THIRD_LITTLE_RADIATOR_X, ParamThirdFloor.THIRD_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_LANDSCAPE);
 
         objectHomes.add(lightFirstPlaceThrdFloor);
         objectHomes.add(lightSecondPlaceThrdFloor);

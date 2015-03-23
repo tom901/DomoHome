@@ -50,12 +50,11 @@ public class HandlerSwitch extends Parent implements RequireReadService {
 
         for (int i = 1; i <= 3; i++) {
             for (ObjectHome oH : data.getObjectHomes(i)) {
-                if (oH instanceof Door) {
-
-                } else {
+                if (!(oH instanceof Door)) {
                     tmpListObjectsHome.add(oH);
+
                 }
-                System.out.println(tmpListObjectsHome.size());
+                //System.out.println(tmpListObjectsHome.size());
             }
         }
 

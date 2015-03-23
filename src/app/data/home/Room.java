@@ -3,7 +3,9 @@ package app.data.home;
 import app.common.RoomsEnum;
 import app.data.Dimension;
 import app.data.object.ObjectHome;
+import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -84,7 +86,6 @@ public class Room {
         }
         rectangleMini.setStroke(Color.BLACK);
         rectangleMini.setStrokeWidth(1);
-
         groupMini.getChildren().add(rectangleMini);
     }
     public void setGroupGarden(Dimension p, Dimension p_mini, boolean firstRoom){
