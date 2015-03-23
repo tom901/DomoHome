@@ -20,7 +20,7 @@ public class BrainHome implements BrainHomeService, RequireSimulatorService {
         if (simulator.getPresence()) {
             simulator.setObjectsOn();
         }
-        simulator.setObjectsOn(1);
+        simulator.setObjectsOn(0);
     }
 
     @Override

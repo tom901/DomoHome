@@ -14,7 +14,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
     private DataService data;
     private BrainCharacterService brainCharacterService;
     private BrainHomeService brainHomeService;
-    private int i = 0;
+    private int i;
     private int direction;
 
     /**
@@ -23,6 +23,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
     public void init() {
         simuTimer = new Timer();
         direction = -1;
+        i = 0;
 
         data.setCharacterPosition(10, 200);
 
@@ -92,7 +93,10 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                 moveRight();
                 break;
             case 2: // Move up
-                moveUp();
+                i++;
+                if (i % 2 == 0) {
+                    moveUp();
+                }
                 break;
             case 3: // Move bottom
                 moveDown();

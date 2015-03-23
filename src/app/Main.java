@@ -98,6 +98,15 @@ public class Main extends Application {
                         onPause = true;
                     }
                 }
+                if (event.getCode().equals(KeyCode.R)) {
+                    System.out.println("J'ai cliqué sur R.");
+                    timerMain.stop();
+                    simulator.pause();
+                    simulator.init();
+                    data.init();
+                    scene.setRoot(((Viewer) viewer).getPanel());
+                    onPause = true;
+                }
             }
         });
     }

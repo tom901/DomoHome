@@ -506,7 +506,22 @@ public class Data implements DataService {
                                                 (character.getPosition().getY() + character.getPosition().getHeight() > room.getPosition().getY() && character.getPosition().getY() + character.getPosition().getHeight() < room.getPosition().getY() + room.getPosition().getHeight())
                                 )
                         ) {
-                    roomsNotEmpty.add(room);
+                    if (room.getRoomName() == RoomsEnum.ROOM.ENTREE_1) {
+                        System.out.println("Perso X : " + character.getPosition().getX() + " -  Room XWidth : " + (floors.get(0).getSpecificRoom(5).getPosition().getX() + floors.get(0).getSpecificRoom(5).getPosition().getWidth()));
+                        System.out.println("Garden Width : " + ParamFirstFloor.GARDEN_ROOM_WIDTH);
+                        if (character.getPosition().getX() > floors.get(0).getSpecificRoom(5).getPosition().getX() + floors.get(0).getSpecificRoom(5).getPosition().getWidth() ||
+                                character.getPosition().getX() + character.getPosition().getWidth() > floors.get(0).getSpecificRoom(5).getPosition().getX() + floors.get(0).getSpecificRoom(5).getPosition().getWidth()) {
+                            roomsNotEmpty.add(room);
+                        }
+                    } else if (room.getRoomName() == RoomsEnum.ROOM.SALON_1) {
+                        if (character.getPosition().getX() > floors.get(0).getSpecificRoom(4).getPosition().getX() + floors.get(0).getSpecificRoom(4).getPosition().getWidth() ||
+                                character.getPosition().getX() + character.getPosition().getWidth() > floors.get(0).getSpecificRoom(4).getPosition().getX() + floors.get(0).getSpecificRoom(4).getPosition().getWidth() ||
+                                character.getPosition().getY() < floors.get(0).getSpecificRoom(4).getPosition().getY()) {
+                            roomsNotEmpty.add(room);
+                        }
+                    } else {
+                        roomsNotEmpty.add(room);
+                    }
                 }
             }
         }
