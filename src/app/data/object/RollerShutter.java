@@ -17,4 +17,9 @@ public class RollerShutter extends ObjectHome {
     public Group getGroup() {
         return null;
     }
+
+    @Override
+    public Group getGroupMini() {
+        return null;
+    }
 }

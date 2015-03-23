@@ -16,4 +16,5 @@ public interface SimulatorService {
     public boolean getPresence();
     public void setObjectsOn();
     public void setObjectsOn(int RoomID);
+    public void getObjectsDoors(int floorNo);
 }

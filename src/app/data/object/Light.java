@@ -69,6 +69,16 @@ public class Light extends ObjectHome {
         return group;
     }
 
+    public Group getGroupMini() {
+        if (this.state) {
+            lightMini.setFill(Color.YELLOW);
+        } else {
+            lightMini.setFill(Color.WHITE);
+        }
+        return groupMini;
+    }
+
+
     public Group getLightGroup() {
         return super.group;
     }

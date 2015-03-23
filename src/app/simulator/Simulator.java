@@ -18,7 +18,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
     private int direction;
 
     /**
-     * Method to init the attributes of the engine / simulator.
+     * Method to getPanel the attributes of the engine / simulator.
      */
     public void init() {
         simuTimer = new Timer();
@@ -26,6 +26,8 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         i = 0;
 
         data.setCharacterPosition(10, 200);
+
+        brainHomeService.activation();
 
     }
 
@@ -43,7 +45,6 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
      * Method to start the process of the engine.
      */
     public void start() {
-
         simuTimer.schedule(
                 new TimerTask() {
                     @Override
@@ -52,9 +53,10 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                         i++;
 //                      moveCharacter();
                         brainCharacterService.step();
-                        data.setObjectOff();
+                        data.setObjectsOff();
                         brainHomeService.step();
                         checkCollision();
+
                     }
                 },
                 0, 10);
@@ -147,4 +149,8 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         data.setObjectsOn(roomID);
     }
 
+    @Override
+    public void getObjectsDoors(int floorNo) {
+        data.getObjectsDoors(floorNo);
+    }
 }
