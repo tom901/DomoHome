@@ -86,13 +86,8 @@ public class HomeViewer extends Parent implements RequireReadService {
         root.getChildren().add(stair.getStair());
 
         // Display for the character
-//        Rectangle rectCharacter;
         Rectangle rectCharacter = new Rectangle(ParamDisplay.CHARACTER_WIDTH, ParamDisplay.CHARACTER_HEIGHT);
-//        if (data.getCharacterOrientation() == 0) {
-//        } else {
-//            rectCharacter = new Rectangle(ParamDisplay.CHARACTER_HEIGHT,ParamDisplay.CHARACTER_WIDTH);
         rectCharacter.setRotate(data.getCharacterOrientation());
-//        }
         rectCharacter.setFill(Color.BLACK);
         rectCharacter.setTranslateX(data.getCharacterPosition().getX());
         rectCharacter.setTranslateY(data.getCharacterPosition().getY());
