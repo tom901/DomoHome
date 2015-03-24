@@ -70,6 +70,7 @@ public class BrainCharacterDirige implements BrainCharacterService, RequireSimul
             simulator.setGoTo(new Dimension(10, 210));
         }else if (i == 15){
             HandlerAudio.playSongStop();
+            simulator.setHasArrived(false);
         }
     }
 
