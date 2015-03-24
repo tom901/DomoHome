@@ -121,14 +121,17 @@ public class Main extends Application {
                 if (event.getX() > ParamDisplay.X_MINI_MAP && event.getX() < ParamDisplay.X_MINI_MAP + ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH + ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH &&
                         event.getY() > ParamDisplay.Y_FIRST_LITTLE_MAP && event.getY() < ParamDisplay.Y_FIRST_LITTLE_MAP + ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT) {
                     viewer.setFirstFloorToDisplay(1);
+                    HandlerAudio.playSongSwitchMap();
                     scene.setRoot(((Viewer) viewer).getPanel());
                 } else if (event.getX() > ParamDisplay.X_MINI_MAP && event.getX() < ParamDisplay.X_MINI_MAP + ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH + ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH &&
                         event.getY() > ParamDisplay.Y_SECOND_LITTLE_MAP && event.getY() < ParamDisplay.Y_SECOND_LITTLE_MAP + ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT) {
                     viewer.setFirstFloorToDisplay(2);
                     scene.setRoot(((Viewer) viewer).getPanel());
+                    HandlerAudio.playSongSwitchMap();
                 } else if (event.getX() > ParamDisplay.X_MINI_MAP && event.getX() < ParamDisplay.X_MINI_MAP + ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH + ParamFirstFloor.SECOND_LITTLE_ROOM_WIDTH &&
                         event.getY() > ParamDisplay.Y_THIRD_LITTLE_MAP && event.getY() < ParamDisplay.Y_THIRD_LITTLE_MAP + ParamFirstFloor.SECOND_LITTLE_ROOM_HEIGHT) {
                     viewer.setFirstFloorToDisplay(3);
+                    HandlerAudio.playSongSwitchMap();
                     scene.setRoot(((Viewer) viewer).getPanel());
                 }
 

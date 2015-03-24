@@ -4,6 +4,7 @@ import app.common.*;
 import app.data.home.Floor;
 import app.data.home.Room;
 import app.data.object.*;
+import app.display.HandlerAudio;
 import app.services.DataService;
 
 import java.util.ArrayList;
@@ -518,6 +519,8 @@ public class Data implements DataService {
         for (Room room : roomsNotEmpty) {
             room.turnOnObjects();
         }
+//        HandlerAudio.playSongObjectsOn();
+
     }
 
     @Override
@@ -525,6 +528,7 @@ public class Data implements DataService {
         for (Room room : rooms) {
             room.turnOffObjects();
         }
+//        HandlerAudio.playSongObjectsOff();
     }
 
     @Override

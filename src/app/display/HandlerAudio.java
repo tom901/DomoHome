@@ -30,4 +30,9 @@ public class HandlerAudio extends Parent {
         MediaPlayer mediaPlayer =  new MediaPlayer(testAudio);
         mediaPlayer.play();
     }
+    public static void playSongSwitchMap(){
+        Media testAudio = new Media(new File("music/switch.mp3").toURI().toString());
+        MediaPlayer mediaPlayer =  new MediaPlayer(testAudio);
+        mediaPlayer.play();
+    }
 }
