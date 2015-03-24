@@ -46,14 +46,6 @@ public class Door extends ObjectHome {
         super.groupMini.getChildren().add(miniDoor);
     }
 
-    public Rectangle getDoor() {
-        return door;
-    }
-
-    public boolean isLandscape() {
-        return isLandscape;
-    }
-
     public void setLandscape(boolean isLandscape) {
         this.isLandscape = isLandscape;
     }
