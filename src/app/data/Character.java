@@ -34,21 +34,4 @@ public class Character implements CharacterService {
     public void setOrientation(int orientation) {
         this.orientation = orientation;
     }
-
-    //Methode to move the character in the house
-    public void move() {
-
-    }
-    //Methode for rotate the character to 90°
-    public void rotationRight(){
-
-    }
-    //Methode for rotate the character to -90°
-    public void rotationLeft(){
-
-    }
-    //Methode to check if something is behind
-    public void checkStraightAHead(){
-
-    }
 }

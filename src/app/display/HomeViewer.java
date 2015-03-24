@@ -44,10 +44,10 @@ public class HomeViewer extends Parent implements RequireReadService {
         // Management to display different floor when character is on the stairs.
         if (changeFloor && data.getCharacterPosition().getY() > ParamHome.FIRST_STAIR_Y && data.getCharacterPosition().getY() + ParamDisplay.CHARACTER_HEIGHT <= ParamHome.FIRST_STAIR_Y + ParamHome.STAIR_HEIGHT) {
             if (firstFloorToDisplay == 1 || firstFloorToDisplay == 3) {
-                System.out.println("firstFloor : " + firstFloorToDisplay);
+//                System.out.println("firstFloor : " + firstFloorToDisplay);
                 lastFloor = firstFloorToDisplay;
                 firstFloorToDisplay = 2;
-                System.out.println("lastFloor : " + lastFloor);
+//                System.out.println("lastFloor : " + lastFloor);
             } else if (firstFloorToDisplay == 2) {
                 if (lastFloor == 1) {
                     firstFloorToDisplay = 3;
