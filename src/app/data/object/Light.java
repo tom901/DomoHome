@@ -21,22 +21,6 @@ public class Light extends ObjectHome {
     public Light() {
     }
 
-    /*public Light(Dimension dimension, boolean stateLight) {
-        light = new Circle(dimension.getRadius());
-        if (stateLight) {
-            light.setStroke(Color.YELLOW);
-            light.setFill(Color.YELLOW);
-            super.state = false;
-        } else {
-            light.setStroke(Color.YELLOW);
-            light.setFill(Color.WHITE);
-            super.state = true;
-        }
-        light.setCenterX(dimension.getX());
-        light.setCenterY(dimension.getY());
-        super.group.getChildren().add(light);
-    }*/
-
     public void setGroup(Dimension dimension, Dimension dimensionMini, boolean stateLight) {
         super.state = stateLight;
         this.dimLight = dimension;
@@ -78,29 +62,4 @@ public class Light extends ObjectHome {
         return groupMini;
     }
 
-
-    public Group getLightGroup() {
-        return super.group;
-    }
-
-    public Group getLightMiniGroup() {
-        return super.groupMini;
-    }
-
-
-    public void changeStateLight(boolean stateLight) {
-        if (super.state) {
-            super.state = false;
-        } else {
-            super.state = true;
-        }
-    }
-
-   /* public Dimension getDimensionLight() {
-        return dimensionLight;
-    }
-
-    public void setDimensionLight(Dimension dimensionLight) {
-        this.dimensionLight = dimensionLight;
-    }*/
 }
