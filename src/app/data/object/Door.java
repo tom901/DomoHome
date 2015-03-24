@@ -50,6 +50,10 @@ public class Door extends ObjectHome {
         this.isLandscape = isLandscape;
     }
 
+    public boolean isLandscape() {
+        return isLandscape;
+    }
+
     @Override
     public Group getGroup() {
         return this.group;
