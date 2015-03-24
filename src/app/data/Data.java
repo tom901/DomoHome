@@ -557,4 +557,12 @@ public class Data implements DataService {
         return objectOn;
     }
 
+    public int getCharacterOrientation() {
+        return this.character.getOrientation();
+    }
+
+    public void setCharacterOrientation(int orientation) {
+        this.character.setOrientation(orientation);
+    }
+
 }

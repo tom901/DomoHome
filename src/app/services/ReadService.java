@@ -20,4 +20,5 @@ public interface ReadService {
     public ArrayList<Room> getPresence();
     public void getObjectsDoors(int floorNo);
     public int getObjectsOn();
+    public int getCharacterOrientation();
 }

@@ -9,8 +9,10 @@ public class Character implements CharacterService {
 
     private Dimension position;
     private double speed;
+    private int orientation;
 
     public Character() {
+        orientation = 0;
     }
 
     public Character(Dimension position) {
@@ -23,6 +25,14 @@ public class Character implements CharacterService {
 
     public void setPosition(Dimension position) {
         this.position = position;
+    }
+
+    public int getOrientation() {
+        return orientation;
+    }
+
+    public void setOrientation(int orientation) {
+        this.orientation = orientation;
     }
 
     //Methode to move the character in the house

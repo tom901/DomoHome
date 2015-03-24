@@ -11,5 +11,6 @@ public interface WriteService {
     public void setObjectsOn();
     public void setObjectsOff();
     public void setObjectsOn(int roomID);
+    public void setCharacterOrientation(int orientation);
 
 }

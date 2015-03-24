@@ -27,4 +27,5 @@ public interface SimulatorService {
     public boolean hasArrived();
     public void setGoTo(Dimension position);
     public void setHasArrived(boolean bool);
+    public void setCharacterOrientation(int orientation);
 }

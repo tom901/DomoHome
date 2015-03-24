@@ -367,6 +367,19 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         } else if (data.getCharacterPosition().getY() < dimToGoTo.getY()) {
             moveY++;
         }
+        if (moveX ==  1 && moveY == 1 || moveX == -1 && moveY == -1) {
+            data.setCharacterOrientation(45);
+        } else if (moveX == 1 && moveY == -1 || moveX == -1 && moveY == 1) {
+            data.setCharacterOrientation(135);
+        }else if (moveY != 0) {
+            data.setCharacterOrientation(90);
+        } else if (moveX != 0) {
+            data.setCharacterOrientation(0);
+        }
         data.setCharacterPosition(data.getCharacterPosition().getX() + moveX, data.getCharacterPosition().getY() + moveY);
+    }
+
+    public void setCharacterOrientation(int orientation) {
+        data.setCharacterOrientation(orientation);
     }
 }
