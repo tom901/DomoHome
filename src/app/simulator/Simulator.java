@@ -72,7 +72,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                     public void run() {
                         // do this
                         int objectsOn = data.getObjectsOn();
-                        System.out.println("Objects ON 1 : " + data.getObjectsOn());
+//                        System.out.println("Objects ON 1 : " + data.getObjectsOn());
 
                         brainCharacterService.step();
                         data.setObjectsOff();
@@ -84,7 +84,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                                 checkCollision();
                             }
                         }
-                        System.out.println("Objects ON 2 : " + data.getObjectsOn());
+                        //System.out.println("Objects ON 2 : " + data.getObjectsOn());
 
                         if (data.getObjectsOn() < objectsOn) {
                             HandlerAudio.playSongObjectsOn();

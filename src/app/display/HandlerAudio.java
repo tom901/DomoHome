@@ -16,7 +16,12 @@ public class HandlerAudio extends Parent {
     }
 
     public static void playSongStart(){
-        Media testAudio = new Media(new File("music/demarrage.mp3").toURI().toString());
+        Media testAudio = new Media(new File("music/start.mp3").toURI().toString());
+        MediaPlayer mediaPlayer =  new MediaPlayer(testAudio);
+        mediaPlayer.play();
+    }
+    public static void playSongStop(){
+        Media testAudio = new Media(new File("music/over.mp3").toURI().toString());
         MediaPlayer mediaPlayer =  new MediaPlayer(testAudio);
         mediaPlayer.play();
     }

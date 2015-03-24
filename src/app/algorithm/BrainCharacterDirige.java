@@ -1,6 +1,7 @@
 package app.algorithm;
 
 import app.data.Dimension;
+import app.display.HandlerAudio;
 import app.services.BrainCharacterService;
 import app.services.RequireSimulatorService;
 import app.services.SimulatorService;
@@ -64,7 +65,9 @@ public class BrainCharacterDirige implements BrainCharacterService, RequireSimul
         } else if (i == 13) {
             simulator.setGoTo(new Dimension(340,210));
         } else if (i == 14) {
-            simulator.setGoTo(new Dimension(10,210));
+            simulator.setGoTo(new Dimension(10, 210));
+        }else if (i == 15){
+            HandlerAudio.playSongStop();
         }
     }
 
