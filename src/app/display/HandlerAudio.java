@@ -20,6 +20,11 @@ public class HandlerAudio extends Parent {
         MediaPlayer mediaPlayer =  new MediaPlayer(testAudio);
         mediaPlayer.play();
     }
+    public static void playSongElectrocution(){
+        Media testAudio = new Media(new File("music/electrocution.mp3").toURI().toString());
+        MediaPlayer mediaPlayer =  new MediaPlayer(testAudio);
+        mediaPlayer.play();
+    }
     public static void playSongObjectsOn(){
         Media testAudio = new Media(new File("music/object_on.mp3").toURI().toString());
         MediaPlayer mediaPlayer =  new MediaPlayer(testAudio);
