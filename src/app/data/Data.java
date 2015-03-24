@@ -547,4 +547,14 @@ public class Data implements DataService {
         }
     }
 
+    public int getObjectsOn() {
+        int objectOn = 0;
+        for(ObjectHome oh : objectHomes) {
+            if (oh.isState()) {
+                objectOn++;
+            }
+        }
+        return objectOn;
+    }
+
 }

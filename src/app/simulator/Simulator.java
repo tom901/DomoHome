@@ -70,28 +70,25 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                     @Override
                     public void run() {
                         // do this
-                        i++;
-//                      moveCharacter();
+                        int objectsOn = data.getObjectsOn();
+                        System.out.println("Objects ON 1 : " + data.getObjectsOn());
+
                         brainCharacterService.step();
                         data.setObjectsOff();
                         brainHomeService.step();
-//                        System.out.println("transition : " + inTransition);
                         if (!inTransition) {
                             if (brainDirige) {
                                 goToDirige();
                             } else {
-//
-//                                finishCrossing = false;
-//                                if (direction != -1) {
                                 checkCollision();
-//                                } else {
-//                                    if (!isPositioned) {
-//                                        goToPosition();
-//                                    } else {
-//                                        crossTheDoor();
-//                                    }
-//                                }
                             }
+                        }
+                        System.out.println("Objects ON 2 : " + data.getObjectsOn());
+
+                        if (data.getObjectsOn() < objectsOn) {
+
+                        } else if (data.getObjectsOn() > objectsOn) {
+
                         }
                     }
                 },
@@ -171,30 +168,25 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         }
     }
 
+    /**
+     * Method to return a boolean if a presence is detected in either one room.
+     * @return presence
+     */
     public boolean getPresence() {
         return (!data.getPresence().isEmpty());
     }
 
-    public void setRoomCharacterIsIn() {
-        ArrayList<Room> roomIn = data.getPresence();
-        if (roomIn.size() == 1) {
-            dimNotToExceed = roomIn.get(0).getPosition();
-        }
-    }
-
-    public boolean isInTransition() {
-        return inTransition;
-    }
-
-    public boolean isFinishCrossing() {
-        return finishCrossing;
-    }
-
+    /**
+     * Method to set objects ON.
+     */
     @Override
     public void setObjectsOn() {
         data.setObjectsOn();
     }
 
+    /**
+     * Method to set objects OFF.
+     */
     @Override
     public void setObjectsOn(int roomID) {
         data.setObjectsOn(roomID);
@@ -205,8 +197,10 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         data.getObjectsDoors(floorNo);
     }
 
+    /** Methods to get the character to move in a room then go through a door a do so again */
+    /** Work In Progress / TO BE FIXED */
+/*
     public void setInTransition(boolean inTransition) {
-//            System.out.println("Dans setInTransition.");
         this.inTransition = inTransition;
     }
 
@@ -321,6 +315,25 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
             }
         }
     }
+
+    public void setRoomCharacterIsIn() {
+        ArrayList<Room> roomIn = data.getPresence();
+        if (roomIn.size() == 1) {
+            dimNotToExceed = roomIn.get(0).getPosition();
+        }
+    }
+
+
+    public boolean isInTransition() {
+        return inTransition;
+    }
+
+    public boolean isFinishCrossing() {
+        return finishCrossing;
+    }
+*/
+
+    /** Methods to move the character to a given position (for the demonstration due to a lack of time */
 
     public void setGoTo(Dimension position) {
         brainDirige = true;

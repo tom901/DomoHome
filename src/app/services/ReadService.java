@@ -19,4 +19,5 @@ public interface ReadService {
     public ArrayList<ObjectHome> getObjectHomes(int floorNo);
     public ArrayList<Room> getPresence();
     public void getObjectsDoors(int floorNo);
+    public int getObjectsOn();
 }

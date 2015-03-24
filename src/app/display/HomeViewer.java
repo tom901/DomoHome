@@ -1,29 +1,18 @@
 package app.display;
 
 import app.common.ParamDisplay;
-import app.common.ParamFirstFloor;
 import app.common.ParamHome;
-import app.data.Data;
-import app.data.Dimension;
-import app.data.home.Floor;
 import app.data.home.Room;
-import app.data.object.Light;
 import app.data.object.ObjectHome;
 import app.services.DataService;
 import app.services.ReadService;
 import app.services.RequireReadService;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Parent;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TitledPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 /**
@@ -52,12 +41,7 @@ public class HomeViewer extends Parent implements RequireReadService {
 
 
     public Group getPanel() {
-        xShrink =1;
-        yShrink =1;
-        xModifier=0;
-        yModifier=0;
-
-        //System.out.println("Y : " + data.getCharacterPosition().getY() + " - Y+H : " + (data.getCharacterPosition().getY() + ParamDisplay.CHARACTER_HEIGHT) + " StairY: " + ParamHome.FIRST_STAIR_Y + " - StairY+H: " + (ParamHome.FIRST_STAIR_Y + ParamHome.STAIR_HEIGHT));
+        // Management to display different floor when character is on the stairs.
         if (changeFloor && data.getCharacterPosition().getY() > ParamHome.FIRST_STAIR_Y && data.getCharacterPosition().getY() + ParamDisplay.CHARACTER_HEIGHT <= ParamHome.FIRST_STAIR_Y + ParamHome.STAIR_HEIGHT) {
             if (firstFloorToDisplay == 1 || firstFloorToDisplay == 3) {
                 System.out.println("firstFloor : " + firstFloorToDisplay);
@@ -80,17 +64,14 @@ public class HomeViewer extends Parent implements RequireReadService {
 
 
         Group root = new Group();
-//        roomsInBig.clear();
-//        roomsInBig = data.getMainFloor(firstFloorToDisplay);
-//        for (ArrayList<Room> rooms : data.getMainFloor(firstFloorToDisplay)) {
-            for (Room room : data.getMainFloor(firstFloorToDisplay)) {
-                root.getChildren().add(room.getRoom());
-            }
-            for(ObjectHome objectHomeTmp : data.getObjectHomes(firstFloorToDisplay)){
-                root.getChildren().add(objectHomeTmp.getGroup());
-            }
-//        }
-
+        // Loop to display the main floor of the simulator
+        for (Room room : data.getMainFloor(firstFloorToDisplay)) {
+            root.getChildren().add(room.getRoom());
+        }
+        // Loop to display the objects for the main floor displayed
+        for(ObjectHome objectHomeTmp : data.getObjectHomes(firstFloorToDisplay)){
+            root.getChildren().add(objectHomeTmp.getGroup());
+        }
 
         //loop to make placement of mini floors
         for (Room room : data.getRooms()) {
@@ -100,6 +81,11 @@ public class HomeViewer extends Parent implements RequireReadService {
             }
         }
 
+        StairViewer stair = new StairViewer();
+
+        root.getChildren().add(stair.getStair());
+
+        // Display for the character
         Rectangle rectCharacter = new Rectangle(ParamDisplay.CHARACTER_WIDTH,ParamDisplay.CHARACTER_HEIGHT);
         rectCharacter.setFill(Color.BLACK);
         rectCharacter.setTranslateX(data.getCharacterPosition().getX());
@@ -114,9 +100,6 @@ public class HomeViewer extends Parent implements RequireReadService {
         head.setStroke(Color.WHITE);
         head.setFill(Color.TRANSPARENT);
 
-        StairViewer stair = new StairViewer();
-
-        root.getChildren().add(stair.getStair());
         root.getChildren().add(rectCharacter);
         root.getChildren().add(head);
         return root;
