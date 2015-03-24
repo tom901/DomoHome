@@ -8,6 +8,7 @@ import app.data.Dimension;
 import app.data.home.Room;
 import app.data.object.Door;
 import app.data.object.ObjectHome;
+import app.display.HandlerAudio;
 import app.services.*;
 
 import java.util.ArrayList;
@@ -86,9 +87,9 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                         System.out.println("Objects ON 2 : " + data.getObjectsOn());
 
                         if (data.getObjectsOn() < objectsOn) {
-
+                            HandlerAudio.playSongObjectsOn();
                         } else if (data.getObjectsOn() > objectsOn) {
-
+                            HandlerAudio.playSongObjectsOff();
                         }
                     }
                 },

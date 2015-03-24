@@ -40,7 +40,7 @@ public class BrainCharacterDirige implements BrainCharacterService, RequireSimul
         } else if (i == 1) {
             simulator.setGoTo(new Dimension(340,210));
         } else if (i == 2) {
-            simulator.setGoTo(new Dimension(340,14));
+            simulator.setGoTo(new Dimension(340,12));
         } else if (i == 3) {
             simulator.setGoTo(new Dimension(310,250));
         } else if (i == 4) {
@@ -50,7 +50,7 @@ public class BrainCharacterDirige implements BrainCharacterService, RequireSimul
         } else if (i == 6) {
             simulator.setGoTo(new Dimension(340,65));
         } else if (i == 7) {
-            simulator.setGoTo(new Dimension(340,14));
+            simulator.setGoTo(new Dimension(340,12));
         } else if (i == 8) {
             simulator.setGoTo(new Dimension(400,210));
         }
