@@ -6,6 +6,7 @@ import app.algorithm.BrainHome;
 import app.common.ParamDisplay;
 import app.common.ParamFirstFloor;
 import app.data.Data;
+import app.display.HandlerAudio;
 import app.display.Viewer;
 import app.services.*;
 import app.simulator.Simulator;
@@ -16,12 +17,16 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import javafx.stage.WindowEvent;
 import javafx.event.EventHandler;
+
+import java.io.File;
 
 public class Main extends Application {
 
@@ -34,21 +39,21 @@ public class Main extends Application {
     private static boolean onPause;
 
     public static void main(String[] args) {
+
         onPause = true;
         data = new Data();
         simulator = new Simulator();
         viewer = new Viewer();
-        brainCharacter = new BrainCharacter();
-//        brainCharacter = new BrainCharacterDirige();
+//        brainCharacter = new BrainCharacter();
+        brainCharacter = new BrainCharacterDirige();
         brainHome = new BrainHome();
 
         ((Simulator)simulator).bindDataService(data);
-//        ((Simulator)simulator).bindBrainCharacterService(brainCharacter);
         ((Simulator)simulator).bindBrainCharacterService(brainCharacter);
         ((Simulator)simulator).bindBrainHomeService(brainHome);
         ((Viewer)viewer).bindDataService(data);
-        ((BrainCharacter)brainCharacter).bindSimulatorService(simulator);
-//        ((BrainCharacterDirige)brainCharacter).bindSimulatorService(simulator);
+//        ((BrainCharacter)brainCharacter).bindSimulatorService(simulator);
+        ((BrainCharacterDirige)brainCharacter).bindSimulatorService(simulator);
         ((BrainHome)brainHome).bindSimulatorService(simulator);
 
         data.init();
@@ -56,10 +61,14 @@ public class Main extends Application {
         viewer.init();
 
         launch(args);
+
+
+
     }
 
     @Override
     public void start(final Stage primaryStage) throws Exception {
+        HandlerAudio.playSongStart();
 
         primaryStage.setTitle("DomoHome");
         // Always call the getPanel method to display our elements.

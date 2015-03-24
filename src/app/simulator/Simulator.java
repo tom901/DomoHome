@@ -27,7 +27,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
     private Door doorToCross;
     private int i;
     private int direction;
-    private boolean inTransition,isPositioned, finishCrossing,doorIsOnTheRightOrAtBottom, brainDirige, hasArrived;
+    private boolean inTransition, isPositioned, finishCrossing, doorIsOnTheRightOrAtBottom, brainDirige, hasArrived;
 
     /**
      * Method to getPanel the attributes of the engine / simulator.
@@ -41,8 +41,8 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         simuTimer = new Timer();
         direction = -1;
         i = 0;
-        dimNotToExceed = new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X,ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH,ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT);
-        dimToGoTo = new Dimension(10,200);
+        dimNotToExceed = new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y, ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT);
+        dimToGoTo = new Dimension(10, 200);
         data.setCharacterPosition(10, 200);
 
         brainHomeService.activation();
@@ -102,13 +102,18 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
      * Method to destroy the process of the engine / simulator
      */
     public void destroy() {
-        simuTimer.cancel(); simuTimer.purge();
+        simuTimer.cancel();
+        simuTimer.purge();
     }
 
-    public void pause() { simuTimer.cancel(); simuTimer = new Timer(); }
+    public void pause() {
+        simuTimer.cancel();
+        simuTimer = new Timer();
+    }
 
     /**
      * Method to make a character move towards a direction.
+     *
      * @param direc
      */
     public void setCharacterMove(int direc) {
@@ -130,7 +135,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                 moveRight();
                 break;
             case 2: // Move up
-                    moveUp();
+                moveUp();
                 break;
             case 3: // Move bottom
                 moveDown();
@@ -210,9 +215,9 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         ArrayList<Room> roomIn = data.getPresence();
         if (roomIn.size() == 1) {
             if (roomIn.get(0).getRoomName().equals(RoomsEnum.ROOM.GARDEN_1)) {
-                for(ObjectHome door : data.getFloors().get(0).getSpecificRoom(2).getObjectHomes()) {
+                for (ObjectHome door : data.getFloors().get(0).getSpecificRoom(2).getObjectHomes()) {
                     if (door instanceof Door) {
-                        doorToCross = (Door)door;
+                        doorToCross = (Door) door;
                         checkWhereDoorIs(doorToCross);
                         this.positionToGoTo = ((Door) door).getDimension();
 
@@ -221,11 +226,10 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
             } else if (roomIn.get(0).getRoomName().equals(RoomsEnum.ROOM.ENTREE_1)) {
 //                Random rand = new Random();
 //                switch ()
-            }
-            else {
+            } else {
                 for (ObjectHome door : roomIn.get(0).getObjectHomes()) {
                     if (door instanceof Door) {
-                        doorToCross = (Door)door;
+                        doorToCross = (Door) door;
                         checkWhereDoorIs(doorToCross);
                         this.positionToGoTo = ((Door) door).getDimension();
                     }
@@ -273,8 +277,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
             if (doorIsOnTheRightOrAtBottom) {
                 if (data.getCharacterPosition().getY() < doorToCross.getDimension().getY() + ParamHome.DOOR_HEIGHT_LANDSCAPE) {
                     data.setCharacterPosition(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() + 1);
-                }
-                else {
+                } else {
                     finishCrossing = true;
                 }
             } else {
@@ -289,13 +292,12 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
 //                System.out.println("Perso X : " + data.getCharacterPosition().getX() + " - DoorWidth: " + (doorToCross.getDimension().getX() + ParamHome.DOOR_WIDTH_PORTRAIT));
                 if (data.getCharacterPosition().getX() < (doorToCross.getDimension().getX() + ParamHome.DOOR_WIDTH_PORTRAIT)) {
                     data.setCharacterPosition(data.getCharacterPosition().getX() + 1, data.getCharacterPosition().getY());
-                }
-                else {
+                } else {
                     finishCrossing = true;
                 }
             } else {
                 if (data.getCharacterPosition().getX() + data.getCharacterPosition().getWidth() > doorToCross.getDimension().getX()) {
-                    data.setCharacterPosition(data.getCharacterPosition().getX()-1, data.getCharacterPosition().getY());
+                    data.setCharacterPosition(data.getCharacterPosition().getX() - 1, data.getCharacterPosition().getY());
                 } else {
                     finishCrossing = true;
                 }
