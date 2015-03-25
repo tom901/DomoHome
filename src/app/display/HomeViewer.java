@@ -25,6 +25,8 @@ public class HomeViewer extends Parent implements RequireReadService {
     public int divider = 1, firstFloorToDisplay, j, lastFloor;
     private double xShrink,yShrink,shrink,xModifier,yModifier,heroesScale;
     private boolean changeFloor;
+    Rectangle rectCharacter /*= new Rectangle()*/;
+    Circle head /*= new Circle()*/;
 
     public ArrayList<Room> displayBigFloor;
 //    private ArrayList<ArrayList<Room>> roomsInBig;
@@ -85,8 +87,18 @@ public class HomeViewer extends Parent implements RequireReadService {
 
         root.getChildren().add(stair.getStair());
 
+
+
+        drawCharacter();
+
+        root.getChildren().add(rectCharacter);
+        root.getChildren().add(head);
+        return root;
+    }
+
+    public void drawCharacter() {
         // Display for the character
-        Rectangle rectCharacter = new Rectangle(ParamDisplay.CHARACTER_WIDTH, ParamDisplay.CHARACTER_HEIGHT);
+        rectCharacter = new Rectangle(ParamDisplay.CHARACTER_WIDTH, ParamDisplay.CHARACTER_HEIGHT);
         rectCharacter.setRotate(data.getCharacterOrientation());
         rectCharacter.setFill(Color.BLACK);
         rectCharacter.setTranslateX(data.getCharacterPosition().getX());
@@ -94,16 +106,13 @@ public class HomeViewer extends Parent implements RequireReadService {
         rectCharacter.setArcWidth(70);
         rectCharacter.setArcHeight(70);
 
-        Circle head = new Circle();
+        head = new Circle();
         head.setCenterX(data.getCharacterPosition().getX() + (rectCharacter.getWidth()/2));
         head.setCenterY(data.getCharacterPosition().getY() + (rectCharacter.getHeight()/2));
         head.setRadius(5);
         head.setStroke(Color.WHITE);
         head.setFill(Color.TRANSPARENT);
 
-        root.getChildren().add(rectCharacter);
-        root.getChildren().add(head);
-        return root;
     }
 
     public void setFirstFloorToDisplay(int firstFloorToDisplay) {
