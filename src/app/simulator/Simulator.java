@@ -21,14 +21,14 @@ import java.util.TimerTask;
  */
 public class Simulator implements SimulatorService, RequireDataService, RequireBrainCharacterService, RequireBrainHomeService {
     private Timer simuTimer;
-    private DataService data;
-    private Dimension dimNotToExceed, positionToGoTo, dimToGoTo;
-    private BrainCharacterService brainCharacterService;
-    private BrainHomeService brainHomeService;
-    private Door doorToCross;
-    private int i;
-    private int direction;
-    private boolean inTransition, isPositioned, finishCrossing, doorIsOnTheRightOrAtBottom, brainDirige, hasArrived;
+    protected DataService data;
+    protected Dimension dimNotToExceed, positionToGoTo, dimToGoTo;
+    protected BrainCharacterService brainCharacterService;
+    protected BrainHomeService brainHomeService;
+//    private Door doorToCross;
+    protected int direction;
+    private boolean inTransition, brainDirige, hasArrived;
+    private boolean isPositioned, finishCrossing, doorIsOnTheRightOrAtBottom;
 
     /**
      * Method to getPanel the attributes of the engine / simulator.
@@ -41,7 +41,6 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         hasArrived = false;
         simuTimer = new Timer();
         direction = -1;
-        i = 0;
         dimNotToExceed = new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y, ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT);
         dimToGoTo = new Dimension(10, 200);
         data.setCharacterPosition(10, 200);
@@ -72,7 +71,6 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                     public void run() {
                         // do this
                         int objectsOn = data.getObjectsOn();
-//                        System.out.println("Objects ON 1 : " + data.getObjectsOn());
 
                         brainCharacterService.step();
                         data.setObjectsOff();
@@ -84,7 +82,6 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
                                 checkCollision();
                             }
                         }
-                        //System.out.println("Objects ON 2 : " + data.getObjectsOn());
 
                         if (data.getObjectsOn() < objectsOn) {
                             HandlerAudio.playSongObjectsOn();
@@ -123,7 +120,7 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         data = service;
     }
 
-    private void checkCollision() {
+    public void checkCollision() {
         switch (direction) {
             case 0: // Move left
                 moveLeft();
@@ -145,25 +142,26 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         direction = -1;
     }
 
-    private void moveLeft() {
-        if (data.getCharacterPosition().getX() > dimNotToExceed.getX()) {
+    public void moveLeft() {
+        if (data.getCharacterPosition().getX() >
+                dimNotToExceed.getX()) {
             data.setCharacterPosition(data.getCharacterPosition().getX() - 1, data.getCharacterPosition().getY());
         }
     }
 
-    private void moveRight() {
+    public void moveRight() {
         if (data.getCharacterPosition().getX() + ParamDisplay.CHARACTER_WIDTH < dimNotToExceed.getX() + dimNotToExceed.getWidth()) {
             data.setCharacterPosition((data.getCharacterPosition().getX() + 1), data.getCharacterPosition().getY());
         }
     }
 
-    private void moveUp() {
+    public void moveUp() {
         if (data.getCharacterPosition().getY() > dimNotToExceed.getY()) {
             data.setCharacterPosition(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() - 1);
         }
     }
 
-    private void moveDown() {
+    public void moveDown() {
         if (data.getCharacterPosition().getY() + ParamDisplay.CHARACTER_HEIGHT < dimNotToExceed.getY() + dimNotToExceed.getHeight()) {
             data.setCharacterPosition(data.getCharacterPosition().getX(), data.getCharacterPosition().getY() + 1);
         }
@@ -193,9 +191,53 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         data.setObjectsOn(roomID);
     }
 
-    @Override
-    public void getObjectsDoors(int floorNo) {
-        data.getObjectsDoors(floorNo);
+    /** Methods to move the character to a given position (for the demonstration due to a lack of time */
+
+    public void setGoTo(Dimension position) {
+        brainDirige = true;
+        dimToGoTo = position;
+    }
+
+    public boolean hasArrived() {
+        if (data.getCharacterPosition().getX() ==
+                dimToGoTo.getX() &&
+                data.getCharacterPosition().getY() ==
+                        dimToGoTo.getY()) {
+            hasArrived = true;
+        }
+        return hasArrived;
+    }
+
+    public void setHasArrived(boolean bool) {
+        this.hasArrived = bool;
+    }
+
+    public void goToDirige() {
+        int moveX = 0, moveY = 0;
+        if (data.getCharacterPosition().getX() > dimToGoTo.getX()) {
+            moveX--;
+        } else if (data.getCharacterPosition().getX() < dimToGoTo.getX()) {
+            moveX++;
+        }
+        if (data.getCharacterPosition().getY() > dimToGoTo.getY()) {
+            moveY--;
+        } else if (data.getCharacterPosition().getY() < dimToGoTo.getY()) {
+            moveY++;
+        }
+        if (moveX ==  1 && moveY == 1 || moveX == -1 && moveY == -1) {
+            data.setCharacterOrientation(45);
+        } else if (moveX == 1 && moveY == -1 || moveX == -1 && moveY == 1) {
+            data.setCharacterOrientation(135);
+        }else if (moveY != 0) {
+            data.setCharacterOrientation(90);
+        } else if (moveX != 0) {
+            data.setCharacterOrientation(0);
+        }
+        data.setCharacterPosition(data.getCharacterPosition().getX() + moveX, data.getCharacterPosition().getY() + moveY);
+    }
+
+    public void setCharacterOrientation(int orientation) {
+        data.setCharacterOrientation(orientation);
     }
 
     /** Methods to get the character to move in a room then go through a door a do so again */
@@ -334,52 +376,4 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
     }
 */
 
-    /** Methods to move the character to a given position (for the demonstration due to a lack of time */
-
-    public void setGoTo(Dimension position) {
-        brainDirige = true;
-        dimToGoTo = position;
-    }
-
-    public boolean hasArrived() {
-        if (data.getCharacterPosition().getX() ==
-                dimToGoTo.getX() &&
-                data.getCharacterPosition().getY() ==
-                        dimToGoTo.getY()) {
-            hasArrived = true;
-        }
-        return hasArrived;
-    }
-
-    public void setHasArrived(boolean bool) {
-        this.hasArrived = bool;
-    }
-
-    public void goToDirige() {
-        int moveX = 0, moveY = 0;
-        if (data.getCharacterPosition().getX() > dimToGoTo.getX()) {
-            moveX--;
-        } else if (data.getCharacterPosition().getX() < dimToGoTo.getX()) {
-            moveX++;
-        }
-        if (data.getCharacterPosition().getY() > dimToGoTo.getY()) {
-            moveY--;
-        } else if (data.getCharacterPosition().getY() < dimToGoTo.getY()) {
-            moveY++;
-        }
-        if (moveX ==  1 && moveY == 1 || moveX == -1 && moveY == -1) {
-            data.setCharacterOrientation(45);
-        } else if (moveX == 1 && moveY == -1 || moveX == -1 && moveY == 1) {
-            data.setCharacterOrientation(135);
-        }else if (moveY != 0) {
-            data.setCharacterOrientation(90);
-        } else if (moveX != 0) {
-            data.setCharacterOrientation(0);
-        }
-        data.setCharacterPosition(data.getCharacterPosition().getX() + moveX, data.getCharacterPosition().getY() + moveY);
-    }
-
-    public void setCharacterOrientation(int orientation) {
-        data.setCharacterOrientation(orientation);
-    }
 }

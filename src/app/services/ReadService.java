@@ -18,7 +18,6 @@ public interface ReadService {
     public ArrayList<Floor> getFloors();
     public ArrayList<ObjectHome> getObjectHomes(int floorNo);
     public ArrayList<Room> getPresence();
-    public void getObjectsDoors(int floorNo);
     public int getObjectsOn();
     public int getCharacterOrientation();
 }

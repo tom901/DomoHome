@@ -17,8 +17,8 @@ public interface SimulatorService {
     public boolean getPresence();
     public void setObjectsOn();
     public void setObjectsOn(int RoomID);
-    public void getObjectsDoors(int floorNo);
 /* WIP / TO BE FIXED */
+//    public void getObjectsDoors(int floorNo);
 //    public void setRoomCharacterIsIn();
 //    public void setPositionToGoTo();
 //    public void setInTransition(boolean inTransition);

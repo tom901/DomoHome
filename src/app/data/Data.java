@@ -24,6 +24,13 @@ public class Data implements DataService {
     //    ArrayList<Room> rooms;
 //    ArrayList<ObjectHome> objects;
 
+    public Data() {
+        floors = new ArrayList<Floor>();
+        miniFloors = new ArrayList<Floor>();
+        rooms = new ArrayList<Room>();
+        objectHomes = new ArrayList<ObjectHome>();
+    }
+
     /**
      * Method to getPanel the main content of the simulator
      */
@@ -50,7 +57,7 @@ public class Data implements DataService {
     /**
      * Method to getPanel the floors.
      */
-    private void initFloors() {
+    public void initFloors() {
         Floor floor_01 = new Floor();
         floor_01.setGroup(new Dimension(ParamDisplay.MAIN_FLOOR_DISPLAYED_X, ParamDisplay.MAIN_FLOOR_DISPLAYED_Y,
                 ParamDisplay.MAIN_FLOOR_DISPLAYED_WIDTH, ParamDisplay.MAIN_FLOOR_DISPLAYED_HEIGHT));
@@ -74,7 +81,7 @@ public class Data implements DataService {
      * @param floorIndex
      * @param noOfRoom
      */
-    private void initRooms(int floorIndex, int noOfRoom) {
+    public void initRooms(int floorIndex, int noOfRoom) {
         RoomsEnum.ROOM enumRoom = RoomsEnum.ROOM.CHAMBRE_1;
         for (int i = 0; i < noOfRoom; i++) {
             if (floorIndex == 0) {
@@ -132,7 +139,7 @@ public class Data implements DataService {
     /**
      * Method to initialize all rooms for floors No. 1 (for the main floor rectangle).
      */
-    private void initRoomsFirstFloor() {
+    public void initRoomsFirstFloor() {
         floors.get(0).getSpecificRoom(0).setGroup(new Dimension(ParamFirstFloor.FIRST_ROOM_X, ParamFirstFloor.FIRST_ROOM_Y, ParamFirstFloor.FIRST_ROOM_WIDTH, ParamFirstFloor.FIRST_ROOM_HEIGHT),
                 new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_FIRST_LITTLE_MAP, ParamFirstFloor.FIRST_LITTLE_ROOM_WIDTH, ParamFirstFloor.FIRST_LITTLE_ROOM_HEIGHT),
                 true);
@@ -164,7 +171,7 @@ public class Data implements DataService {
      *
      * @return ArrayList<Room>
      */
-    private void initRoomsSecondFloor() {
+    public void initRoomsSecondFloor() {
         floors.get(1).getSpecificRoom(0).setGroup(new Dimension(ParamSecondFloor.FIRST_ROOM_X, ParamSecondFloor.FIRST_ROOM_Y, ParamSecondFloor.FIRST_ROOM_WIDTH, ParamSecondFloor.FIRST_ROOM_HEIGHT),
                 new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_SECOND_LITTLE_MAP, ParamSecondFloor.FIRST_LITTLE_ROOM_WIDTH, ParamSecondFloor.FIRST_LITTLE_ROOM_HEIGHT), false);
 
@@ -181,7 +188,7 @@ public class Data implements DataService {
     /**
      * Method to initialize all rooms for floors No. 3 (for the main floor rectangle)
      */
-    private void initRoomsThirdFloor() {
+    public void initRoomsThirdFloor() {
         floors.get(2).getSpecificRoom(0).setGroup(new Dimension(ParamThirdFloor.FIRST_ROOM_X, ParamThirdFloor.FIRST_ROOM_Y, ParamThirdFloor.FIRST_ROOM_WIDTH, ParamThirdFloor.FIRST_ROOM_HEIGHT),
                 new Dimension(ParamDisplay.X_MINI_MAP, ParamDisplay.Y_THIRD_LITTLE_MAP, ParamThirdFloor.FIRST_LITTLE_ROOM_WIDTH, ParamThirdFloor.FIRST_LITTLE_ROOM_HEIGHT),
                 true);
@@ -415,11 +422,11 @@ public class Data implements DataService {
                 new Dimension(ParamThirdFloor.SECOND_LITTLE_LIGHT_X, ParamThirdFloor.SECOND_LITTLE_LIGHT_Y, ParamDisplay.MINI_FLOOR_LITTLE_RADIUS_LIGTH), false);
 
         radiatorFirstPlaceThrdFloor.setGroup(new Dimension(ParamThirdFloor.FIRST_RADIATOR_X, ParamThirdFloor.FIRST_RADIATOR_Y),
-                new Dimension(ParamThirdFloor.FIRST_LITTLE_RADIATOR_X, ParamThirdFloor.FIRST_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_LANDSCAPE);
+                new Dimension(ParamThirdFloor.FIRST_LITTLE_RADIATOR_X, ParamThirdFloor.FIRST_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
         radiatorSecondPlaceThrdFloor.setGroup(new Dimension(ParamThirdFloor.SECOND_RADIATOR_X, ParamThirdFloor.SECOND_RADIATOR_Y),
                 new Dimension(ParamThirdFloor.SECOND_LITTLE_RADIATOR_X, ParamThirdFloor.SECOND_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
         radiatorThirdPlaceThrdFloor.setGroup(new Dimension(ParamThirdFloor.THIRD_RADIATOR_X, ParamThirdFloor.THIRD_RADIATOR_Y),
-                new Dimension(ParamThirdFloor.THIRD_LITTLE_RADIATOR_X, ParamThirdFloor.THIRD_LITTLE_RADIATOR_Y), true, ParamHome.RADIATOR_LANDSCAPE);
+                new Dimension(ParamThirdFloor.THIRD_LITTLE_RADIATOR_X, ParamThirdFloor.THIRD_LITTLE_RADIATOR_Y), false, ParamHome.RADIATOR_LANDSCAPE);
 
         objectHomes.add(lightFirstPlaceThrdFloor);
         objectHomes.add(lightSecondPlaceThrdFloor);
@@ -519,8 +526,6 @@ public class Data implements DataService {
         for (Room room : roomsNotEmpty) {
             room.turnOnObjects();
         }
-//        HandlerAudio.playSongObjectsOn();
-
     }
 
     @Override
@@ -528,22 +533,12 @@ public class Data implements DataService {
         for (Room room : rooms) {
             room.turnOffObjects();
         }
-//        HandlerAudio.playSongObjectsOff();
     }
 
     @Override
     public void setObjectsOn(int roomID) {
         if (floors.get(mainFloorNo).getRooms().size() > roomID) {
             floors.get(mainFloorNo).getSpecificRoom(roomID).turnOnObjects();
-        }
-    }
-
-    @Override
-    public void getObjectsDoors(int floorNo) {
-        for (ObjectHome door : floors.get(floorNo).getObjectHomes()) {
-            if (door instanceof Door) {
-
-            }
         }
     }
 

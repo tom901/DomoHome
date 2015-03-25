@@ -42,14 +42,12 @@ public class BrainCharacterDirige implements BrainCharacterService, RequireSimul
             simulator.setGoTo(new Dimension(340,210));
         } else if (i == 2) {
             simulator.setGoTo(new Dimension(340,12));
-//            simulator.setCharacterOrientation(1);
         } else if (i == 3) {
             simulator.setGoTo(new Dimension(310,250));
         } else if (i == 4) {
             simulator.setGoTo(new Dimension(310,140));
         } else if (i == 5) {
             simulator.setGoTo(new Dimension(50,65));
-//            simulator.setCharacterOrientation(0);
         } else if (i == 6) {
             simulator.setGoTo(new Dimension(340,65));
         } else if (i == 7) {
