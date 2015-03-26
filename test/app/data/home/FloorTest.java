@@ -42,4 +42,5 @@ public class FloorTest {
         assertNotNull(floor.getRooms().size());
         assertEquals(floor.getRooms().size(), 1);
     }
+
 }

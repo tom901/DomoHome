@@ -1,13 +1,13 @@
 package app.algorithm;
 
-import app.services.BrainHomeService;
+import app.services.BrainService;
 import app.services.RequireSimulatorService;
 import app.services.SimulatorService;
 
 /**
  * Created by Nicolas on 21/03/2015.
  */
-public class BrainHome implements BrainHomeService, RequireSimulatorService {
+public class BrainHome implements /*BrainHomeService*/BrainService, RequireSimulatorService {
     private SimulatorService simulator;
 
     @Override

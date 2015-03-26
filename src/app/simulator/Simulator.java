@@ -1,34 +1,28 @@
 package app.simulator;
 
-import app.algorithm.BrainCharacter;
 import app.common.ParamDisplay;
-import app.common.ParamHome;
-import app.common.RoomsEnum;
 import app.data.Dimension;
-import app.data.home.Room;
-import app.data.object.Door;
-import app.data.object.ObjectHome;
 import app.display.HandlerAudio;
 import app.services.*;
 
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
 /**
  * Created by Thomas on 04/03/15.
  */
-public class Simulator implements SimulatorService, RequireDataService, RequireBrainCharacterService, RequireBrainHomeService {
+public class Simulator implements SimulatorService, RequireDataService, RequireBrainService {
     private Timer simuTimer;
     protected DataService data;
     protected Dimension dimNotToExceed, positionToGoTo, dimToGoTo;
-    protected BrainCharacterService brainCharacterService;
-    protected BrainHomeService brainHomeService;
+    protected BrainService brainCharacterService;
+    protected BrainService brainHomeService;
 //    private Door doorToCross;
     protected int direction;
     private boolean inTransition, brainDirige, hasArrived;
     private boolean isPositioned, finishCrossing, doorIsOnTheRightOrAtBottom;
+
+    public Simulator() {}
 
     /**
      * Method to getPanel the attributes of the engine / simulator.
@@ -51,12 +45,12 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
     }
 
     @Override
-    public void bindBrainCharacterService(BrainCharacterService service) {
+    public void bindBrainCharacterService(BrainService service) {
         brainCharacterService = service;
     }
 
     @Override
-    public void bindBrainHomeService(BrainHomeService service) {
+    public void bindBrainHomeService(BrainService service) {
         brainHomeService = service;
     }
 

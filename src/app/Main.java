@@ -1,6 +1,5 @@
 package app;
 
-import app.algorithm.BrainCharacter;
 import app.algorithm.BrainCharacterDirige;
 import app.algorithm.BrainHome;
 import app.common.ParamDisplay;
@@ -17,24 +16,19 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 import javafx.stage.WindowEvent;
 import javafx.event.EventHandler;
-
-import java.io.File;
 
 public class Main extends Application {
 
     private static SimulatorService simulator;
     private static DataService data;
     private static ViewerService viewer;
-    private static BrainCharacterService brainCharacter;
-    private static BrainHomeService brainHome;
+    private static BrainService brainCharacter;
+    private static BrainService brainHome;
     private static AnimationTimer timerMain;
     private static boolean onPause;
 

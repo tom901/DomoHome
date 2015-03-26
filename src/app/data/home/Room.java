@@ -53,7 +53,7 @@ public class Room {
      * @param firstRoom
      */
     public void setGroup(Dimension p, Dimension p_mini, boolean firstRoom){
-        // Construct Main Recrangle
+        // Construct Main Rectangle
         this.position = p;
 
         rectangle.setWidth(p.getWidth());
@@ -88,6 +88,7 @@ public class Room {
         rectangleMini.setStrokeWidth(1);
         groupMini.getChildren().add(rectangleMini);
     }
+
     public void setGroupGarden(Dimension p, Dimension p_mini, boolean firstRoom){
         // Construct Main Recrangle
         this.position = p;

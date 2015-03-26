@@ -31,19 +31,6 @@ public class Floor {
         objectHomes = new ArrayList<ObjectHome>();
     }
 
-    public Floor(Dimension p, int divider) {
-
-        group = new Group();
-        this.dimension = p;
-        Rectangle floor = new Rectangle(p.getWidth()/divider,p.getHeight()/divider, Color.WHITE);
-        floor.setX(p.getX());
-        floor.setY(p.getY());
-        floor.setFill(Color.WHITE);
-        floor.setStroke(Color.BLACK);
-        floor.setStrokeWidth(1);
-        group.getChildren().add(floor);
-    }
-
     //Methods
     public void setGroup (Dimension p) {
         // Set the group and rectangle for the normal size
@@ -78,16 +65,6 @@ public class Floor {
 
     public Room getSpecificRoom(int index) { return this.rooms.get(index); }
 
-    /*Function to know what floor is in front of the view
-    public void isInFront(){
-
-    }
-
-    //Function to change state of all objects
-    public void swithStateObjects(){
-
-    }*/
-
     /**
      * Method to return the dimension onf a floor.
      * @return Dimension
@@ -103,10 +80,6 @@ public class Floor {
     public void setDimension(Dimension p) {
         this.dimension = p;
     }
-    public void setDimensionMini(Dimension p) {
-        this.dimensionMini = p;
-    }
-
 
     public ArrayList<ObjectHome> getObjectHomes() {
         return objectHomes;
@@ -114,10 +87,6 @@ public class Floor {
 
     public void addObjectHome(ObjectHome objectHome) {
         this.objectHomes.add(objectHome);
-    }
-
-    public ObjectHome getSpecificObjectHome(int index) {
-        return objectHomes.get(index);
     }
 
 }

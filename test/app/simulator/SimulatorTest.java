@@ -171,6 +171,7 @@ public class SimulatorTest {
     public void testMoveDown() throws Exception {
         simulator.bindDataService(data);
         simulator.bindBrainHomeService(brainHome);
+        simulator.bindBrainCharacterService(brainHome);
         simulator.bindBrainCharacterService(brainCharacter);
         simulator.init();
         double oldY = data.getCharacterPosition().getY();

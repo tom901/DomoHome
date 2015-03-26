@@ -12,10 +12,6 @@ public abstract class ObjectHome {
     protected Group group;
     protected Group groupMini;
 
-    public void setGroup(Group group) {
-        this.group = group;
-    }
-
     public ObjectHome(){
         state = false;
         group = new Group();
