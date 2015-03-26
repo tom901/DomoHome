@@ -77,8 +77,4 @@ public class Radiator extends ObjectHome {
         return super.groupMini;
     }
 
-    /*Function to get the temperature
-    public void getTemperature() {
-
-    }*/
 }

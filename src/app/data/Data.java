@@ -21,9 +21,6 @@ public class Data implements DataService {
     Character character;
     int mainFloorNo;
 
-    //    ArrayList<Room> rooms;
-//    ArrayList<ObjectHome> objects;
-
     public Data() {
         floors = new ArrayList<Floor>();
         miniFloors = new ArrayList<Floor>();

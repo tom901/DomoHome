@@ -1,14 +1,11 @@
 package app.data;
 
-import app.services.CharacterService;
-
 /**
  * Created by Nicolas on 16/03/2015.
  */
-public class Character implements CharacterService {
+public class Character {
 
     private Dimension position;
-    private double speed;
     private int orientation;
 
     public Character() {

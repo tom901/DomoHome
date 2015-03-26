@@ -118,7 +118,6 @@ public class Simulator implements SimulatorService, RequireDataService, RequireB
         switch (direction) {
             case 0: // Move left
                 moveLeft();
-//                moveRight();
                 break;
             case 1: // Move right
                 moveRight();

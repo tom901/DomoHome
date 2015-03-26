@@ -26,8 +26,6 @@ public abstract class ObjectHome {
         this.state = state;
     }
 
-//    public abstract void setGroup();
-
     public abstract Group getGroup();
 
     public abstract Group getGroupMini();
