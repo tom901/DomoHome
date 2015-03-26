@@ -143,24 +143,24 @@ public class Room {
         group.getChildren().add(room);
         return this;
     }
-    //Function to get Id room
+    /*Function to get Id room
     public void getIdRoom(){
 
-    }
+    }*/
 
     //Function to add object in room of the house
     public void addObject(ObjectHome obj){
         this.objectHomes.add(obj);
     }
 
-    public ArrayList<ObjectHome> getObjectHomes() {
+    public ArrayList<ObjectHome>   getObjectHomes() {
         return objectHomes;
     }
 
-    //Function to change state of all objects
+    /*Function to change state of all objects
     public void swithStateObjects(){
 
-    }
+    }*/
 
     public Dimension getPosition() {
         return position;

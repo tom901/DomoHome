@@ -78,7 +78,7 @@ public class Floor {
 
     public Room getSpecificRoom(int index) { return this.rooms.get(index); }
 
-    //Function to know what floor is in front of the view
+    /*Function to know what floor is in front of the view
     public void isInFront(){
 
     }
@@ -86,7 +86,7 @@ public class Floor {
     //Function to change state of all objects
     public void swithStateObjects(){
 
-    }
+    }*/
 
     /**
      * Method to return the dimension onf a floor.
